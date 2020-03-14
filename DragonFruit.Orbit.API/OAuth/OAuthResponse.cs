@@ -3,7 +3,7 @@
 
 using Newtonsoft.Json;
 
-namespace DragonFruit.Orbit.API.Auth
+namespace DragonFruit.Orbit.API.OAuth
 {
     public class OAuthResponse
     {
