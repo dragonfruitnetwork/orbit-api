@@ -7,10 +7,10 @@ namespace DragonFruit.Orbit.API.Users
 {
     public class Country
     {
-        [JsonProperty(@"name")]
-        public string FullName { get; set; }
+        [JsonProperty("name")]
+        public string Name { get; set; }
 
-        [JsonProperty(@"code")]
+        [JsonProperty("code")]
         public string FlagName { get; set; }
     }
 }

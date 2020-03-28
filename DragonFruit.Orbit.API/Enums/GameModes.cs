@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 namespace DragonFruit.Orbit.API.Enums
 {
-    public enum Modes
+    public enum GameModes
     {
         Default = -1,
 

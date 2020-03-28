@@ -11,7 +11,7 @@ namespace DragonFruit.Orbit.API.Users
 {
     public class OsuUser
     {
-        public Modes Mode { get; set; }
+        public GameModes Mode { get; set; }
 
         [JsonProperty("id")]
         public long Id { get; set; }
@@ -44,7 +44,6 @@ namespace DragonFruit.Orbit.API.Users
         }
 
         public string AvatarUrl { get; set; }
-
 
         [JsonProperty("cover_url")]
         public string CoverUrl
@@ -178,6 +177,9 @@ namespace DragonFruit.Orbit.API.Users
         [JsonProperty("replays_watched_counts")]
         public UserHistoryCount[] ReplaysWatchedCounts { get; set; }
 
-        public override string ToString() => Username;
+        public override string ToString()
+        {
+            return Username;
+        }
     }
 }

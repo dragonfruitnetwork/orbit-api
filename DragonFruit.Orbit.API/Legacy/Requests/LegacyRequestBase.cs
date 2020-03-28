@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using DragonFruit.Common.Data;
+﻿using DragonFruit.Common.Data;
 using DragonFruit.Common.Data.Parameters;
 using DragonFruit.Orbit.API.Enums;
 using DragonFruit.Orbit.API.Legacy.Requests.Interfaces;
@@ -17,7 +14,7 @@ namespace DragonFruit.Orbit.API.Legacy.Requests
         public string User { get; set; }
 
         [QueryParameter("m")]
-        public Modes Mode { get; set; }
+        public GameModes GameMode { get; set; }
 
         [QueryParameter("type")]
         public string Type => IsUsername ? "string" : "id";

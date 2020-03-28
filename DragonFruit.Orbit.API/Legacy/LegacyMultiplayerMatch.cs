@@ -52,7 +52,7 @@ namespace DragonFruit.Orbit.API.Legacy
         public uint BeatmapId { get; set; }
 
         [JsonProperty("play_mode")]
-        public Modes Mode { get; set; }
+        public GameModes GameMode { get; set; }
 
         [JsonProperty("scoring_type")]
         public WinCondition ScoreType { get; set; }

@@ -37,8 +37,8 @@ namespace DragonFruit.Orbit.API.Legacy
         public float SongNoteDuration { get; set; }
 
         //enums
-        [JsonProperty("mode")]
-        public Modes GameMode { get; set; }
+        [JsonProperty("gameMode")]
+        public GameModes GameMode { get; set; }
 
         [JsonProperty("approved")]
         public BeatmapsetStatus BeatmapStatus { get; set; }

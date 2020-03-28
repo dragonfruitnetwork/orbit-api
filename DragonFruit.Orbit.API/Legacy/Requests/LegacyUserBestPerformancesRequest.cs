@@ -8,11 +8,11 @@ namespace DragonFruit.Orbit.API.Legacy.Requests
 {
     public class LegacyUserBestPerformancesRequest : LegacyRequestBase, IHasLimiter
     {
-        public LegacyUserBestPerformancesRequest(string user, bool isUsername = true, Modes mode = Modes.Standard)
+        public LegacyUserBestPerformancesRequest(string user, bool isUsername = true, GameModes gameMode = GameModes.Standard)
         {
             User = user;
             IsUsername = isUsername;
-            Mode = mode;
+            GameMode = gameMode;
         }
 
         public override string Path => "https://osu.ppy.sh/api/get_user_best";
