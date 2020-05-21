@@ -3,12 +3,11 @@
 
 using System;
 using DragonFruit.Common.Data.Parameters;
-using DragonFruit.Orbit.API.Enums.Maps;
-using DragonFruit.Orbit.API.Legacy.Requests.Interfaces;
+using DragonFruit.Orbit.API.Beatmaps.Enums;
 
 namespace DragonFruit.Orbit.API.Legacy.Requests
 {
-    public class BeatmapInfoRequest : LegacyRequestBase, IHasLimiter
+    public class BeatmapInfoRequest : LegacyRequest, IHasLimiter
     {
         public override string Path => "https://osu.ppy.sh/api/get_beatmaps";
 

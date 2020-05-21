@@ -6,16 +6,23 @@ using DragonFruit.Orbit.API.Enums;
 
 namespace DragonFruit.Orbit.API.Legacy.Requests
 {
-    public class LegacyUserRequest : LegacyRequestBase
+    public class LegacyUserRequest : LegacyRequest
     {
-        public LegacyUserRequest(string user, bool isUsername = true, GameModes gameMode = GameModes.Standard)
+        public override string Path => "https://osu.ppy.sh/api/get_user";
+
+        public LegacyUserRequest(string user, GameMode mode)
         {
             User = user;
-            IsUsername = isUsername;
-            GameMode = gameMode;
+            IsUsername = true;
+            GameMode = mode;
         }
 
-        public override string Path => "https://osu.ppy.sh/api/get_user";
+        public LegacyUserRequest(uint userId, GameMode mode)
+        {
+            User = userId.ToString();
+            IsUsername = false;
+            GameMode = mode;
+        }
 
         [QueryParameter("event_days")]
         public uint? EventDays { get; set; }

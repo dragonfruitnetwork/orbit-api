@@ -2,20 +2,26 @@
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
 using DragonFruit.Orbit.API.Enums;
-using DragonFruit.Orbit.API.Legacy.Requests.Interfaces;
 
 namespace DragonFruit.Orbit.API.Legacy.Requests
 {
-    public class LegacyUserRecentPerformancesRequest : LegacyRequestBase, IHasLimiter
+    public class LegacyUserRecentPerformancesRequest : LegacyRequest, IHasLimiter
     {
-        public LegacyUserRecentPerformancesRequest(string user, bool isUsername = true, GameModes gameMode = GameModes.Standard)
+        public override string Path => "https://osu.ppy.sh/api/get_user_recent";
+
+        public LegacyUserRecentPerformancesRequest(string user, GameMode mode)
         {
             User = user;
-            IsUsername = isUsername;
-            GameMode = gameMode;
+            IsUsername = true;
+            GameMode = mode;
         }
 
-        public override string Path => "https://osu.ppy.sh/api/get_user_recent";
+        public LegacyUserRecentPerformancesRequest(uint userId, GameMode mode)
+        {
+            User = userId.ToString();
+            IsUsername = false;
+            GameMode = mode;
+        }
 
         public uint? Limit { get; set; }
     }
