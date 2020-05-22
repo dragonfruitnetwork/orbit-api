@@ -3,9 +3,8 @@
 
 using System;
 using System.Collections.Generic;
-using DragonFruit.Orbit.API.Beatmaps.Enums;
-using DragonFruit.Orbit.API.Enums;
 using DragonFruit.Orbit.API.Legacy.Enums;
+using DragonFruit.Orbit.API.Objects.Enums;
 using Newtonsoft.Json;
 
 namespace DragonFruit.Orbit.API.Legacy.Objects

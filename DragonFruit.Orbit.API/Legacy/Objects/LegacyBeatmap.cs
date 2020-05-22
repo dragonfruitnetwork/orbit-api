@@ -2,8 +2,7 @@
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
 using System;
-using DragonFruit.Orbit.API.Beatmaps.Enums;
-using DragonFruit.Orbit.API.Enums;
+using DragonFruit.Orbit.API.Objects.Enums;
 using Newtonsoft.Json;
 
 namespace DragonFruit.Orbit.API.Legacy.Objects

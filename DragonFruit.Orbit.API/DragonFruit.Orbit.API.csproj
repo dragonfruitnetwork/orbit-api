@@ -15,10 +15,4 @@
     <PackageReference Include="DragonFruit.Common.Data" Version="2020.519.27-beta" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Beatmaps\Containers\" />
-    <Folder Include="Changelogs\" />
-    <Folder Include="News\" />
-  </ItemGroup>
-
 </Project>

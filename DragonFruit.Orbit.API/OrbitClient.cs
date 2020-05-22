@@ -7,15 +7,15 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using DragonFruit.Common.Data;
-using DragonFruit.Orbit.API.Auth;
-using DragonFruit.Orbit.API.Auth.Requests;
 using DragonFruit.Orbit.API.Legacy;
+using DragonFruit.Orbit.API.Objects.Auth;
+using DragonFruit.Orbit.API.Requests;
 
 namespace DragonFruit.Orbit.API
 {
     public abstract class OrbitClient : ApiClient
     {
-        protected abstract SessionToken GetSessionToken();
+        protected abstract OsuSessionToken GetSessionToken();
 
         #region Legacy Requests
 
@@ -38,11 +38,11 @@ namespace DragonFruit.Orbit.API
         #endregion
 
         /// <summary>
-        /// Performs an <see cref="OsuAuthRequest"/>, returning the <see cref="SessionToken"/> if successful
+        /// Performs an <see cref="OsuAuthRequest"/>, returning the <see cref="OsuSessionToken"/> if successful
         /// </summary>
-        public SessionToken Perform<T>(T requestData) where T : OsuAuthRequest
+        public OsuSessionToken Perform<T>(T requestData) where T : OsuAuthRequest
         {
-            return base.Perform<SessionToken>(requestData);
+            return base.Perform<OsuSessionToken>(requestData);
         }
 
         public override T Perform<T>(ApiRequest requestData) where T : class
@@ -81,7 +81,7 @@ namespace DragonFruit.Orbit.API
             Authorization = $"{_token.TokenType} {_token.AccessToken}";
         }
 
-        private SessionToken _token;
+        private OsuSessionToken _token;
 
         #endregion
     }
