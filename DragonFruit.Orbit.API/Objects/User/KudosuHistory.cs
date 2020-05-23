@@ -17,7 +17,7 @@ namespace DragonFruit.Orbit.API.Objects.User
         public int Amount;
 
         [JsonProperty("post")]
-        public ModdingPost Post;
+        public OsuModdingPost Post;
 
         [JsonProperty("giver")]
         public KudosuGiver Giver;

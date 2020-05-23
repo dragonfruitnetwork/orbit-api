@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace DragonFruit.Orbit.API.Objects.Beatmaps
 {
-    public class BeatmapCovers
+    public class OsuBeatmapsetCovers
     {
         [JsonProperty("cover")]
         public string Cover { get; set; }

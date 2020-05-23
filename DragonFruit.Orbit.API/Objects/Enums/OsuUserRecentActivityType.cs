@@ -3,7 +3,7 @@
 
 namespace DragonFruit.Orbit.API.Objects.Enums
 {
-    public enum RecentActivityType
+    public enum OsuUserRecentActivityType
     {
         Achievement,
         BeatmapPlaycount,

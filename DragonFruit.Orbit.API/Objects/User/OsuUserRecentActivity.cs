@@ -18,18 +18,18 @@ namespace DragonFruit.Orbit.API.Objects.User
         [JsonProperty("type")]
         private string TypeObject
         {
-            set => Type = (RecentActivityType)Enum.Parse(typeof(RecentActivityType), value, true);
+            set => Type = (OsuUserRecentActivityType)Enum.Parse(typeof(OsuUserRecentActivityType), value, true);
         }
 
-        public RecentActivityType Type;
+        public OsuUserRecentActivityType Type;
 
         [JsonProperty("scoreRank")]
         private string ScoreRankObject
         {
-            set => ScoreRank = (ScoreRank)Enum.Parse(typeof(ScoreRank), value);
+            set => ScoreRank = (OsuScoreGrade)Enum.Parse(typeof(OsuScoreGrade), value);
         }
 
-        public ScoreRank ScoreRank;
+        public OsuScoreGrade ScoreRank;
 
         [JsonProperty("rank")]
         public int Rank;
@@ -53,6 +53,6 @@ namespace DragonFruit.Orbit.API.Objects.User
         public RecentActivityUser User;
 
         [JsonProperty("achievement")]
-        public RecentActivityAchievement Achievement;
+        public OsuRecentActivityAchievement Achievement;
     }
 }

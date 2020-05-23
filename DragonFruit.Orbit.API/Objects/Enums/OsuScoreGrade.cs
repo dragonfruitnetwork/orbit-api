@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 namespace DragonFruit.Orbit.API.Objects.Enums
 {
-    public enum ScoreRank
+    public enum OsuScoreGrade
     {
         [Description("None")]
         N,

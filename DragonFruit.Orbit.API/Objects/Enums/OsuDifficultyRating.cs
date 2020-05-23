@@ -3,7 +3,7 @@
 
 namespace DragonFruit.Orbit.API.Objects.Enums
 {
-    public enum DifficultyRating
+    public enum OsuDifficultyRating
     {
         Easy,
         Normal,

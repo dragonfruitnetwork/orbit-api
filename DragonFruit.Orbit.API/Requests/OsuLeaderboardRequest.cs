@@ -10,7 +10,7 @@ namespace DragonFruit.Orbit.API.Requests
     {
         public override string Path => $"https://osu.ppy.sh/api/v2/rankings/{Mode.ToString().ToLowerInvariant()}/{Category.ToString().ToLowerInvariant()}";
 
-        public OsuLeaderboardRequest(GameMode mode, LeaderboardRankingType category)
+        public OsuLeaderboardRequest(GameMode mode, OsuLeaderboardRankingType category)
         {
             Mode = mode;
             Category = category;
@@ -18,6 +18,6 @@ namespace DragonFruit.Orbit.API.Requests
 
         public GameMode Mode { get; set; }
 
-        public LeaderboardRankingType Category { get; set; }
+        public OsuLeaderboardRankingType Category { get; set; }
     }
 }

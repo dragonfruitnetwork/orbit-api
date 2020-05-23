@@ -56,10 +56,10 @@ namespace DragonFruit.Orbit.API.Legacy.Objects
 
         //enums
         [JsonProperty("enabled_mods")]
-        public Mods Mods { get; set; }
+        public OsuMods Mods { get; set; }
 
         [JsonProperty("rank")]
-        public ScoreRank Rank { get; set; }
+        public OsuScoreGrade Rank { get; set; }
 
         //combo data
         [JsonProperty("maxcombo")]

@@ -4,7 +4,7 @@
 namespace DragonFruit.Orbit.API.Objects.Enums
 {
     //from https://github.com/ppy/osu-api/wiki#mods
-    public enum Mods
+    public enum OsuMods
     {
         None = 0x0,
         NoFail = 0x1,

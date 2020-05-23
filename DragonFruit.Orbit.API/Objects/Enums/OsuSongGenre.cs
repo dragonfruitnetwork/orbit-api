@@ -3,7 +3,7 @@
 
 namespace DragonFruit.Orbit.API.Objects.Enums
 {
-    public enum SongGenre
+    public enum OsuSongGenre
     {
         Any = 0,
         Unspecified = 1,

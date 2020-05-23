@@ -26,7 +26,7 @@ namespace DragonFruit.Orbit.API.Extensions
             return client.Perform<IEnumerable<OsuUserRecentActivity>>(request);
         }
 
-        public static IEnumerable<OsuUserScoreInfo> GetUserScores(this OrbitClient client, uint userId, ScoreType type)
+        public static IEnumerable<OsuUserScoreInfo> GetUserScores(this OrbitClient client, uint userId, OsuUserScoreType type)
         {
             var request = new OsuUserScoresRequest(userId, type);
             return client.Perform<IEnumerable<OsuUserScoreInfo>>(request);

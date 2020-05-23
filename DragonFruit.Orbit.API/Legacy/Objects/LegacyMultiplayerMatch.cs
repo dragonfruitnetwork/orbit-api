@@ -60,7 +60,7 @@ namespace DragonFruit.Orbit.API.Legacy.Objects
         public TeamType TeamType { get; set; }
 
         [JsonProperty("mods")]
-        public Mods GlobalMods { get; set; }
+        public OsuMods GlobalMods { get; set; }
 
         [JsonProperty("scores")]
         public IEnumerable<LegacyMutliplayerScore> Scores { get; set; }

@@ -43,10 +43,10 @@ namespace DragonFruit.Orbit.API.Legacy.Objects
         public GameMode GameMode { get; set; }
 
         [JsonProperty("approved")]
-        public BeatmapsetStatus BeatmapStatus { get; set; }
+        public OsuBeatmapsetStatus BeatmapStatus { get; set; }
 
         [JsonProperty("genere_id")]
-        public SongGenre Genre { get; set; }
+        public OsuSongGenre Genre { get; set; }
 
         [JsonProperty("language_id")]
         public Language Language { get; set; }

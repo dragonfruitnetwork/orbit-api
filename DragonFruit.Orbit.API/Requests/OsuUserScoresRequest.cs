@@ -10,7 +10,7 @@ namespace DragonFruit.Orbit.API.Requests
     {
         public override string Path => $"https://osu.ppy.sh/api/v2/users/{UserId}/scores/{Type}";
 
-        public OsuUserScoresRequest(uint userId, ScoreType type)
+        public OsuUserScoresRequest(uint userId, OsuUserScoreType type)
         {
             UserId = userId;
             Type = type;
@@ -18,6 +18,6 @@ namespace DragonFruit.Orbit.API.Requests
 
         public uint UserId { get; set; }
 
-        public ScoreType Type { get; set; }
+        public OsuUserScoreType Type { get; set; }
     }
 }

@@ -3,7 +3,7 @@
 
 namespace DragonFruit.Orbit.API.Objects.Enums
 {
-    public enum ScoreType
+    public enum OsuUserScoreType
     {
         Best,
         Firsts,

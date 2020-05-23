@@ -24,25 +24,25 @@ namespace DragonFruit.Orbit.API.Objects.User
         [JsonProperty("a")]
         public int A { get; set; }
 
-        public int this[ScoreRank rank]
+        public int this[OsuScoreGrade rank]
         {
             get
             {
                 switch (rank)
                 {
-                    case ScoreRank.XH:
+                    case OsuScoreGrade.XH:
                         return SSPlus ?? 0;
 
-                    case ScoreRank.X:
+                    case OsuScoreGrade.X:
                         return SS;
 
-                    case ScoreRank.SH:
+                    case OsuScoreGrade.SH:
                         return SPlus ?? 0;
 
-                    case ScoreRank.S:
+                    case OsuScoreGrade.S:
                         return S;
 
-                    case ScoreRank.A:
+                    case OsuScoreGrade.A:
                         return A;
 
                     default:

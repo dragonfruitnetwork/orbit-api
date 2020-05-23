@@ -17,7 +17,7 @@ namespace DragonFruit.Orbit.API.Legacy.Requests
 
         public bool IncludeConvertedMaps { get; set; }
 
-        public Mods Mods { get; set; } = Mods.None;
+        public OsuMods Mods { get; set; } = OsuMods.None;
 
         [QueryParameter("s")]
         public uint BeatmapsetId { get; set; }

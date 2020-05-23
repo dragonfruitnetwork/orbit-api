@@ -5,12 +5,12 @@ using Newtonsoft.Json;
 
 namespace DragonFruit.Orbit.API.Objects.User
 {
-    public class RecentActivityAchievement
+    public class OsuModdingPost
     {
-        [JsonProperty("slug")]
-        public string Slug;
+        [JsonProperty("url")]
+        public string Url;
 
-        [JsonProperty("name")]
-        public string Name;
+        [JsonProperty("title")]
+        public string Title;
     }
 }

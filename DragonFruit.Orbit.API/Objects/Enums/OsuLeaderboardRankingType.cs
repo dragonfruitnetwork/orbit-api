@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 namespace DragonFruit.Orbit.API.Objects.Enums
 {
-    public enum LeaderboardRankingType
+    public enum OsuLeaderboardRankingType
     {
         [Description("Spotlight")]
         Charts,
