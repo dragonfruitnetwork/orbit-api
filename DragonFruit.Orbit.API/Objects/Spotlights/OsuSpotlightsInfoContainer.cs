@@ -6,7 +6,7 @@ using Newtonsoft.Json;
 
 namespace DragonFruit.Orbit.API.Objects.Spotlights
 {
-    public class OsuSpotlightsContainer
+    public class OsuSpotlightsInfoContainer
     {
         [JsonProperty("spotlights")]
         public IEnumerable<OsuSpotlightEntry> Spotlights { get; set; }

@@ -8,7 +8,7 @@ using DragonFruit.Orbit.API.Requests;
 
 namespace DragonFruit.Orbit.API.Extensions
 {
-    public static class OsuUsersExtensions
+    public static class OsuUserExtensions
     {
         public static OsuUser GetCurrentUser(this OrbitClient client) => client.Perform<OsuUser>(new OsuUserRequest());
 

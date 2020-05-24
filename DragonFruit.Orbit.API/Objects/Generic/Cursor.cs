@@ -10,7 +10,10 @@ namespace DragonFruit.Orbit.API.Objects.Generic
     /// </summary>
     public class Cursor
     {
+        [JsonIgnore]
+        public int Page => NextPage - 1;
+
         [JsonProperty("page")]
-        public int Page { get; set; }
+        public int NextPage { get; set; }
     }
 }
