@@ -18,6 +18,6 @@ namespace DragonFruit.Orbit.API.Objects.Spotlights
         public OsuSpotlightEntry Info { get; set; }
 
         [JsonProperty("beatmapsets")]
-        public IEnumerable<OsuBeatmapSetInfo> BeatmapSets { get; set; }
+        public IEnumerable<OsuBeatmapsetInfo> BeatmapSets { get; set; }
     }
 }

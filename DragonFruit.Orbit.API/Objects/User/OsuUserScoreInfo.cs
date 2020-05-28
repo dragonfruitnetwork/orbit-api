@@ -59,7 +59,7 @@ namespace DragonFruit.Orbit.API.Objects.User
         public OsuBeatmapInfo Beatmap { get; set; }
 
         [JsonProperty("beatmapset")]
-        public OsuBeatmapSetInfo Beatmapset { get; set; }
+        public OsuBeatmapsetInfo Beatmapset { get; set; }
 
         [JsonProperty("weight")]
         public OsuUserScoreWeighting Weight { get; set; }

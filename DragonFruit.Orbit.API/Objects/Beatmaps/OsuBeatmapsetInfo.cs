@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace DragonFruit.Orbit.API.Objects.Beatmaps
 {
-    public class OsuBeatmapSetInfo
+    public class OsuBeatmapsetInfo
     {
         [JsonProperty("artist")]
         public string Artist { get; set; }

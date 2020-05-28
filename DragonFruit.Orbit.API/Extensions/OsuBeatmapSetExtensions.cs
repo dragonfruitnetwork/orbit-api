@@ -9,25 +9,25 @@ namespace DragonFruit.Orbit.API.Extensions
     public static class OsuBeatmapSetExtensions
     {
         /// <summary>
-        /// Get the <see cref="OsuBeatmapSetInfo"/> using the id of the collection (collection id)
+        /// Get the <see cref="OsuBeatmapsetInfo"/> using the id of the collection (collection id)
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="beatmapsetId">The id of the mapset/collection</param>
-        public static OsuBeatmapSetInfo GetBeatmapSetInfo(this OrbitClient client, uint beatmapsetId)
+        public static OsuBeatmapsetInfo GetBeatmapSetInfo(this OrbitClient client, uint beatmapsetId)
         {
             var request = new OsuBeatmapsetInfoRequest(beatmapsetId);
-            return client.Perform<OsuBeatmapSetInfo>(request);
+            return client.Perform<OsuBeatmapsetInfo>(request);
         }
 
         /// <summary>
-        /// Get the <see cref="OsuBeatmapSetInfo"/> using one of the ids of a map contained in the set (map id)
+        /// Get the <see cref="OsuBeatmapsetInfo"/> using one of the ids of a map contained in the set (map id)
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="childMapId">An id of a map in the mapset/collection</param>
-        public static OsuBeatmapSetInfo GetBeatmapSetInfoByMapId(this OrbitClient client, uint childMapId)
+        public static OsuBeatmapsetInfo GetBeatmapSetInfoByMapId(this OrbitClient client, uint childMapId)
         {
             var request = new OsuBeatmapsetLookupRequest(childMapId);
-            return client.Perform<OsuBeatmapSetInfo>(request);
+            return client.Perform<OsuBeatmapsetInfo>(request);
         }
     }
 }

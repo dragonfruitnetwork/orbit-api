@@ -6,7 +6,7 @@ namespace DragonFruit.Orbit.API.Objects.Enums
     public enum Language
     {
         Any = 0,
-        Unspecified = 1,
+        Other = 1,
         English = 2,
         Japanese = 3,
         Chinese = 4,
