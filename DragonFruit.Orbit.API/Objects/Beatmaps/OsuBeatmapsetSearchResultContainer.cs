@@ -9,9 +9,9 @@ namespace DragonFruit.Orbit.API.Objects.Beatmaps
     public class OsuBeatmapsetSearchResultContainer
     {
         [JsonProperty("beatmapsets")]
-        public IEnumerable<OsuBeatmapsetInfo> Beatmapsets;
+        public IEnumerable<OsuBeatmapsetInfo> Beatmapsets { get; set; }
 
         [JsonProperty("total")]
-        public int Total;
+        public int Total { get; set; }
     }
 }
