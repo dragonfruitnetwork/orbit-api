@@ -11,35 +11,38 @@ namespace DragonFruit.Orbit.API.Objects.User
     public class KudosuHistory
     {
         [JsonProperty("created_at")]
-        public DateTimeOffset CreatedAt;
+        public DateTimeOffset CreatedAt { get; set; }
 
         [JsonProperty("amount")]
-        public int Amount;
+        public int Amount { get; set; }
 
         [JsonProperty("post")]
-        public OsuModdingPost Post;
+        public OsuModdingPost Post { get; set; }
 
         [JsonProperty("giver")]
-        public KudosuGiver Giver;
+        public KudosuGiver Giver { get; set; }
 
-        public KudosuSource Source;
+        public KudosuSource Source => _source;
 
-        public KudosuAction Action;
+        public KudosuAction Action => _action;
 
         [JsonProperty("action")]
         private string ActionInfo
         {
             set
             {
-                string[] split = value.Split('.');
+                var items = value.Split('.');
 
-                if (split.Length > 1)
-                    Enum.TryParse(split.First().Replace("_", ""), true, out Source);
+                if (items.Length > 1)
+                    Enum.TryParse(items.First().Replace("_", ""), true, out _source);
                 else
-                    Source = KudosuSource.Forum;
+                    _source = KudosuSource.Forum;
 
-                Enum.TryParse(split.Last(), true, out Action);
+                Enum.TryParse(items.Last(), true, out _action);
             }
         }
+
+        private KudosuSource _source;
+        private KudosuAction _action;
     }
 }

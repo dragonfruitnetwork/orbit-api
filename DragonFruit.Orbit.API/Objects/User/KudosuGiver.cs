@@ -8,9 +8,9 @@ namespace DragonFruit.Orbit.API.Objects.User
     public class KudosuGiver
     {
         [JsonProperty("url")]
-        public string Url;
+        public string Url { get; set; }
 
         [JsonProperty("username")]
-        public string Username;
+        public string Username { get; set; }
     }
 }

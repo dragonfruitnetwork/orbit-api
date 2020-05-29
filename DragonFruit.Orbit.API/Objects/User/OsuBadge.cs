@@ -9,7 +9,7 @@ namespace DragonFruit.Orbit.API.Objects.User
     public class OsuBadge
     {
         [JsonProperty("awarded_at")]
-        public DateTimeOffset AwardedAt;
+        public DateTimeOffset AwardedAt { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }

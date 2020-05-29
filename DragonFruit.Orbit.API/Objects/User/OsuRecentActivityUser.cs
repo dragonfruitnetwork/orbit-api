@@ -8,12 +8,12 @@ namespace DragonFruit.Orbit.API.Objects.User
     public class RecentActivityUser
     {
         [JsonProperty("username")]
-        public string Username;
+        public string Username { get; set; }
 
         [JsonProperty("url")]
-        public string Url;
+        public string Url { get; set; }
 
         [JsonProperty("previousUsername")]
-        public string PreviousUsername;
+        public string PreviousUsername { get; set; }
     }
 }

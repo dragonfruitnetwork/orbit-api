@@ -8,9 +8,9 @@ namespace DragonFruit.Orbit.API.Objects.User
     public class OsuRecentActivityBeatmap
     {
         [JsonProperty("title")]
-        public string Title;
+        public string Title { get; set; }
 
         [JsonProperty("url")]
-        public string Url;
+        public string Url { get; set; }
     }
 }

@@ -8,9 +8,9 @@ namespace DragonFruit.Orbit.API.Objects.User
     public class OsuUserRanks
     {
         [JsonProperty("global")]
-        public int? Global;
+        public int? Global { get; set; }
 
         [JsonProperty("country")]
-        public int? Country;
+        public int? Country { get; set; }
     }
 }

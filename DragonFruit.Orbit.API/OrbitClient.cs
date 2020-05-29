@@ -1,12 +1,12 @@
 ﻿// Orbit API Copyright 2020 DragonFruit Network
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
-using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using DragonFruit.Common.Data;
+using DragonFruit.Orbit.API.Exceptions;
 using DragonFruit.Orbit.API.Legacy;
 using DragonFruit.Orbit.API.Objects.Auth;
 using DragonFruit.Orbit.API.Requests;
@@ -65,7 +65,7 @@ namespace DragonFruit.Orbit.API
             switch (response.Result.StatusCode)
             {
                 case HttpStatusCode.Unauthorized:
-                    throw new Exception("Token has expired");
+                    throw new TokenExpiredException(_token);
 
                 //todo add more status codes
             }

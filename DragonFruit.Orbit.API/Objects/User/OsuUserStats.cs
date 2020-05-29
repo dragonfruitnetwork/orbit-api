@@ -8,7 +8,7 @@ namespace DragonFruit.Orbit.API.Objects.User
     public class OsuUserStats
     {
         [JsonProperty("user")]
-        public OsuUser User;
+        public OsuUser User { get; set; }
 
         [JsonProperty("level")]
         public OsuUserLevel Level { get; set; }

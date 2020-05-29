@@ -8,9 +8,9 @@ namespace DragonFruit.Orbit.API.Objects.User
     public class OsuRecentActivityAchievement
     {
         [JsonProperty("slug")]
-        public string Slug;
+        public string Slug { get; set; }
 
         [JsonProperty("name")]
-        public string Name;
+        public string Name { get; set; }
     }
 }

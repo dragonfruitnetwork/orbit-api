@@ -8,9 +8,9 @@ namespace DragonFruit.Orbit.API.Objects.User
     public class OsuModdingPost
     {
         [JsonProperty("url")]
-        public string Url;
+        public string Url { get; set; }
 
         [JsonProperty("title")]
-        public string Title;
+        public string Title { get; set; }
     }
 }

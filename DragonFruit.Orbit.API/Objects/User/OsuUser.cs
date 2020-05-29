@@ -31,13 +31,7 @@ namespace DragonFruit.Orbit.API.Objects.User
         [JsonProperty("avatar_url")]
         private string AvatarObject
         {
-            set
-            {
-                if (value.StartsWith("http"))
-                    Avatar = value;
-                else
-                    Avatar = "https://osu.ppy.sh" + value;
-            }
+            set => Avatar = value.StartsWith("http") ? value : "https://osu.ppy.sh" + value;
         }
 
         public string Avatar { get; set; }

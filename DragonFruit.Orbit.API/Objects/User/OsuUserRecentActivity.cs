@@ -10,10 +10,10 @@ namespace DragonFruit.Orbit.API.Objects.User
     public class OsuUserRecentActivity
     {
         [JsonProperty("id")]
-        public int ID;
+        public int ID { get; set; }
 
         [JsonProperty("created_at")]
-        public DateTimeOffset CreatedAt;
+        public DateTimeOffset CreatedAt { get; set; }
 
         [JsonProperty("type")]
         private string TypeObject
@@ -21,7 +21,7 @@ namespace DragonFruit.Orbit.API.Objects.User
             set => Type = (OsuUserRecentActivityType)Enum.Parse(typeof(OsuUserRecentActivityType), value, true);
         }
 
-        public OsuUserRecentActivityType Type;
+        public OsuUserRecentActivityType Type { get; set; }
 
         [JsonProperty("scoreRank")]
         private string ScoreRankObject
@@ -29,30 +29,30 @@ namespace DragonFruit.Orbit.API.Objects.User
             set => ScoreRank = (OsuScoreGrade)Enum.Parse(typeof(OsuScoreGrade), value);
         }
 
-        public OsuScoreGrade ScoreRank;
+        public OsuScoreGrade ScoreRank { get; set; }
 
         [JsonProperty("rank")]
-        public int Rank;
+        public int Rank { get; set; }
 
         [JsonProperty("approval")]
-        public OsuUserBeatmapApproval Approval;
+        public OsuUserBeatmapApproval Approval { get; set; }
 
         [JsonProperty("count")]
-        public int Count;
+        public int Count { get; set; }
 
         [JsonProperty("mode")]
-        public string Mode;
+        public string Mode { get; set; }
 
         [JsonProperty("beatmap")]
-        public OsuRecentActivityBeatmap Beatmap;
+        public OsuRecentActivityBeatmap Beatmap { get; set; }
 
         [JsonProperty("beatmapset")]
-        public OsuRecentActivityBeatmap Beatmapset;
+        public OsuRecentActivityBeatmap Beatmapset { get; set; }
 
         [JsonProperty("user")]
-        public RecentActivityUser User;
+        public RecentActivityUser User { get; set; }
 
         [JsonProperty("achievement")]
-        public OsuRecentActivityAchievement Achievement;
+        public OsuRecentActivityAchievement Achievement { get; set; }
     }
 }
