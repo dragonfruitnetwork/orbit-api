@@ -41,7 +41,7 @@ namespace DragonFruit.Orbit.API.Requests
         public SortDirection SortDirection { get; set; } = SortDirection.Descending;
         private string SortDirectionString => SortDirection == SortDirection.Descending ? @"desc" : @"asc";
 
-        public Language? Language { get; set; }
+        public OsuLanguage? Language { get; set; }
         public OsuBeatmapsetGenre? Genre { get; set; }
     }
 }

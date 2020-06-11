@@ -3,7 +3,7 @@
 
 namespace DragonFruit.Orbit.API.Objects.Enums
 {
-    public enum Language
+    public enum OsuLanguage
     {
         Any = 0,
         Other = 1,

@@ -49,7 +49,7 @@ namespace DragonFruit.Orbit.API.Legacy.Objects
         public OsuSongGenre Genre { get; set; }
 
         [JsonProperty("language_id")]
-        public Language Language { get; set; }
+        public OsuLanguage Language { get; set; }
 
         //map ids
         [JsonProperty("beatmap_id")]
