@@ -14,26 +14,61 @@ namespace DragonFruit.Orbit.API.Extensions
 
         #region Page-less
 
+        /// <summary>
+        /// List the first page of the osu! countries leaderboard
+        /// </summary>
+        /// <param name="client">The <see cref="OrbitClient"/> to use</param>
+        /// <param name="mode">The <see cref="GameMode"/> to load rankings for</param>
         public static OsuLeaderboardContainer<OsuCountryLeaderboardEntry> GetCountryRankings(this OrbitClient client, GameMode mode)
             => GetCountryRankings(client, mode, DefaultPage);
 
+        /// <summary>
+        /// List the first page of the osu! top performing players leaderboard
+        /// </summary>
+        /// <param name="client">The <see cref="OrbitClient"/> to use</param>
+        /// <param name="mode">The <see cref="GameMode"/> to load rankings for</param>
         public static OsuLeaderboardContainer<OsuPlayerLeaderboardEntry> GetPerformanceRankings(this OrbitClient client, GameMode mode)
             => GetPerformanceRankings(client, mode, DefaultPage);
 
+        /// <summary>
+        /// List the first page of the osu! highest scores leaderboard
+        /// </summary>
+        /// <param name="client">The <see cref="OrbitClient"/> to use</param>
+        /// <param name="mode">The <see cref="GameMode"/> to load rankings for</param>
         public static OsuLeaderboardContainer<OsuPlayerLeaderboardEntry> GetTotalRankedScoreRankings(this OrbitClient client, GameMode mode)
             => GetTotalRankedScoreRankings(client, mode, DefaultPage);
 
         #endregion
 
+        /// <summary>
+        /// List the specified page of the osu! countries leaderboard
+        /// </summary>
+        /// <param name="client">The <see cref="OrbitClient"/> to use</param>
+        /// <param name="mode">The <see cref="GameMode"/> to load rankings for</param>
         public static OsuLeaderboardContainer<OsuCountryLeaderboardEntry> GetCountryRankings(this OrbitClient client, GameMode mode, uint page)
             => GetLeaderboard<OsuCountryLeaderboardEntry>(client, mode, OsuLeaderboardRankingType.Country, page);
 
+        /// <summary>
+        /// List the specified page of the osu! top performing players leaderboard
+        /// </summary>
+        /// <param name="client">The <see cref="OrbitClient"/> to use</param>
+        /// <param name="mode">The <see cref="GameMode"/> to load rankings for</param>
         public static OsuLeaderboardContainer<OsuPlayerLeaderboardEntry> GetPerformanceRankings(this OrbitClient client, GameMode mode, uint page)
             => GetLeaderboard<OsuPlayerLeaderboardEntry>(client, mode, OsuLeaderboardRankingType.Country, page);
 
+        /// <summary>
+        /// List the specified page of the osu! top performances leaderboard
+        /// </summary>
+        /// <param name="client">The <see cref="OrbitClient"/> to use</param>
+        /// <param name="mode">The <see cref="GameMode"/> to load rankings for</param>
         public static OsuLeaderboardContainer<OsuPlayerLeaderboardEntry> GetTotalRankedScoreRankings(this OrbitClient client, GameMode mode, uint page)
             => GetLeaderboard<OsuPlayerLeaderboardEntry>(client, mode, OsuLeaderboardRankingType.Score, page);
 
+        /// <summary>
+        /// Get the leaderboard for a specified osu!Spotlights leaderboard
+        /// </summary>
+        /// <param name="client">The <see cref="OrbitClient"/> to use</param>
+        /// <param name="mode">The <see cref="GameMode"/> to load rankings for</param>
         public static OsuSpotlightsLeaderboardContainer GetSpotlightLeaderboard(this OrbitClient client, GameMode mode, uint spotlightsId)
         {
             var request = new OsuSpotlightsLeaderboardRequest(mode) { SpotlightsId = spotlightsId };
