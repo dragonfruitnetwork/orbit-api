@@ -10,7 +10,7 @@ namespace DragonFruit.Orbit.API.Objects.Changelogs
     public class OsuChangelogRelease
     {
         [JsonProperty("id")]
-        public long Id { get; set; }
+        public uint Id { get; set; }
 
         [JsonProperty("version")]
         public string Version { get; set; }
@@ -19,13 +19,13 @@ namespace DragonFruit.Orbit.API.Objects.Changelogs
         public string DisplayVersion { get; set; }
 
         [JsonProperty("users")]
-        public long Users { get; set; }
+        public uint UserCount { get; set; }
 
         [JsonProperty("created_at")]
         public DateTimeOffset CreatedAt { get; set; }
 
         [JsonProperty("update_stream")]
-        public OsuChangelogStream UpdateStream { get; set; }
+        public OsuChangelogStreamInfo UpdateStreamInfo { get; set; }
 
         [JsonProperty("changelog_entries")]
         public IEnumerable<OsuChangelogEntry> ChangelogEntries { get; set; }
@@ -33,8 +33,8 @@ namespace DragonFruit.Orbit.API.Objects.Changelogs
         [JsonProperty("versions")]
         public OsuChangelogVersionCursor Versions { get; set; }
 
-        public string Url => $"https://osu.ppy.sh/home/changelog/{UpdateStream.Name}/{Version}";
+        public string Url => $"https://osu.ppy.sh/home/changelog/{UpdateStreamInfo.Name}/{Version}";
 
-        public override string ToString() => $"{UpdateStream.DisplayName} {DisplayVersion}";
+        public override string ToString() => $"{UpdateStreamInfo.DisplayName} {DisplayVersion}";
     }
 }

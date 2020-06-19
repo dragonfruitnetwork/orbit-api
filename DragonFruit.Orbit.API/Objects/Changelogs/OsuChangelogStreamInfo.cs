@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace DragonFruit.Orbit.API.Objects.Changelogs
 {
-    public class OsuChangelogStream
+    public class OsuChangelogStreamInfo
     {
         [JsonProperty("id")]
         public long Id { get; set; }

@@ -41,7 +41,7 @@ namespace DragonFruit.Orbit.API.Requests
                     OsuChangelogStream.Web => "web",
 
                     null => null,
-                    _ => throw new NotSupportedException()
+                    _ => throw new ArgumentException(nameof(OsuChangelogStream))
                 };
             }
         }
