@@ -9,6 +9,6 @@ namespace DragonFruit.Orbit.API.Legacy
     public abstract class LegacyRequestBase : ApiRequest
     {
         [QueryParameter("k")]
-        public string ApiKey { get; set; }
+        internal string ApiKey { get; set; }
     }
 }

@@ -11,6 +11,8 @@ using DragonFruit.Orbit.API.Legacy;
 using DragonFruit.Orbit.API.Objects.Auth;
 using DragonFruit.Orbit.API.Requests;
 
+#nullable enable
+
 namespace DragonFruit.Orbit.API
 {
     public abstract class OrbitClient : ApiClient
@@ -25,12 +27,12 @@ namespace DragonFruit.Orbit.API
         protected virtual string LegacyApiKey { get; }
 
         /// <summary>
-        /// Performs legacy requests, returning them as an <see cref="IEnumerable{T}"/>. If <see cref="LegacyRequestBase.ApiKey"/> is null the <see cref="LegacyApiKey"/> will be used instead
+        /// Performs legacy requests, returning them as an <see cref="IEnumerable{T}"/>.
         /// </summary>
         public IEnumerable<T> Perform<T>(LegacyRequestBase requestData) where T : class
         {
             if (string.IsNullOrEmpty(requestData.ApiKey))
-                requestData.ApiKey = LegacyApiKey;
+                requestData.ApiKey = LegacyApiKey ?? throw new LegacyApiException("Legacy API Request attempted with no key");
 
             return base.Perform<IEnumerable<T>>(requestData);
         }
@@ -42,17 +44,13 @@ namespace DragonFruit.Orbit.API
         /// </summary>
         public OsuSessionToken Perform<T>(T requestData) where T : OsuAuthRequest
         {
+            //bypass the _token checks as we're getting them now...
             return base.Perform<OsuSessionToken>(requestData);
         }
 
         public override T Perform<T>(ApiRequest requestData) where T : class
         {
-            if (_token == null)
-            {
-                ProcessToken();
-            }
-
-            if (_token.Expired)
+            if (_token?.Expired ?? true)
             {
                 ProcessToken();
             }
@@ -78,10 +76,10 @@ namespace DragonFruit.Orbit.API
         private void ProcessToken()
         {
             _token = GetSessionToken();
-            Authorization = $"{_token.TokenType} {_token.AccessToken}";
+            Authorization = $"{_token!.TokenType} {_token.AccessToken}";
         }
 
-        private OsuSessionToken _token;
+        private OsuSessionToken? _token;
 
         #endregion
     }
