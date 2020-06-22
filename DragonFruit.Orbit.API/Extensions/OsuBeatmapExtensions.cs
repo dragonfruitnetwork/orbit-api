@@ -2,6 +2,7 @@
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
 using DragonFruit.Orbit.API.Objects.Beatmaps;
+using DragonFruit.Orbit.API.Objects.Enums;
 using DragonFruit.Orbit.API.Requests;
 
 namespace DragonFruit.Orbit.API.Extensions
@@ -39,6 +40,22 @@ namespace DragonFruit.Orbit.API.Extensions
         {
             var request = new OsuBeatmapLookupRequest { Md5Hash = md5 };
             return client.Perform<OsuBeatmapInfo>(request);
+        }
+
+        /// <summary>
+        /// Get the leaderboard for a map and mode. Supporters can also access country and friend leaderboards
+        /// </summary>
+        /// <param name="client">The <see cref="OrbitClient"/> to use</param>
+        /// <param name="mapId">The ID of the beatmap</param>
+        /// <param name="mode">The name of the mode</param>
+        /// <param name="scoreboardType">
+        /// The type of leaderboard to return.
+        /// Should be set to <see cref="BeatmapLeaderboardScope.Global"/> unless the user is a supporter
+        /// </param>
+        public static OsuBeatmapScoreContainer GetBeatmapScores(this OrbitClient client, uint mapId, GameMode mode, BeatmapLeaderboardScope scoreboardType)
+        {
+            var request = new OsuBeatmapScoresRequest(mapId, mode, scoreboardType);
+            return client.Perform<OsuBeatmapScoreContainer>(request);
         }
     }
 }
