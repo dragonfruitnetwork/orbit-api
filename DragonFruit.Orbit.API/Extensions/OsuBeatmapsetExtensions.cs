@@ -8,7 +8,7 @@ using DragonFruit.Orbit.API.Requests;
 
 namespace DragonFruit.Orbit.API.Extensions
 {
-    public static class OsuBeatmapSetExtensions
+    public static class OsuBeatmapsetExtensions
     {
         /// <summary>
         /// Get the <see cref="OsuBeatmapsetInfo"/> using the id of the collection (collection id)
@@ -80,6 +80,33 @@ namespace DragonFruit.Orbit.API.Extensions
             };
 
             return client.Perform<OsuBeatmapsetSearchResultContainer>(request).Beatmapsets;
+        }
+
+        /// <summary>
+        /// Get the latest beatmapset events (for all mapsets)
+        /// </summary>
+        /// <param name="client">The <see cref="OrbitClient"/> to use</param>
+        /// <returns>A <see cref="OsuBeatmapsetEventsResultContainer"/> with the latest posts and the users concerned</returns>
+        public static OsuBeatmapsetEventsResultContainer GetMapsetEvents(this OrbitClient client)
+        {
+            var request = new OsuBeatmapsetEventsRequest();
+            return client.Perform<OsuBeatmapsetEventsResultContainer>(request);
+        }
+
+        /// <summary>
+        /// Get the beatmapset events on a specific 'page' (for all mapsets)
+        /// </summary>
+        /// <param name="client">The <see cref="OrbitClient"/> to use</param>
+        /// <param name="page">The page number to return results for</param>
+        /// <returns>A <see cref="OsuBeatmapsetEventsResultContainer"/> with the latest posts and the users concerned</returns>
+        public static OsuBeatmapsetEventsResultContainer GetMapsetEvents(this OrbitClient client, int page)
+        {
+            var request = new OsuBeatmapsetEventsRequest
+            {
+                Page = page
+            };
+
+            return client.Perform<OsuBeatmapsetEventsResultContainer>(request);
         }
     }
 }
