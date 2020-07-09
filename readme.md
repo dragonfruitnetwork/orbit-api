@@ -7,6 +7,9 @@
 ## Overview
 Orbit API is designed to make accessing osu! stats easy, with support for **both** versions of the API (v1 and v2)
 
+### Getting Started
+Want to give this a try? Check out the [getting started guide](https://github.com/dragonfruitnetwork/Orbit-API/blob/master/getting-started.md)
+
 ### API Contents
 
 #### OAuth

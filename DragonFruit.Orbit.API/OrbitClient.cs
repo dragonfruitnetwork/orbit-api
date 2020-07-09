@@ -39,14 +39,40 @@ namespace DragonFruit.Orbit.API
 
         #endregion
 
+        #region API v2 OAuth
+
+        protected virtual string ClientId { get; }
+        protected virtual string ClientSecret { get; }
+
         /// <summary>
         /// Performs an <see cref="OsuAuthRequest"/>, returning the <see cref="OsuSessionToken"/> if successful
         /// </summary>
         public OsuSessionToken Perform<T>(T requestData) where T : OsuAuthRequest
         {
+            //inject the clientid and secret if they haven't been set
+            if (string.IsNullOrEmpty(requestData.ClientSecret))
+            {
+                requestData.ClientId = ClientId;
+                requestData.ClientSecret = ClientSecret;
+            }
+
             //bypass the _token checks as we're getting them now...
             return base.Perform<OsuSessionToken>(requestData);
         }
+
+        #endregion
+
+        #region API v2 Auth
+
+        private void ProcessToken()
+        {
+            _token = GetSessionToken();
+            Authorization = $"{_token!.TokenType} {_token.AccessToken}";
+        }
+
+        private OsuSessionToken? _token;
+
+        #endregion
 
         public override T Perform<T>(ApiRequest requestData) where T : class
         {
@@ -70,17 +96,5 @@ namespace DragonFruit.Orbit.API
 
             return base.ValidateAndProcess<T>(response);
         }
-
-        #region OAuth Token (Private)
-
-        private void ProcessToken()
-        {
-            _token = GetSessionToken();
-            Authorization = $"{_token!.TokenType} {_token.AccessToken}";
-        }
-
-        private OsuSessionToken? _token;
-
-        #endregion
     }
 }
