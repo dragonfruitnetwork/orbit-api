@@ -7,7 +7,7 @@ namespace DragonFruit.Orbit.API.Requests
 {
     public class OsuUserRecentActivityRequest : OrbitApiRequest, IRequiresUserId
     {
-        public override string Path => $"https://osu.ppy.sh/api/v2/users/{UserId}/recent_activity";
+        protected override string Route => $"/users/{UserId}/recent_activity";
 
         public OsuUserRecentActivityRequest(uint userId)
         {

@@ -5,13 +5,39 @@
 [![DragonFruit Discord](https://img.shields.io/discord/482528405292843018?label=Discord&style=popout)](https://discord.gg/VA26u5Z)
 
 ## Overview
-Orbit API is designed to make accessing osu! stats easy, even during the transition period between the new API (v2) and the current one (v1)
+Orbit API is designed to make accessing osu! stats easy, with support for **both** versions of the API (v1 and v2)
 
-## What's available
-| Feature                    | API v1 (Publicly Available)   | API v2 (Publicly Available)   | Implemented (API v1) | Implemented (API v2) |
-|----------------------------|-------------------------------|-------------------------------|----------------------|----------------------|
-| OAuth                      | :x:                           | :heavy_check_mark:            | :x:                  | :heavy_check_mark:   |
-| User Info                  | :heavy_check_mark:            | :heavy_check_mark:            | :heavy_check_mark:   | :heavy_check_mark:   |
-| Beatmap Info               | :heavy_check_mark:            | :clock12:                     | :heavy_check_mark:   | :clock12:            |
-| Beatmap Scores             | :heavy_check_mark:            | :clock12:                     | :heavy_check_mark:   | :clock12:            |
-| Past Multiplayer Game Info | :heavy_check_mark:            | :clock12:                     | :heavy_check_mark:   | :clock12:            |
+### API Contents
+
+#### OAuth
+- OAuth session requests (`autorization_code`, `refresh_token` and `client_credential`)
+
+#### User
+- Identifying user info (`/me`)
+- Identifying user's friend list
+- User info & mode stats (by name or id)
+- User kudosu
+- User recent activity (modding, kudosu, scores, failed plays)
+- User highest scores
+
+#### Leaderboards
+- Spotlights listing (+ leaderboards)
+- Common Leaderboards (Country, Score, Performance, Spotlights)
+
+#### Beatmaps & Beatmapsets
+- Beatmapset search
+- Beatmapset modding events
+- Beatmap lookup (by id, filename, md5)
+- Beatmap info
+- Beatmap scores
+
+#### Info
+- Changelogs
+- News (partially implemented)
+- Comments (coming soon)
+
+#### Legacy (API v1)
+- User Info (by name or id)
+- Beatmap(set) info
+- User's highscores and recent plays (+ failed ones)
+- Multiplayer lobby scores and participants

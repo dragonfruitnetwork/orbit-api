@@ -5,6 +5,6 @@ namespace DragonFruit.Orbit.API.Requests
 {
     public class OsuSpotlightsRequest : OrbitApiRequest
     {
-        public override string Path => "https://osu.ppy.sh/api/v2/spotlights";
+        protected override string Route => "/spotlights";
     }
 }

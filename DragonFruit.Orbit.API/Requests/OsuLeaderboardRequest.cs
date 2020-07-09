@@ -9,7 +9,7 @@ namespace DragonFruit.Orbit.API.Requests
 {
     public class OsuLeaderboardRequest : OrbitApiRequest, IRequiresMode
     {
-        public override string Path => $"https://osu.ppy.sh/api/v2/rankings/{Mode.ToString().ToLowerInvariant()}/{Category.ToString().ToLowerInvariant()}";
+        protected override string Route => $"/rankings/{Mode.ToString().ToLowerInvariant()}/{Category.ToString().ToLowerInvariant()}";
 
         public OsuLeaderboardRequest(GameMode mode, OsuLeaderboardRankingType category)
         {

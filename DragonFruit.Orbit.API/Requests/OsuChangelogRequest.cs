@@ -10,7 +10,8 @@ namespace DragonFruit.Orbit.API.Requests
 {
     public class OsuChangelogRequest : OrbitApiRequest
     {
-        public override string Path => "https://osu.ppy.sh/api/v2/changelog/" + (!string.IsNullOrEmpty(_streamName) ? $"{_streamName}/{Version}" : string.Empty);
+        protected override string Route => $"/changelog/{(!string.IsNullOrEmpty(_streamName) ? $"{_streamName}/{Version}" : string.Empty)}";
+        public override bool RequireAuth => false;
 
         public OsuChangelogRequest()
         {

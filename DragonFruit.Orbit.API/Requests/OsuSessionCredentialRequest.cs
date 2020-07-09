@@ -3,8 +3,8 @@
 
 namespace DragonFruit.Orbit.API.Requests
 {
-    public class OsuUserFriendsRequest : OrbitApiRequest
+    public class OsuSessionCredentialRequest : OsuAuthRequest
     {
-        protected override string Route => "/friends";
+        public override string Grant => "client_credential";
     }
 }

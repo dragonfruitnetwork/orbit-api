@@ -3,8 +3,9 @@
 
 namespace DragonFruit.Orbit.API.Requests
 {
-    public class OsuUserFriendsRequest : OrbitApiRequest
+    public class OsuNewsRequest : OrbitApiRequest
     {
-        protected override string Route => "/friends";
+        protected override string Route => "/news";
+        
     }
 }

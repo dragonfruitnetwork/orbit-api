@@ -9,7 +9,7 @@ namespace DragonFruit.Orbit.API.Requests
 {
     public class OsuBeatmapScoresRequest : OrbitApiRequest
     {
-        public override string Path => $"https://osu.ppy.sh/api/v2/beatmaps/{BeatmapId}/scores";
+        protected override string Route => $"/beatmaps/{BeatmapId}/scores";
 
         public OsuBeatmapScoresRequest(uint mapId, GameMode mode, BeatmapLeaderboardScope type)
         {

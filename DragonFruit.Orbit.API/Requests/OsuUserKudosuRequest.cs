@@ -7,7 +7,7 @@ namespace DragonFruit.Orbit.API.Requests
 {
     public class OsuUserKudosuRequest : OrbitApiRequest, IRequiresUserId
     {
-        public override string Path => $"https://osu.ppy.sh/api/v2/users/{UserId}/kudosu";
+        protected override string Route => $"/users/{UserId}/kudosu";
 
         public OsuUserKudosuRequest(uint userId)
         {

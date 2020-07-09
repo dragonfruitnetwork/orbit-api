@@ -7,7 +7,7 @@ namespace DragonFruit.Orbit.API.Requests
 {
     public class OsuBeatmapsetEventsRequest : OrbitApiRequest
     {
-        public override string Path => "https://osu.ppy.sh/api/v2/beatmapsets/events";
+        protected override string Route => "/beatmapsets/events";
 
         public OsuBeatmapsetEventsRequest()
         {

@@ -9,7 +9,7 @@ namespace DragonFruit.Orbit.API.Requests
 {
     public class OsuUserScoresRequest : OrbitApiRequest, IRequiresUserId
     {
-        public override string Path => $"https://osu.ppy.sh/api/v2/users/{UserId}/scores/{Type}";
+        protected override string Route => $"/users/{UserId}/scores/{Type}";
 
         public OsuUserScoresRequest(uint userId, OsuUserScoreType type)
         {
