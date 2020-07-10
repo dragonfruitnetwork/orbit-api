@@ -74,7 +74,7 @@ namespace DragonFruit.Orbit.API
 
         #endregion
 
-        public T Perform<T>(OrbitApiRequest requestData) where T : class
+        public virtual T Perform<T>(OrbitApiRequest requestData) where T : class
         {
             if (_token?.Expired ?? true)
             {
