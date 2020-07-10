@@ -2,6 +2,7 @@
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
 using System.Collections.Generic;
+using DragonFruit.Orbit.API.Objects.Beatmaps;
 using DragonFruit.Orbit.API.Objects.Enums;
 using DragonFruit.Orbit.API.Objects.User;
 using DragonFruit.Orbit.API.Requests;
@@ -82,6 +83,19 @@ namespace DragonFruit.Orbit.API.Extensions
         {
             var request = new OsuUserKudosuRequest(userId);
             return client.Perform<IEnumerable<KudosuHistory>>(request);
+        }
+
+        /// <summary>
+        /// Get beatmaps the specified user has authored, based on their ranked status
+        /// </summary>
+        /// <param name="client"><see cref="OrbitClient"/> to use</param>
+        /// <param name="userId">The id of the user authoring the maps</param>
+        /// <param name="type">The <see cref="OsuUserBeatmapsetStatus"/> to find maps for</param>
+        /// <returns>An <see cref="IEnumerable{T}"/> of <see cref="OsuBeatmapInfo"/>s</returns>
+        public static IEnumerable<OsuBeatmapsetInfo> GetUserBeatmapsets(this OrbitClient client, uint userId, OsuUserBeatmapsetStatus type)
+        {
+            var request = new OsuUserBeatmapRequest(userId, type);
+            return client.Perform<IEnumerable<OsuBeatmapsetInfo>>(request);
         }
     }
 }

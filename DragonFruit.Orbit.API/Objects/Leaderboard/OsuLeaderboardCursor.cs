@@ -3,12 +3,12 @@
 
 using Newtonsoft.Json;
 
-namespace DragonFruit.Orbit.API.Objects.Generic
+namespace DragonFruit.Orbit.API.Objects.Leaderboard
 {
     /// <summary>
     /// Object used for tracking what items have been sent, i.e. a page number
     /// </summary>
-    public class Cursor
+    public class OsuLeaderboardCursor
     {
         [JsonIgnore]
         public int Page => NextPage - 1;
