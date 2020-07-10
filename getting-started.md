@@ -15,7 +15,7 @@ public class DragonFruitOrbitClient : OrbitClient
     //only set this if you are using API v1 features, otherwise it's useless
     protected override string LegacyApiKey => "abcdefg";
 
-    //as with above, but instead for API v2
+    //as with above, but instead ONLY in the case you'll be making session token requests for API v2
     protected override uint ClientId => 12221;
     protected override string ClientSecret => "abcdefg";
 
