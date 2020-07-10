@@ -64,7 +64,7 @@ namespace DragonFruit.Orbit.API
 
         #region API v2 Auth
 
-        private void ProcessToken()
+        protected void ProcessToken()
         {
             _token = GetSessionToken();
             Authorization = $"{_token!.TokenType} {_token.AccessToken}";
