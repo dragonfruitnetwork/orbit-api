@@ -17,7 +17,7 @@ namespace DragonFruit.Orbit.API
 {
     public abstract class OrbitClient : ApiClient
     {
-        protected abstract OsuSessionToken GetSessionToken();
+        protected abstract OsuSessionTokenBase GetSessionToken();
 
         #region Legacy Requests
 
@@ -70,7 +70,7 @@ namespace DragonFruit.Orbit.API
             Authorization = $"{_token!.TokenType} {_token.AccessToken}";
         }
 
-        private OsuSessionToken? _token;
+        private OsuSessionTokenBase? _token;
 
         #endregion
 

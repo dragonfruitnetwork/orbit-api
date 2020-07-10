@@ -19,9 +19,9 @@ public class DragonFruitOrbitClient : OrbitClient
     protected override uint ClientId => 12221;
     protected override string ClientSecret => "abcdefg";
 
-    protected override OsuSessionToken GetSessionToken()
+    protected override OsuSessionTokenBase GetSessionToken()
     {
-        //in here you need to write a method for getting an osu! access token that is **still valid**.
+        //in here you need to write a method for getting an osu! access token that is **still valid**. This is called if there is no token in a private field or the exising token is expired
 
         //for a server you might want to use this.Perform(new OsuSessionCredentialRequest())
         //for a client you might want to contact your server with the user's refresh token and request a new access key.

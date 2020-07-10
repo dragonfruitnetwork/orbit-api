@@ -4,6 +4,8 @@
 using System;
 using DragonFruit.Orbit.API.Objects.Auth;
 
+#nullable enable
+
 namespace DragonFruit.Orbit.API.Exceptions
 {
     public class TokenExpiredException : Exception
@@ -13,14 +15,12 @@ namespace DragonFruit.Orbit.API.Exceptions
         {
         }
 
-        public TokenExpiredException(OsuSessionToken token)
+        public TokenExpiredException(OsuSessionTokenBase token)
             : this()
         {
             Token = token;
         }
 
-#nullable enable
-        public OsuSessionToken? Token { get; set; }
-#nullable restore
+        public OsuSessionTokenBase? Token { get; set; }
     }
 }

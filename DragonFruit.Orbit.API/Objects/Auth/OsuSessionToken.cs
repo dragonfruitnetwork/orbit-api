@@ -7,33 +7,18 @@ using Newtonsoft.Json;
 
 namespace DragonFruit.Orbit.API.Objects.Auth
 {
-    public class OsuSessionToken
+    public class OsuSessionToken : OsuSessionTokenBase
     {
-        [JsonProperty("token_type")]
-        public string TokenType { get; set; }
-
         [JsonProperty("expires_in")]
         public uint ExpiresIn { get; set; }
-
-        [JsonProperty("access_token")]
-        public string AccessToken { get; set; }
 
         [JsonProperty("refresh_token")]
         public string RefreshToken { get; set; }
 
-        [JsonProperty("expiry")]
-        public DateTimeOffset? Expiry { get; set; }
-
-        [JsonIgnore]
-        public bool Expired => DateTimeOffset.Compare(DateTimeOffset.Now, Expiry.GetValueOrDefault()) >= 0;
-
         [OnDeserialized]
         internal void OnDeserialized(StreamingContext context)
         {
-            if (Expiry != null)
-            {
-                Expiry = DateTimeOffset.Now.AddSeconds(ExpiresIn);
-            }
+            Expiry ??= DateTimeOffset.Now.AddSeconds(ExpiresIn);
         }
     }
 }
