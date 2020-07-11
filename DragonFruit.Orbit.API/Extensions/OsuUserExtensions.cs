@@ -22,7 +22,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <returns>an <see cref="IEnumerable{T}"/> of condensed <see cref="OsuUser"/>s</returns>
-        public static IEnumerable<OsuUser> GetFriends(this OrbitClient client) => client.Perform<IEnumerable<OsuUser>>(new OsuUserFriendsRequest());
+        public static IEnumerable<OsuCondensedUser> GetFriends(this OrbitClient client) => client.Perform<IEnumerable<OsuCondensedUser>>(new OsuUserFriendsRequest());
 
         /// <summary>
         /// Get a user's profile info from their id
@@ -54,7 +54,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// <param name="type">The <see cref="OsuUserScoreType"/> to return scores for</param>
         public static IEnumerable<OsuUserScoreInfo> GetUserScores(this OrbitClient client, uint userId, OsuUserScoreType type)
         {
-            return GetUserScores(client, userId, type, null);
+            return GetUserScores(client, userId, type, false);
         }
 
         /// <summary>

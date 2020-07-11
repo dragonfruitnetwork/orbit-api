@@ -2,6 +2,7 @@
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using DragonFruit.Orbit.API.Objects.Enums;
 using Newtonsoft.Json;
@@ -11,7 +12,7 @@ namespace DragonFruit.Orbit.API.Objects.User
     public class OsuUser
     {
         [JsonProperty("id")]
-        public long Id { get; set; }
+        public uint Id { get; set; }
 
         [JsonProperty("join_date")]
         public DateTimeOffset JoinDate { get; set; }
@@ -20,7 +21,7 @@ namespace DragonFruit.Orbit.API.Objects.User
         public string Username { get; set; }
 
         [JsonProperty("previous_usernames")]
-        public string[] PreviousUsernames { get; set; }
+        public IEnumerable<string> PreviousUsernames { get; set; }
 
         [JsonProperty("country")]
         public Country Country { get; set; }
@@ -29,12 +30,12 @@ namespace DragonFruit.Orbit.API.Objects.User
         public string Colour { get; set; }
 
         [JsonProperty("avatar_url")]
-        private string AvatarObject
+        private string AvatarString
         {
-            set => Avatar = value.StartsWith("http") ? value : "https://osu.ppy.sh" + value;
+            set => AvatarUrl = value.StartsWith("http") ? value : "https://osu.ppy.sh" + value;
         }
 
-        public string Avatar { get; set; }
+        public string AvatarUrl { get; set; }
 
         [JsonProperty("cover_url")]
         public string CoverObject
@@ -44,7 +45,7 @@ namespace DragonFruit.Orbit.API.Objects.User
         }
 
         [JsonProperty("cover")]
-        public OsuUserCover Cover;
+        public OsuUserCover Cover { get; set; }
 
         [JsonProperty("is_admin")]
         public bool IsAdmin { get; set; }
@@ -136,13 +137,13 @@ namespace DragonFruit.Orbit.API.Objects.User
             set => PlayStyle = value?.Select(str => Enum.Parse(typeof(OsuUserPlayStyle), str, true)).Cast<OsuUserPlayStyle>().ToArray();
         }
 
-        public OsuUserPlayStyle[] PlayStyle;
+        public IEnumerable<OsuUserPlayStyle> PlayStyle { get; set; }
 
         [JsonProperty("playmode")]
         public string PlayMode { get; set; }
 
         [JsonProperty("profile_order")]
-        public string[] ProfileOrder { get; set; }
+        public IOrderedEnumerable<string> ProfileOrder { get; set; }
 
         [JsonProperty("kudosu")]
         public KudosuCount Kudosu { get; set; }
@@ -157,17 +158,15 @@ namespace DragonFruit.Orbit.API.Objects.User
         }
 
         [JsonProperty("badges")]
-        public OsuBadge[] Badges { get; set; }
+        public IEnumerable<OsuBadge> Badges { get; set; }
 
         [JsonProperty("user_achievements")]
-        public OsuUserAchievement[] Achievements { get; set; }
+        public IEnumerable<OsuUserAchievement> Achievements { get; set; }
 
         [JsonProperty("monthly_playcounts")]
-        public OsuUserHistoryCount[] MonthlyPlaycounts { get; set; }
+        public IEnumerable<OsuUserHistoryCount> MonthlyPlaycounts { get; set; }
 
         [JsonProperty("replays_watched_counts")]
-        public OsuUserHistoryCount[] ReplaysWatchedCounts { get; set; }
-
-        public override string ToString() => Username;
+        public IEnumerable<OsuUserHistoryCount> ReplaysWatchedCounts { get; set; }
     }
 }

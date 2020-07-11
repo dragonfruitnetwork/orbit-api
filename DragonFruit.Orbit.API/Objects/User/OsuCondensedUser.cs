@@ -10,7 +10,7 @@ namespace DragonFruit.Orbit.API.Objects.User
     public class OsuCondensedUser
     {
         [JsonProperty("avatar_url")]
-        public Uri AvatarUrl { get; set; }
+        public string AvatarUrl { get; set; }
 
         [JsonProperty("country_code")]
         public string CountryCode { get; set; }
