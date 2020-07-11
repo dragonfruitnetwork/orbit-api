@@ -9,8 +9,24 @@ namespace DragonFruit.Orbit.API.Objects.User
 {
     public class OsuCondensedUser
     {
+        private string _avatarUrl;
+
         [JsonProperty("avatar_url")]
-        public string AvatarUrl { get; set; }
+        public string AvatarUrl
+        {
+            get => _avatarUrl;
+            set
+            {
+                if (value.StartsWith("http"))
+                {
+                    _avatarUrl = value;
+                }
+                else
+                {
+                    _avatarUrl = "https://osu.ppy.sh" + value;
+                }
+            }
+        }
 
         [JsonProperty("country_code")]
         public string CountryCode { get; set; }
