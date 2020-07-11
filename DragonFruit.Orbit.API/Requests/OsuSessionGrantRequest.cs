@@ -7,12 +7,13 @@ namespace DragonFruit.Orbit.API.Requests
 {
     public class OsuSessionGrantRequest : OsuAuthRequest
     {
-        public OsuSessionGrantRequest(string code)
+        public override string Grant => "authorization_code";
+
+        public OsuSessionGrantRequest(string code, string redirectUrl)
         {
             AuthCode = code;
+            RedirectUrl = redirectUrl;
         }
-
-        public override string Grant => "authorization_code";
 
         [FormParameter("code")]
         public string AuthCode { get; set; }

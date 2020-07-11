@@ -18,7 +18,6 @@ namespace DragonFruit.Orbit.API.Requests
         }
 
         public GameMode Mode { get; set; }
-
         public OsuLeaderboardRankingType Category { get; set; }
 
         [QueryParameter("page")]

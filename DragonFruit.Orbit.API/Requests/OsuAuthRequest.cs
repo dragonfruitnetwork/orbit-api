@@ -9,9 +9,7 @@ namespace DragonFruit.Orbit.API.Requests
     public abstract class OsuAuthRequest : ApiRequest
     {
         public override string Path => "https://osu.ppy.sh/oauth/token";
-
         public override Methods Method => Methods.Post;
-
         public override DataTypes DataType => DataTypes.Encoded;
 
         [FormParameter("grant_type")]

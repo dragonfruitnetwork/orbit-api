@@ -54,7 +54,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// <param name="type">The <see cref="OsuUserScoreType"/> to return scores for</param>
         public static IEnumerable<OsuUserScoreInfo> GetUserScores(this OrbitClient client, uint userId, OsuUserScoreType type)
         {
-            return GetUserScores(client, userId, type, false);
+            return GetUserScores(client, userId, type, GameMode.Default, false);
         }
 
         /// <summary>
@@ -63,12 +63,14 @@ namespace DragonFruit.Orbit.API.Extensions
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="userId">The id of the user to lookup</param>
         /// <param name="type">The <see cref="OsuUserScoreType"/> to return scores for</param>
+        /// <param name="mode">The <see cref="GameMode"/> to return scores for</param>
         /// <param name="includeRecentFails">If <see cref="OsuUserScoreType"/> is set to <see cref="OsuUserScoreType.Recents"/>, whether the API should include failed performances, and quits</param>
-        public static IEnumerable<OsuUserScoreInfo> GetUserScores(this OrbitClient client, uint userId, OsuUserScoreType type, bool? includeRecentFails)
+        public static IEnumerable<OsuUserScoreInfo> GetUserScores(this OrbitClient client, uint userId, OsuUserScoreType type, GameMode mode, bool? includeRecentFails)
         {
             var request = new OsuUserScoresRequest(userId, type)
             {
-                IncludeFails = includeRecentFails
+                IncludeFails = includeRecentFails,
+                Mode = mode
             };
 
             return client.Perform<IEnumerable<OsuUserScoreInfo>>(request);

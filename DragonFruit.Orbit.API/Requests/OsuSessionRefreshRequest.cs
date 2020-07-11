@@ -7,12 +7,12 @@ namespace DragonFruit.Orbit.API.Requests
 {
     public class OsuSessionRefreshRequest : OsuAuthRequest
     {
+        public override string Grant => "refresh_token";
+
         public OsuSessionRefreshRequest(string token)
         {
             RefreshToken = token;
         }
-
-        public override string Grant => "refresh_token";
 
         [FormParameter("refresh_token")]
         public string RefreshToken { get; set; }

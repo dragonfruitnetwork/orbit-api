@@ -5,9 +5,11 @@ using DragonFruit.Common.Data.Parameters;
 using DragonFruit.Orbit.API.Objects.Enums;
 using DragonFruit.Orbit.API.Objects.Interfaces;
 
+#nullable enable
+
 namespace DragonFruit.Orbit.API.Requests
 {
-    public class OsuUserScoresRequest : OrbitApiRequest, IRequiresUserId
+    public class OsuUserScoresRequest : OrbitApiRequest, IRequiresUserId, IHasOptionalMode
     {
         protected override string Route => $"/users/{UserId}/scores/{Type}";
 
@@ -17,11 +19,20 @@ namespace DragonFruit.Orbit.API.Requests
             Type = type;
         }
 
-        public uint UserId { get; set; }
+        public OsuUserScoresRequest(uint userId, OsuUserScoreType type, GameMode mode)
+            : this(userId, type)
+        {
+            Mode = mode;
+        }
 
+        public uint UserId { get; set; }
         public OsuUserScoreType Type { get; set; }
+        public GameMode? Mode { get; set; }
 
         [QueryParameter("include_fails")]
         public bool? IncludeFails { get; set; }
+
+        [QueryParameter("mode")]
+        public string? ModeQuery => Mode?.ToString().ToLowerInvariant();
     }
 }
