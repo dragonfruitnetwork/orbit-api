@@ -11,7 +11,7 @@ namespace DragonFruit.Orbit.API.Requests
 {
     public class OsuUserScoresRequest : OrbitApiRequest, IRequiresUserId, IHasOptionalMode
     {
-        protected override string Route => $"/users/{UserId}/scores/{Type}";
+        protected override string Route => $"/users/{UserId}/scores/{Type.ToString().ToLowerInvariant()}";
 
         public OsuUserScoresRequest(uint userId, OsuUserScoreType type)
         {
