@@ -2,7 +2,6 @@
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
 using System.Collections.Generic;
-using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -14,6 +13,6 @@ namespace DragonFruit.Orbit.API.Objects.Leaderboard
         public IDictionary<string, JToken> Cursor { get; set; }
 
         [JsonProperty("ranking")]
-        public IOrderedEnumerable<T> TopScorers { get; set; }
+        public IEnumerable<T> TopScorers { get; set; }
     }
 }

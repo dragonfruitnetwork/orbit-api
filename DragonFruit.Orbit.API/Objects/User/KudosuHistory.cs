@@ -34,9 +34,13 @@ namespace DragonFruit.Orbit.API.Objects.User
                 var items = value.Split('.');
 
                 if (items.Length > 1)
+                {
                     Enum.TryParse(items.First().Replace("_", ""), true, out _source);
+                }
                 else
+                {
                     _source = KudosuSource.Forum;
+                }
 
                 Enum.TryParse(items.Last(), true, out _action);
             }

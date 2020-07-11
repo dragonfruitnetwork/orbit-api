@@ -5,6 +5,5 @@ namespace DragonFruit.Orbit.API.Objects.Enums
 {
     public enum OsuCommentOwnerTitle
     {
-        
     }
 }

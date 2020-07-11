@@ -92,6 +92,8 @@ namespace DragonFruit.Orbit.API
                     throw new TokenExpiredException(_token);
 
                 //todo add more status codes
+                default:
+                    break;
             }
 
             return base.ValidateAndProcess<T>(response);

@@ -2,7 +2,7 @@
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
 using System;
-using System.Linq;
+using System.Collections.Generic;
 using DragonFruit.Orbit.API.Objects.Enums;
 using Newtonsoft.Json;
 
@@ -95,6 +95,6 @@ namespace DragonFruit.Orbit.API.Objects.Beatmaps
         public OsuBeatmapFailMetrics Fails { get; set; }
 
         [JsonProperty("ratings")]
-        public IOrderedEnumerable<uint>? Ratings { get; set; }
+        public IEnumerable<uint>? Ratings { get; set; }
     }
 }

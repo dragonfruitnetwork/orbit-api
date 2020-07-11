@@ -24,31 +24,15 @@ namespace DragonFruit.Orbit.API.Objects.User
         [JsonProperty("a")]
         public int A { get; set; }
 
-        public int this[OsuScoreGrade rank]
-        {
-            get
+        public int NumberOf(OsuScoreGrade rank) =>
+            rank switch
             {
-                switch (rank)
-                {
-                    case OsuScoreGrade.XH:
-                        return SSPlus ?? 0;
-
-                    case OsuScoreGrade.X:
-                        return SS;
-
-                    case OsuScoreGrade.SH:
-                        return SPlus ?? 0;
-
-                    case OsuScoreGrade.S:
-                        return S;
-
-                    case OsuScoreGrade.A:
-                        return A;
-
-                    default:
-                        throw new ArgumentException($"API does not return {rank.ToString()}");
-                }
-            }
-        }
+                OsuScoreGrade.XH => SSPlus ?? 0,
+                OsuScoreGrade.X => SS,
+                OsuScoreGrade.SH => SPlus ?? 0,
+                OsuScoreGrade.S => S,
+                OsuScoreGrade.A => A,
+                _ => throw new ArgumentException($"API does not return {rank.ToString()}")
+            };
     }
 }

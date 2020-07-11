@@ -6,6 +6,5 @@ namespace DragonFruit.Orbit.API.Requests
     public class OsuNewsRequest : OrbitApiRequest
     {
         protected override string Route => "/news";
-        
     }
 }

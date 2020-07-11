@@ -143,7 +143,7 @@ namespace DragonFruit.Orbit.API.Objects.User
         public string PlayMode { get; set; }
 
         [JsonProperty("profile_order")]
-        public IOrderedEnumerable<string> ProfileOrder { get; set; }
+        public IEnumerable<string> ProfileOrder { get; set; }
 
         [JsonProperty("kudosu")]
         public KudosuCount Kudosu { get; set; }

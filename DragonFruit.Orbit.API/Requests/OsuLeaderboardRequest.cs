@@ -22,6 +22,6 @@ namespace DragonFruit.Orbit.API.Requests
         public OsuLeaderboardRankingType Category { get; set; }
 
         [QueryParameter("page")]
-        public uint?Page { get; set; }
+        public uint? Page { get; set; }
     }
 }
