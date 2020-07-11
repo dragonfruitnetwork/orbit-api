@@ -15,6 +15,9 @@ namespace DragonFruit.Orbit.API.Objects.User
         [JsonProperty("country_code")]
         public string CountryCode { get; set; }
 
+        [JsonProperty("country")]
+        public Country Country { get; set; }
+
         [JsonProperty("default_group")]
         public string DefaultGroup { get; set; }
 
@@ -32,6 +35,15 @@ namespace DragonFruit.Orbit.API.Objects.User
 
         [JsonProperty("is_supporter")]
         public bool IsSupporter { get; set; }
+
+        [JsonProperty("support_level")]
+        public uint SupporterHeartCount { get; set; }
+
+        [JsonProperty("cover")]
+        public OsuUserCover Cover { get; set; }
+
+        [JsonProperty("title")]
+        public string ProfileTitle { get; set; }
 
         [JsonProperty("last_visit")]
         public DateTimeOffset? LastVisit { get; set; }
