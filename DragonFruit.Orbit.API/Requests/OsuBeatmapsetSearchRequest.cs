@@ -20,11 +20,13 @@ namespace DragonFruit.Orbit.API.Requests
             Query = query;
         }
 
-        [QueryParameter("m")]
         public GameMode? Mode { get; set; }
 
         [QueryParameter("q")]
         public string Query { get; set; }
+
+        [QueryParameter("m")]
+        private string ModeQuery => Mode.ToString().ToLowerInvariant();
 
         [QueryParameter("sort")]
         private string SortQuery => $"{SortCriteria.ToString().ToLowerInvariant()}_{SortDirectionString}";

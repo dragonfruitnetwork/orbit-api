@@ -8,7 +8,7 @@ namespace DragonFruit.Orbit.API.Requests
 {
     public class OsuUserRequest : OrbitApiRequest, IHasOptionalMode
     {
-        protected override string Route => $"{(!string.IsNullOrWhiteSpace(UserId) ? $"/users/{UserId}" : "/me")}/{(int?)Mode}";
+        protected override string Route => $"{(!string.IsNullOrWhiteSpace(UserId) ? $"/users/{UserId}" : "/me")}/{Mode.ToString().ToLowerInvariant()}";
 
         public OsuUserRequest()
         {
