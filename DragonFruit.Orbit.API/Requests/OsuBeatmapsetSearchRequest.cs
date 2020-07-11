@@ -26,7 +26,7 @@ namespace DragonFruit.Orbit.API.Requests
         public string Query { get; set; }
 
         [QueryParameter("m")]
-        private string ModeQuery => Mode.ToString().ToLowerInvariant();
+        private string ModeQuery => Mode?.ToString().ToLowerInvariant();
 
         [QueryParameter("sort")]
         private string SortQuery => $"{SortCriteria.ToString().ToLowerInvariant()}_{SortDirectionString}";
