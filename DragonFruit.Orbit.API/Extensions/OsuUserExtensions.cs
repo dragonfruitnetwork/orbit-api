@@ -29,9 +29,9 @@ namespace DragonFruit.Orbit.API.Extensions
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="userId">The id of the user to lookup</param>
-        public static OsuUser GetUser(this OrbitClient client, uint userId)
+        public static OsuUser GetUser(this OrbitClient client, string user)
         {
-            var request = new OsuUserRequest(userId);
+            var request = new OsuUserRequest(user);
             return client.Perform<OsuUser>(request);
         }
 

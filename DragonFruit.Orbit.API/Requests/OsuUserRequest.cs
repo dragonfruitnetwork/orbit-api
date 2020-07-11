@@ -6,20 +6,20 @@ using DragonFruit.Orbit.API.Objects.Interfaces;
 
 namespace DragonFruit.Orbit.API.Requests
 {
-    public class OsuUserRequest : OrbitApiRequest, IHasOptionalUserId, IHasOptionalMode
+    public class OsuUserRequest : OrbitApiRequest, IHasOptionalMode
     {
-        protected override string Route => $"{(UserId.HasValue ? $"/users/{UserId}" : "/me")}/{(int?)Mode}";
+        protected override string Route => $"{(!string.IsNullOrWhiteSpace(UserId) ? $"/users/{UserId}" : "/me")}/{(int?)Mode}";
 
         public OsuUserRequest()
         {
         }
 
-        public OsuUserRequest(uint userId)
+        public OsuUserRequest(string identifier)
         {
-            UserId = userId;
+            UserId = identifier;
         }
 
-        public uint? UserId { get; set; }
+        public string UserId { get; set; }
 
         public GameMode? Mode { get; set; }
     }
