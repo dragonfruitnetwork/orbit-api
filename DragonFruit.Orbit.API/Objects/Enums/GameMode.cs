@@ -25,7 +25,7 @@ namespace DragonFruit.Orbit.API.Objects.Enums
     {
         internal static string ToQueryableValue(this GameMode? mode)
         {
-            return mode == null ? string.Empty : mode.ToString().ToLowerInvariant();
+            return mode?.ToString().ToLowerInvariant();
         }
 
         internal static GameMode? AsGameMode(this string input)
