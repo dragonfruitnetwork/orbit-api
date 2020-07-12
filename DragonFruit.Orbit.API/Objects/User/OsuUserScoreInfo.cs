@@ -11,10 +11,10 @@ namespace DragonFruit.Orbit.API.Objects.User
     public class OsuUserScoreInfo
     {
         [JsonProperty("id")]
-        public long Id { get; set; }
+        public ulong? Id { get; set; }
 
         [JsonProperty("best_id")]
-        public long BestId { get; set; }
+        public ulong? BestId { get; set; }
 
         [JsonProperty("user_id")]
         public uint UserId { get; set; }
@@ -38,10 +38,10 @@ namespace DragonFruit.Orbit.API.Objects.User
         public OsuUserScoreInfoStatistics Statistics { get; set; }
 
         [JsonProperty("pp")]
-        public double PP { get; set; }
+        public double? PP { get; set; }
 
         [JsonProperty("rank")]
-        public string Rank { get; set; }
+        public OsuScoreGrade Rank { get; set; }
 
         [JsonProperty("created_at")]
         public DateTimeOffset CreatedAt { get; set; }
@@ -53,7 +53,7 @@ namespace DragonFruit.Orbit.API.Objects.User
         public GameMode Mode { get; set; }
 
         [JsonProperty("replay")]
-        public bool Replay { get; set; }
+        public bool ReplayAvailable { get; set; }
 
         [JsonProperty("beatmap")]
         public OsuBeatmapInfo Beatmap { get; set; }

@@ -47,14 +47,14 @@ namespace DragonFruit.Orbit.API.Extensions
         }
 
         /// <summary>
-        /// Get a user's scores (i.e. highest/recent)
+        /// Get a user's scores (i.e. highest/recent) for their preferred mode
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="userId">The id of the user to lookup</param>
         /// <param name="type">The <see cref="OsuUserScoreType"/> to return scores for</param>
         public static IEnumerable<OsuUserScoreInfo> GetUserScores(this OrbitClient client, uint userId, OsuUserScoreType type)
         {
-            return GetUserScores(client, userId, type, null, false);
+            return GetUserScores(client, userId, null, type, null, false);
         }
 
         /// <summary>
@@ -65,13 +65,33 @@ namespace DragonFruit.Orbit.API.Extensions
         /// <param name="type">The <see cref="OsuUserScoreType"/> to return scores for</param>
         /// <param name="mode">The <see cref="GameMode"/> to return scores for</param>
         /// <param name="includeRecentFails">If <see cref="OsuUserScoreType"/> is set to <see cref="OsuUserScoreType.Recents"/>, whether the API should include failed performances, and quits</param>
-        public static IEnumerable<OsuUserScoreInfo> GetUserScores(this OrbitClient client, uint userId, OsuUserScoreType type, GameMode? mode, bool? includeRecentFails)
+        public static IEnumerable<OsuUserScoreInfo> GetUserScores(this OrbitClient client, uint userId, GameMode? mode, OsuUserScoreType type, bool? includeRecentFails)
+        {
+            return GetUserScores(client, userId, mode, type, null, includeRecentFails);
+        }
+
+
+        /// <summary>
+        /// Get a user's scores (i.e. highest/recent)
+        /// </summary>
+        /// <param name="client">The <see cref="OrbitClient"/> to use</param>
+        /// <param name="userId">The id of the user to lookup</param>
+        /// <param name="type">The <see cref="OsuUserScoreType"/> to return scores for</param>
+        /// <param name="mode">The <see cref="GameMode"/> to return scores for</param>
+        /// <param name="limit">The upper-limit of items to return</param>
+        /// <param name="includeRecentFails">If <see cref="OsuUserScoreType"/> is set to <see cref="OsuUserScoreType.Recents"/>, whether the API should include failed performances, and quits</param>
+        public static IEnumerable<OsuUserScoreInfo> GetUserScores(this OrbitClient client, uint userId, GameMode? mode, OsuUserScoreType type, int? limit, bool? includeRecentFails)
         {
             var request = new OsuUserScoresRequest(userId, type)
             {
                 IncludeFails = includeRecentFails,
                 Mode = mode
             };
+
+            if (limit != null)
+            {
+                request.ItemsPerPage = limit.Value;
+            }
 
             return client.Perform<IEnumerable<OsuUserScoreInfo>>(request);
         }

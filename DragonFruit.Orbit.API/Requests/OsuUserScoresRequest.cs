@@ -9,7 +9,7 @@ using DragonFruit.Orbit.API.Objects.Interfaces;
 
 namespace DragonFruit.Orbit.API.Requests
 {
-    public class OsuUserScoresRequest : OrbitApiRequest, IRequiresUserId, IHasOptionalMode
+    public class OsuUserScoresRequest : OsuPaginatedRequest, IRequiresUserId, IHasOptionalMode
     {
         protected override string Route => $"/users/{UserId}/scores/{Type.ToString().ToLowerInvariant()}";
 
@@ -19,7 +19,7 @@ namespace DragonFruit.Orbit.API.Requests
             Type = type;
         }
 
-        public OsuUserScoresRequest(uint userId, OsuUserScoreType type, GameMode mode)
+        public OsuUserScoresRequest(uint userId, OsuUserScoreType type, GameMode? mode)
             : this(userId, type)
         {
             Mode = mode;
