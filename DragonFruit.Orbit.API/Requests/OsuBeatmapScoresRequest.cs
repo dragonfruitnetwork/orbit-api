@@ -19,20 +19,20 @@ namespace DragonFruit.Orbit.API.Requests
         }
 
         public uint BeatmapId { get; set; }
-        public GameMode Mode { get; set; }
+        public GameMode? Mode { get; set; }
         public BeatmapLeaderboardScope Type { get; set; }
         public IEnumerable<string>? Mods { get; set; }
 
         #region Compiled Queries
 
         [QueryParameter("mode")]
-        private string ModeQuery => Mode.ToString().ToLowerInvariant();
+        private string ModeQuery => Mode.ToQueryableValue();
 
         [QueryParameter("type")]
         private string TypeQuery => Type.ToString().ToLowerInvariant();
 
         [QueryParameter("mods[]")]
-        private string CompiledModsQuery => Mods == null ? null : string.Join("&mods[]", Mods);
+        private string CompiledModsQuery => Mods == null ? null : string.Join("&mods[]=", Mods);
 
         #endregion
     }

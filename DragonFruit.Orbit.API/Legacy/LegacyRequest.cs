@@ -11,11 +11,13 @@ namespace DragonFruit.Orbit.API.Legacy
         [QueryParameter("u")]
         public string User { get; set; }
 
-        [QueryParameter("m")]
         public GameMode? GameMode { get; set; }
 
         [QueryParameter("type")]
-        public string Type => IsUsername ?? true ? "string" : "id";
+        private string Type => IsUsername ?? true ? "string" : "id";
+
+        [QueryParameter("m")]
+        private string ModeQuery => GameMode != null ? ((int)GameMode).ToString() : null;
 
         public bool? IsUsername { get; set; }
     }

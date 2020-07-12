@@ -33,6 +33,6 @@ namespace DragonFruit.Orbit.API.Requests
         public bool? IncludeFails { get; set; }
 
         [QueryParameter("mode")]
-        public string? ModeQuery => Mode?.ToString().ToLowerInvariant();
+        private string? ModeQuery => Mode.ToQueryableValue();
     }
 }

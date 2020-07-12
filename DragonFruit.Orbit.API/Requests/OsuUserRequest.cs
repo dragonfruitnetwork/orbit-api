@@ -8,7 +8,7 @@ namespace DragonFruit.Orbit.API.Requests
 {
     public class OsuUserRequest : OrbitApiRequest, IHasOptionalMode
     {
-        protected override string Route => $"{(!string.IsNullOrWhiteSpace(UserId) ? $"/users/{UserId}" : "/me")}/{ModeQuery}";
+        protected override string Route => $"{(!string.IsNullOrWhiteSpace(UserId) ? $"/users/{UserId}" : "/me")}/{Mode.ToQueryableValue()}";
 
         public OsuUserRequest()
         {
@@ -21,9 +21,5 @@ namespace DragonFruit.Orbit.API.Requests
 
         public string UserId { get; set; }
         public GameMode? Mode { get; set; }
-
-        private string ModeQuery => (Mode ?? GameMode.Default) != GameMode.Default
-            ? Mode.ToString().ToLowerInvariant()
-            : string.Empty;
     }
 }

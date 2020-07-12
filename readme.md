@@ -6,7 +6,7 @@
 [![DragonFruit Discord](https://img.shields.io/discord/482528405292843018?label=Discord&style=popout)](https://discord.gg/VA26u5Z)
 
 ## Overview
-Orbit API is designed to make accessing osu! stats easy, with support for **both** versions of the API (v1 and v2)
+Orbit API is designed to gmake accessing osu! stats easy, with support for **both** versions of the API (v1 and v2)
 
 ### Getting Started
 Want to give this a try? Check out the [getting started guide](https://github.com/dragonfruitnetwork/Orbit-API/blob/master/getting-started.md)
@@ -46,3 +46,7 @@ Want to give this a try? Check out the [getting started guide](https://github.co
 - Beatmap(set) info
 - User's highscores and recent plays (+ failed ones)
 - Multiplayer lobby scores and participants
+
+## Testing
+
+Test project will be written once the `client_credential` grant goes live.
