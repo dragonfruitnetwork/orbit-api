@@ -5,13 +5,26 @@ using DragonFruit.Orbit.API.Objects.Interfaces;
 
 namespace DragonFruit.Orbit.API.Requests
 {
-    public class OsuUserRecentActivityRequest : OrbitApiRequest, IRequiresUserId
+    public class OsuUserRecentActivityRequest : OrbitPaginatedRequest, IRequiresUserId
     {
         protected override string Route => $"/users/{UserId}/recent_activity";
+        protected override bool UsesOffset => true;
 
+        /// <summary>
+        /// Get a user's recent activity
+        /// </summary>
         public OsuUserRecentActivityRequest(uint userId)
         {
             UserId = userId;
+        }
+
+        /// <summary>
+        /// Get a specific page of the user's recent activity
+        /// </summary>
+        public OsuUserRecentActivityRequest(uint userId, uint page)
+            : this(userId)
+        {
+            Page = page;
         }
 
         public uint UserId { get; set; }

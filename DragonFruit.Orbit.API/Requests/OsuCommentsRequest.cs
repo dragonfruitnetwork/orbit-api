@@ -2,44 +2,70 @@
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
 using DragonFruit.Common.Data.Parameters;
-using DragonFruit.Orbit.API.Objects.Comments;
 using DragonFruit.Orbit.API.Objects.Enums;
 
 namespace DragonFruit.Orbit.API.Requests
 {
-    public class OsuCommentsRequest : OrbitApiRequest
+    public class OsuCommentsRequest : OrbitPaginatedRequest
     {
         private OsuCommentTarget _target;
 
-        protected override string Route => $"/comments/{CommentId.ToString() ?? string.Empty}";
+        protected override string Route => "/comments/";
         public override bool RequireAuth => false;
+        protected override bool UsesOffset => false;
 
+        /// <summary>
+        /// Get the latest comments from anything that can be commented on
+        /// </summary>
         public OsuCommentsRequest()
         {
         }
 
-        public OsuCommentsRequest(uint commentId)
+        /// <summary>
+        /// Get the comments associated with a specific commentable entity.
+        /// </summary>
+        public OsuCommentsRequest(uint commentableId, OsuCommentTarget targetType)
         {
-            CommentId = commentId;
+            CommentableId = commentableId;
+            Type = targetType;
         }
 
-        [QueryParameter("page")]
-        public int? Page { get; set; }
+        /// <summary>
+        /// Get a specific page of comments associated with a specific commentable entity.
+        /// </summary>
+        public OsuCommentsRequest(uint commentableId, OsuCommentTarget targetType, uint page)
+            : this(commentableId, targetType)
+        {
+            Page = page;
+        }
 
+        /// <summary>
+        /// The id of the item being commented on. (a update release, news article, etc.)
+        /// </summary>
         [QueryParameter("commentable_id")]
         public uint? CommentableId { get; set; }
 
-        [QueryParameter("commentable_type")]
-        private string TypeString { get; set; }
+        /// <summary>
+        /// The maximum number of items to return in a single page
+        /// </summary>
+        [QueryParameter("limit")]
+        public int? Limit { get; set; }
 
-        [QueryParameter("sort")]
-        private string SortString => Sort.HasValue ? Sort.ToString().ToLowerInvariant() : null;
+        /// <summary>
+        /// If specified, will return child comments for this comment
+        /// </summary>
+        [QueryParameter("parent_id")]
+        public uint? ParentId { get; set; }
 
-        public uint? CommentId { get; set; }
-
+        /// <summary>
+        /// The <see cref="OsuCommentsSortCriteria"/> for sorting the return values by
+        /// </summary>
         public OsuCommentsSortCriteria? Sort { get; set; }
 
-        public OsuCommentTarget Target
+        /// <summary>
+        /// The type of item the <see cref="CommentableId"/> is
+        /// </summary>
+        public OsuCommentTarget Type
         {
             get => _target;
             set
@@ -52,5 +78,11 @@ namespace DragonFruit.Orbit.API.Requests
                 };
             }
         }
+
+        [QueryParameter("commentable_type")]
+        private string? TypeString { get; set; }
+
+        [QueryParameter("sort")]
+        private string? SortString => Sort.HasValue ? Sort.ToString().ToLowerInvariant() : null;
     }
 }

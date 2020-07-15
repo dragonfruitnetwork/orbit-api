@@ -11,10 +11,10 @@ namespace DragonFruit.Orbit.API.Objects.Beatmaps
     public class OsuBeatmapInfo
     {
         [JsonProperty("id")]
-        public long Id { get; set; }
+        public uint Id { get; set; }
 
         [JsonProperty("beatmapset_id")]
-        public long BeatmapsetId { get; set; }
+        public uint BeatmapsetId { get; set; }
 
         [JsonProperty("version")]
         public string Version { get; set; }
@@ -89,7 +89,7 @@ namespace DragonFruit.Orbit.API.Objects.Beatmaps
         public string Url { get; set; }
 
         [JsonProperty("max_combo")]
-        public uint MaxCombo { get; set; }
+        public uint? MaxCombo { get; set; }
 
         [JsonProperty("failtimes")]
         public OsuBeatmapFailMetrics Fails { get; set; }

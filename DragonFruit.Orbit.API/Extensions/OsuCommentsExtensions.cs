@@ -3,6 +3,7 @@
 
 using DragonFruit.Common.Data;
 using DragonFruit.Orbit.API.Objects.Comments;
+using DragonFruit.Orbit.API.Objects.Enums;
 using DragonFruit.Orbit.API.Requests;
 
 namespace DragonFruit.Orbit.API.Extensions
@@ -20,28 +21,27 @@ namespace DragonFruit.Orbit.API.Extensions
         }
 
         /// <summary>
-        /// Get the latest comments posted on the osu! website for a specific commentable type
+        /// Get a the first page of comments posted on the osu! website for a specific commentable entity
         /// </summary>
         /// <param name="client">The <see cref="ApiClient"/> to use</param>
-        /// <returns>A container with the comments, cursor and users concerned</returns>
-        public static OsuCommentsContainer GetComments(this ApiClient client, OsuCommentTarget target)
+        /// <param name="target">Id of the thing to get comments for (the beatmapset id, news post id, etc.)</param>
+        /// <param name="targetType">The type of item the <see cref="target"/> is</param>
+        /// <returns>A container with the comments and users concerned</returns>
+        public static OsuCommentsContainer GetCommentsFor(this ApiClient client, uint target, OsuCommentTarget targetType)
         {
-            return client.GetComments(target, 1);
+            return GetCommentsFor(client, target, targetType, 0);
         }
 
         /// <summary>
-        /// Get a specific page of comments posted on the osu! website for a specific commentable type
+        /// Get a specific page of comments posted on the osu! website for a specific commentable entity
         /// </summary>
         /// <param name="client">The <see cref="ApiClient"/> to use</param>
-        /// <returns>A container with the comments, cursor and users concerned</returns>
-        public static OsuCommentsContainer GetComments(this ApiClient client, OsuCommentTarget target, int page)
+        /// <param name="target">Id of the thing to get comments for (the beatmapset id, news post id, etc.)</param>
+        /// <param name="targetType">The type of item the <see cref="target"/> is</param>
+        /// <returns>A container with the comments and users concerned</returns>
+        public static OsuCommentsContainer GetCommentsFor(this ApiClient client, uint target, OsuCommentTarget targetType, uint page)
         {
-            var request = new OsuCommentsRequest
-            {
-                Page = page,
-                Target = target
-            };
-
+            var request = new OsuCommentsRequest(target, targetType, page);
             return client.Perform<OsuCommentsContainer>(request);
         }
 
@@ -49,8 +49,9 @@ namespace DragonFruit.Orbit.API.Extensions
         /// Get a specific page of comments posted on the osu! website for any commentable entity
         /// </summary>
         /// <param name="client">The <see cref="ApiClient"/> to use</param>
+        /// <param name="page">The page number to return</param>
         /// <returns>A container with the comments, cursor and users concerned</returns>
-        public static OsuCommentsContainer GetComments(this ApiClient client, int page)
+        public static OsuCommentsContainer GetComments(this ApiClient client, uint page)
         {
             var request = new OsuCommentsRequest
             {
@@ -61,14 +62,14 @@ namespace DragonFruit.Orbit.API.Extensions
         }
 
         /// <summary>
-        /// Get a specific comment, and it's child comments
+        /// Get a specific comment, and it's child comments (upto 2 levels)
         /// </summary>
         /// <param name="client">The <see cref="ApiClient"/> to use</param>
         /// <param name="comment">Id of the comment to return</param>
         /// <returns>A container with the comments, cursor and users concerned</returns>
         public static OsuCommentsContainer GetComment(this ApiClient client, uint comment)
         {
-            var request = new OsuCommentsRequest(comment);
+            var request = new OsuCommentRequest(comment);
             return client.Perform<OsuCommentsContainer>(request);
         }
     }

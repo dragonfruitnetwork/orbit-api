@@ -7,6 +7,9 @@ namespace DragonFruit.Orbit.API.Requests
     {
         protected override string Route => $"/beatmaps/{MapId}";
 
+        /// <summary>
+        /// Create a request to get the info for a specific beatmap
+        /// </summary>
         public OsuBeatmapInfoRequest(uint mapId)
         {
             MapId = mapId;

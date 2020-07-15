@@ -9,6 +9,9 @@ namespace DragonFruit.Orbit.API.Requests
     {
         public override string Grant => "refresh_token";
 
+        /// <summary>
+        /// Swap a refresh token for a new access token (and another refresh token)
+        /// </summary>
         public OsuSessionRefreshRequest(string token)
         {
             RefreshToken = token;

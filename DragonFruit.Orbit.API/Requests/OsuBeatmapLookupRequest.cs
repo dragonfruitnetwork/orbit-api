@@ -5,6 +5,9 @@ using DragonFruit.Common.Data.Parameters;
 
 namespace DragonFruit.Orbit.API.Requests
 {
+    /// <summary>
+    /// Lookup a beatmap's info from it's MD5, MapId or Filename
+    /// </summary>
     public class OsuBeatmapLookupRequest : OrbitApiRequest
     {
         protected override string Route => "/beatmaps/lookup";

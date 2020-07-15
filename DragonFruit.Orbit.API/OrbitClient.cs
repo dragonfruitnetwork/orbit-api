@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using DragonFruit.Common.Data;
+using DragonFruit.Common.Data.Handlers;
 using DragonFruit.Orbit.API.Exceptions;
 using DragonFruit.Orbit.API.Legacy;
 using DragonFruit.Orbit.API.Objects.Auth;
@@ -19,34 +20,38 @@ namespace DragonFruit.Orbit.API
     {
         protected abstract OsuSessionTokenBase GetSessionToken();
 
-        #region Legacy Requests
-
         /// <summary>
-        /// Global Legacy API key, can be obtained from https://old.ppy.sh/p/api
+        /// Initialises a new <see cref="OrbitClient"/>
         /// </summary>
-        protected virtual string LegacyApiKey { get; }
-
-        /// <summary>
-        /// Performs legacy requests, returning them as an <see cref="IEnumerable{T}"/>.
-        /// </summary>
-        public IEnumerable<T> Perform<T>(LegacyRequestBase requestData) where T : class
+        protected OrbitClient()
+            : this(new HttpClientHandler())
         {
-            if (string.IsNullOrEmpty(requestData.ApiKey))
-                requestData.ApiKey = LegacyApiKey ?? throw new LegacyApiException("Legacy API Request attempted with no key");
-
-            return base.Perform<IEnumerable<T>>(requestData);
         }
 
-        #endregion
+        /// <summary>
+        /// Initialises a new <see cref="OrbitClient"/> with a specific <see cref="HttpMessageHandler"/>
+        /// </summary>
+        protected OrbitClient(HttpMessageHandler handler)
+        {
+            //some urls like "/users/papacurry" redirect to another url.
+            //the normal handler will strip the auth header giving us a 401...
+            switch (handler)
+            {
+                case HeaderPreservingRedirectHandler _:
+                    Handler = handler;
+                    break;
 
-        #region API v2 OAuth
+                default:
+                    Handler = new HeaderPreservingRedirectHandler(handler);
+                    break;
+            }
+        }
+
+        #region APIv2 OAuth
 
         protected virtual string ClientId { get; }
         protected virtual string ClientSecret { get; }
 
-        /// <summary>
-        /// Performs an <see cref="OsuAuthRequest"/>, returning the <see cref="OsuSessionToken"/> if successful
-        /// </summary>
         public OsuSessionToken Perform<T>(T requestData) where T : OsuAuthRequest
         {
             //inject the clientid and secret if they haven't been set
@@ -58,6 +63,41 @@ namespace DragonFruit.Orbit.API
 
             //bypass the _token checks as we're getting them now...
             return base.Perform<OsuSessionToken>(requestData);
+        }
+
+        #endregion
+
+        #region Legacy Requests
+
+        /// <summary>
+        /// Global Legacy API key, can be obtained from https://old.ppy.sh/p/api
+        /// </summary>
+        protected virtual string LegacyApiKey { get; }
+
+        /// <summary>
+        /// Perform a legacy request, returning the result as an <see cref="IEnumerable{T}"/>.
+        /// </summary>
+        public IEnumerable<T> Perform<T>(LegacyEnumerableResponseRequest requestData) where T : class
+        {
+            InjectLegacyApiKey(requestData);
+            return base.Perform<IEnumerable<T>>(requestData);
+        }
+
+        /// <summary>
+        /// Perform a legacy request
+        /// </summary>
+        public T Perform<T>(LegacyRequest requestData) where T : class
+        {
+            InjectLegacyApiKey(requestData);
+            return base.Perform<T>(requestData);
+        }
+
+        private void InjectLegacyApiKey(LegacyRequest requestData)
+        {
+            if (string.IsNullOrEmpty(requestData.ApiKey))
+            {
+                requestData.ApiKey = LegacyApiKey ?? throw new LegacyApiException("Legacy API Request attempted with no key");
+            }
         }
 
         #endregion
@@ -92,8 +132,6 @@ namespace DragonFruit.Orbit.API
                     throw new TokenExpiredException(_token);
 
                 //todo add more status codes
-                default:
-                    break;
             }
 
             return base.ValidateAndProcess<T>(response);

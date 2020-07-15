@@ -7,23 +7,21 @@ using DragonFruit.Orbit.API.Objects.Enums;
 
 namespace DragonFruit.Orbit.API.Legacy.Requests
 {
-    public class LegacyBeatmapInfoRequest : LegacyRequest, IHasLimiter
+    public class LegacyBeatmapInfoRequest : LegacyEnumerableResponseRequest
     {
         public override string Path => "https://osu.ppy.sh/api/get_beatmaps";
 
-        public uint? Limit { get; set; }
-
         public DateTimeOffset? Since { get; set; }
 
-        public bool IncludeConvertedMaps { get; set; }
+        public bool? IncludeConvertedMaps { get; set; }
 
         public OsuMods Mods { get; set; } = OsuMods.None;
 
         [QueryParameter("s")]
-        public uint BeatmapsetId { get; set; }
+        public uint? BeatmapsetId { get; set; }
 
         [QueryParameter("b")]
-        public uint BeatmapId { get; set; }
+        public uint? BeatmapId { get; set; }
 
         [QueryParameter("h")]
         public string MapHash { get; set; }
@@ -32,7 +30,7 @@ namespace DragonFruit.Orbit.API.Legacy.Requests
         private string SqlSince => Since?.ToString("yyyy-MM-dd HH:mm:ss");
 
         [QueryParameter("a")]
-        private uint IncludeConvertedMapsValue => IncludeConvertedMaps ? 1 : 0u;
+        private uint IncludeConvertedMapsValue => IncludeConvertedMaps ?? true ? 1 : 0u;
 
         [QueryParameter("mods")]
         private ulong ModsValue => (uint)Mods;

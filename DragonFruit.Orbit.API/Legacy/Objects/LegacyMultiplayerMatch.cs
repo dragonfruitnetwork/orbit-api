@@ -15,13 +15,13 @@ namespace DragonFruit.Orbit.API.Legacy.Objects
         public LegacyMultiplayerMatchInfo GameInfo { get; set; }
 
         [JsonProperty("games")]
-        public IEnumerable<LegacyMultiplayerGame> Rounds { get; set; }
+        public IEnumerable<LegacyMultiplayerGame> Games { get; set; }
     }
 
     public class LegacyMultiplayerMatchInfo
     {
         [JsonProperty("match_id")]
-        public int Id { get; set; }
+        public ulong Id { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -45,7 +45,7 @@ namespace DragonFruit.Orbit.API.Legacy.Objects
         public DateTimeOffset Start { get; set; }
 
         [JsonProperty("end_time")]
-        public DateTimeOffset End { get; set; }
+        public DateTimeOffset? End { get; set; }
 
         [JsonProperty("beatmap_id")]
         public uint BeatmapId { get; set; }
@@ -60,7 +60,7 @@ namespace DragonFruit.Orbit.API.Legacy.Objects
         public TeamType TeamType { get; set; }
 
         [JsonProperty("mods")]
-        public OsuMods GlobalMods { get; set; }
+        public OsuMods? GlobalMods { get; set; }
 
         [JsonProperty("scores")]
         public IEnumerable<LegacyMutliplayerScore> Scores { get; set; }

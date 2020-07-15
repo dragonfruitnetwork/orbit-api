@@ -13,6 +13,12 @@ namespace DragonFruit.Orbit.API.Requests
         {
         }
 
+        public OsuSpotlightsLeaderboardRequest(GameMode mode, uint chartId)
+            : base(mode, OsuLeaderboardRankingType.Charts)
+        {
+            SpotlightsId = chartId;
+        }
+
         [QueryParameter("spotlight")]
         public uint? SpotlightsId { get; set; }
     }

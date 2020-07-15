@@ -5,7 +5,7 @@ using DragonFruit.Orbit.API.Objects.Enums;
 
 namespace DragonFruit.Orbit.API.Legacy.Requests
 {
-    public class LegacyUserRecentPerformancesRequest : LegacyRequest, IHasLimiter
+    public class LegacyUserRecentPerformancesRequest : LegacyEnumerableResponseRequest
     {
         public override string Path => "https://osu.ppy.sh/api/get_user_recent";
 

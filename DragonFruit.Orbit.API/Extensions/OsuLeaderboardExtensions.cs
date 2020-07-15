@@ -71,7 +71,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// <param name="mode">The <see cref="GameMode"/> to load rankings for</param>
         public static OsuSpotlightsLeaderboardContainer GetSpotlightLeaderboard(this OrbitClient client, GameMode mode, uint spotlightsId)
         {
-            var request = new OsuSpotlightsLeaderboardRequest(mode) { SpotlightsId = spotlightsId };
+            var request = new OsuSpotlightsLeaderboardRequest(mode, spotlightsId);
             return client.Perform<OsuSpotlightsLeaderboardContainer>(request);
         }
 

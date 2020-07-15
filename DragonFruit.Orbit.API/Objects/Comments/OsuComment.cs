@@ -2,6 +2,7 @@
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
 using System;
+using DragonFruit.Orbit.API.Objects.Enums;
 using Newtonsoft.Json;
 
 namespace DragonFruit.Orbit.API.Objects.Comments
@@ -27,7 +28,14 @@ namespace DragonFruit.Orbit.API.Objects.Comments
         public uint VotesCount { get; set; }
 
         [JsonProperty("commentable_type")]
-        public OsuCommentTarget CommentableTarget { get; set; }
+        private string CommentTargetString
+        {
+            get => CommentTarget.ToQueryable();
+            set => CommentTarget = OsuCommentTargetExtensions.FromQueryable(value);
+        }
+
+        [JsonIgnore]
+        public OsuCommentTarget CommentTarget { get; set; }
 
         [JsonProperty("commentable_id")]
         public uint? CommentableId { get; set; }

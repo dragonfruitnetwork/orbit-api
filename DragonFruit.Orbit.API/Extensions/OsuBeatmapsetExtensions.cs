@@ -26,7 +26,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="childMapId">An id of a map in the mapset/collection</param>
-        public static OsuBeatmapsetInfo GetBeatmapSetInfoByMapId(this OrbitClient client, uint childMapId)
+        public static OsuBeatmapsetInfo GetBeatmapsetInfoByMapId(this OrbitClient client, uint childMapId)
         {
             var request = new OsuBeatmapsetLookupRequest(childMapId);
             return client.Perform<OsuBeatmapsetInfo>(request);
@@ -58,7 +58,7 @@ namespace DragonFruit.Orbit.API.Extensions
             {
                 Query = query,
                 Mode = mode,
-                SortCriteria = sortCriteria
+                Sort = sortCriteria
             };
 
             return client.Perform<OsuBeatmapsetSearchResultContainer>(request).Beatmapsets;
@@ -76,7 +76,7 @@ namespace DragonFruit.Orbit.API.Extensions
             var request = new OsuBeatmapsetSearchRequest
             {
                 Query = query,
-                SortCriteria = sortCriteria
+                Sort = sortCriteria
             };
 
             return client.Perform<OsuBeatmapsetSearchResultContainer>(request).Beatmapsets;
@@ -87,10 +87,9 @@ namespace DragonFruit.Orbit.API.Extensions
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <returns>A <see cref="OsuBeatmapsetEventsResultContainer"/> with the latest posts and the users concerned</returns>
-        public static OsuBeatmapsetEventsResultContainer GetMapsetEvents(this OrbitClient client)
+        public static OsuBeatmapsetEventsResultContainer GetBeatmapsetEvents(this OrbitClient client)
         {
-            var request = new OsuBeatmapsetEventsRequest();
-            return client.Perform<OsuBeatmapsetEventsResultContainer>(request);
+            return GetBeatmapsetEvents(client, 0);
         }
 
         /// <summary>
@@ -99,7 +98,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="page">The page number to return results for</param>
         /// <returns>A <see cref="OsuBeatmapsetEventsResultContainer"/> with the latest posts and the users concerned</returns>
-        public static OsuBeatmapsetEventsResultContainer GetMapsetEvents(this OrbitClient client, int page)
+        public static OsuBeatmapsetEventsResultContainer GetBeatmapsetEvents(this OrbitClient client, uint page)
         {
             var request = new OsuBeatmapsetEventsRequest
             {

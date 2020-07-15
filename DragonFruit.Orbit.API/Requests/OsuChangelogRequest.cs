@@ -13,10 +13,16 @@ namespace DragonFruit.Orbit.API.Requests
         protected override string Route => $"/changelog/{(!string.IsNullOrEmpty(_streamName) ? $"{_streamName}/{Version}" : string.Empty)}";
         public override bool RequireAuth => false;
 
+        /// <summary>
+        /// Get the latest changelog entries
+        /// </summary>
         public OsuChangelogRequest()
         {
         }
 
+        /// <summary>
+        /// Get the changelog entry for a specific version of a "product"
+        /// </summary>
         public OsuChangelogRequest(OsuChangelogStream stream, string version)
         {
             Stream = stream;

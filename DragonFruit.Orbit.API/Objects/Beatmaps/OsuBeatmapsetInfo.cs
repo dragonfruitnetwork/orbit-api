@@ -17,13 +17,13 @@ namespace DragonFruit.Orbit.API.Objects.Beatmaps
         public string Mapper { get; set; }
 
         [JsonProperty("favourite_count")]
-        public long FavouriteCount { get; set; }
+        public uint FavouriteCount { get; set; }
 
         [JsonProperty("id")]
-        public long Id { get; set; }
+        public uint Id { get; set; }
 
         [JsonProperty("play_count")]
-        public long PlayCount { get; set; }
+        public uint PlayCount { get; set; }
 
         [JsonProperty("preview_url")]
         public string PreviewUrl { get; set; }
@@ -38,7 +38,7 @@ namespace DragonFruit.Orbit.API.Objects.Beatmaps
         public string Title { get; set; }
 
         [JsonProperty("user_id")]
-        public long UserId { get; set; }
+        public uint UserId { get; set; }
 
         [JsonProperty("bpm")]
         public float BPM { get; set; }

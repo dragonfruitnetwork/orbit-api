@@ -6,6 +6,9 @@ using DragonFruit.Common.Data.Parameters;
 
 namespace DragonFruit.Orbit.API.Requests
 {
+    /// <summary>
+    /// Base for an OAuth code request. Must be overidden to use
+    /// </summary>
     public abstract class OsuAuthRequest : ApiRequest
     {
         public override string Path => "https://osu.ppy.sh/oauth/token";

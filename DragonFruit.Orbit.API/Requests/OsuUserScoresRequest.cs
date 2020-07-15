@@ -9,16 +9,23 @@ using DragonFruit.Orbit.API.Objects.Interfaces;
 
 namespace DragonFruit.Orbit.API.Requests
 {
-    public class OsuUserScoresRequest : OsuPaginatedRequest, IRequiresUserId, IHasOptionalMode
+    public class OsuUserScoresRequest : OrbitPaginatedRequest, IRequiresUserId, IHasOptionalMode
     {
         protected override string Route => $"/users/{UserId}/scores/{Type.ToString().ToLowerInvariant()}";
+        protected override bool UsesOffset => true;
 
+        /// <summary>
+        /// Get a user's scores based on the type (recent, first place or best)
+        /// </summary>
         public OsuUserScoresRequest(uint userId, OsuUserScoreType type)
         {
             UserId = userId;
             Type = type;
         }
 
+        /// <summary>
+        /// Get a user's scores based on the type and mode
+        /// </summary>
         public OsuUserScoresRequest(uint userId, OsuUserScoreType type, GameMode? mode)
             : this(userId, type)
         {
@@ -29,6 +36,9 @@ namespace DragonFruit.Orbit.API.Requests
         public OsuUserScoreType Type { get; set; }
         public GameMode? Mode { get; set; }
 
+        /// <summary>
+        /// Whether to return failed performances (quits/fails/retries)
+        /// </summary>
         [QueryParameter("include_fails")]
         public bool? IncludeFails { get; set; }
 

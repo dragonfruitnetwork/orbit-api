@@ -7,6 +7,10 @@ namespace DragonFruit.Orbit.API.Requests
     {
         protected override string Route => $"/beatmapsets/{MapsetId}";
 
+        /// <summary>
+        /// Gets a beatmapset and the maps contained inside based on the set's id
+        /// </summary>
+        /// <param name="mapsetId"></param>
         public OsuBeatmapsetInfoRequest(uint mapsetId)
         {
             MapsetId = mapsetId;

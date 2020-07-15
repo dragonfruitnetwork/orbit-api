@@ -9,7 +9,7 @@ namespace DragonFruit.Orbit.API.Legacy.Objects
     public class LegacyOsuUser
     {
         [JsonProperty("user_id")]
-        public long Id { get; set; }
+        public uint Id { get; set; }
 
         [JsonProperty("username")]
         public string Username { get; set; }
@@ -18,25 +18,25 @@ namespace DragonFruit.Orbit.API.Legacy.Objects
         public DateTimeOffset JoinDate { get; set; }
 
         [JsonProperty("count300")]
-        public int Count300 { get; set; }
+        public uint Count300 { get; set; }
 
         [JsonProperty("count100")]
-        public int Count100 { get; set; }
+        public uint Count100 { get; set; }
 
         [JsonProperty("count50")]
-        public int Count50 { get; set; }
+        public uint Count50 { get; set; }
 
         [JsonProperty("playcount")]
-        public long TotalPlays { get; set; }
+        public uint TotalPlays { get; set; }
 
         [JsonProperty("ranked_score")]
-        public long RankedScore { get; set; }
+        public ulong RankedScore { get; set; }
 
         [JsonProperty("total_score")]
-        public long TotalScore { get; set; }
+        public ulong TotalScore { get; set; }
 
         [JsonProperty("pp_rank")]
-        public int GlobalRank { get; set; }
+        public uint GlobalRank { get; set; }
 
         [JsonProperty("level")]
         public float Level { get; set; }
@@ -48,30 +48,30 @@ namespace DragonFruit.Orbit.API.Legacy.Objects
         public float Accuracy { get; set; }
 
         [JsonProperty("count_rank_ss")]
-        public int RankSS { get; set; }
+        public uint RankSS { get; set; }
 
         [JsonProperty("count_rank_ssh")]
-        public int RankSSPlus { get; set; }
+        public uint RankSSPlus { get; set; }
 
         [JsonProperty("count_rank_sh")]
-        public int RankSPlus { get; set; }
+        public uint RankSPlus { get; set; }
 
         [JsonProperty("count_rank_s")]
-        public int RankS { get; set; }
+        public uint RankS { get; set; }
 
         [JsonProperty("count_rank_a")]
-        public int RankA { get; set; }
+        public uint RankA { get; set; }
 
         [JsonProperty("country")]
         public string CountryCode { get; set; }
 
         [JsonProperty("pp_country_rank")]
-        public long CountryRank { get; set; }
+        public uint CountryRank { get; set; }
 
         [JsonProperty("total_seconds_played")]
-        public long SecondsPlayed { get; set; }
+        public ulong SecondsPlayed { get; set; }
 
         [JsonIgnore]
-        public string AvatarUrl => $"http://s.ppy.sh/a/{Id}";
+        public string AvatarUrl => $"https://s.ppy.sh/a/{Id}";
     }
 }

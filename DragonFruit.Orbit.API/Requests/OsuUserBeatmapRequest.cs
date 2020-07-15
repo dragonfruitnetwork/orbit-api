@@ -6,17 +6,30 @@ using DragonFruit.Orbit.API.Objects.Interfaces;
 
 namespace DragonFruit.Orbit.API.Requests
 {
-    public class OsuUserBeatmapRequest : OrbitApiRequest, IRequiresUserId
+    public class OsuUserBeatmapRequest : OrbitPaginatedRequest, IRequiresUserId
     {
         private OsuUserBeatmapsetStatus _mapStatus;
         private string _mapStatusString;
 
         protected override string Route => $"/users/{UserId}/beatmapsets/{_mapStatusString}";
+        protected override bool UsesOffset => false;
 
+        /// <summary>
+        /// Get a collection of the user's authored beatmaps, based on their ranked status
+        /// </summary>
         public OsuUserBeatmapRequest(uint userId, OsuUserBeatmapsetStatus mapStatus)
         {
             UserId = userId;
             MapStatus = mapStatus;
+        }
+
+        /// <summary>
+        /// Get a specific page of the user's authored beatmaps, based on their ranked status
+        /// </summary>
+        public OsuUserBeatmapRequest(uint userId, OsuUserBeatmapsetStatus mapStatus, uint page)
+            : this(userId, mapStatus)
+        {
+            Page = page;
         }
 
         public uint UserId { get; set; }

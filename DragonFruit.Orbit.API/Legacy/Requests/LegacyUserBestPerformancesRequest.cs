@@ -5,7 +5,7 @@ using DragonFruit.Orbit.API.Objects.Enums;
 
 namespace DragonFruit.Orbit.API.Legacy.Requests
 {
-    public class LegacyUserBestPerformancesRequest : LegacyRequest, IHasLimiter
+    public class LegacyUserBestPerformancesRequest : LegacyEnumerableResponseRequest
     {
         public override string Path => "https://osu.ppy.sh/api/get_user_best";
 
@@ -22,7 +22,5 @@ namespace DragonFruit.Orbit.API.Legacy.Requests
             IsUsername = false;
             GameMode = mode;
         }
-
-        public uint? Limit { get; set; }
     }
 }

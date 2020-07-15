@@ -3,16 +3,12 @@
 
 using System.Collections.Generic;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace DragonFruit.Orbit.API.Objects.Leaderboard
 {
     public class OsuLeaderboardContainer<T> where T : class
     {
-        [JsonProperty("cursor")]
-        public IDictionary<string, JToken> Cursor { get; set; }
-
         [JsonProperty("ranking")]
-        public IEnumerable<T> TopScorers { get; set; }
+        public IEnumerable<T> Rankings { get; set; }
     }
 }

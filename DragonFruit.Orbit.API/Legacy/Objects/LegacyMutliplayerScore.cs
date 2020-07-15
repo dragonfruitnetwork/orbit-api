@@ -1,6 +1,7 @@
 ﻿// Orbit API Copyright 2020 DragonFruit Network
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
+using DragonFruit.Orbit.API.Legacy.Converters;
 using DragonFruit.Orbit.API.Legacy.Enums;
 using Newtonsoft.Json;
 
@@ -14,7 +15,7 @@ namespace DragonFruit.Orbit.API.Legacy.Objects
         [JsonProperty("team")]
         public Team Team { get; set; }
 
-        [JsonProperty("pass")]
+        [JsonProperty("pass"), JsonConverter(typeof(BoolConverter))]
         public bool Passed { get; set; }
     }
 }

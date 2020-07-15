@@ -28,6 +28,11 @@ namespace DragonFruit.Orbit.API.Objects.Enums
             return mode?.ToString().ToLowerInvariant();
         }
 
+        internal static string ToQueryableValue(this GameMode mode)
+        {
+            return mode.ToString().ToLowerInvariant();
+        }
+
         internal static GameMode? AsGameMode(this string input)
         {
             if (Enum.TryParse(typeof(GameMode), input, true, out var mode))

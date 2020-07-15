@@ -11,6 +11,13 @@ namespace DragonFruit.Orbit.API.Requests
     {
         protected override string Route => $"/beatmaps/{BeatmapId}/scores";
 
+        /// <summary>
+        /// Get a beatmaps' leaderboard based on the game mode and leaderboard type. (An <see cref="IEnumerable{T}"/> of mod acronyms can be passed as well)
+        ///
+        /// <para>
+        /// The Country and Friend leaderboards are only accessible by authenticating users with a valid supporter tag
+        /// </para>
+        /// </summary>
         public OsuBeatmapScoresRequest(uint mapId, GameMode mode, BeatmapLeaderboardScope type)
         {
             BeatmapId = mapId;

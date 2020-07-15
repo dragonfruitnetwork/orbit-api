@@ -2,6 +2,7 @@
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
 using System;
+using DragonFruit.Orbit.API.Legacy.Converters;
 using DragonFruit.Orbit.API.Objects.Enums;
 using Newtonsoft.Json;
 
@@ -53,10 +54,10 @@ namespace DragonFruit.Orbit.API.Legacy.Objects
 
         //map ids
         [JsonProperty("beatmap_id")]
-        public int BeatmapID { get; set; }
+        public uint BeatmapID { get; set; }
 
         [JsonProperty("beatmapset_id")]
-        public int BeatmapSetID { get; set; }
+        public uint BeatmapSetID { get; set; }
 
         //computed map values
         [JsonProperty("bpm")]
@@ -78,7 +79,7 @@ namespace DragonFruit.Orbit.API.Legacy.Objects
         public float DrainRate { get; set; }
 
         [JsonProperty("max_combo")]
-        public int MaxCombo { get; set; }
+        public uint? MaxCombo { get; set; }
 
         //tags
         [JsonProperty("tags")]
@@ -100,16 +101,16 @@ namespace DragonFruit.Orbit.API.Legacy.Objects
         public double Rating { get; set; }
 
         //availability data
-        [JsonProperty("storyboard")]
+        [JsonProperty("storyboard"), JsonConverter(typeof(BoolConverter))]
         public bool HasStoryboard { get; set; }
 
-        [JsonProperty("video")]
+        [JsonProperty("video"), JsonConverter(typeof(BoolConverter))]
         public bool HasVideo { get; set; }
 
-        [JsonProperty("download_unavailable")]
+        [JsonProperty("download_unavailable"), JsonConverter(typeof(BoolConverter))]
         public bool DownloadUnavailable { get; set; }
 
-        [JsonProperty("audio_unavailable")]
+        [JsonProperty("audio_unavailable"), JsonConverter(typeof(BoolConverter))]
         public bool AudioUnavailable { get; set; }
 
         [JsonIgnore]

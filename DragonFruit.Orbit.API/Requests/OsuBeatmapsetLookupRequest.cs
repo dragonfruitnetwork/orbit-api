@@ -7,14 +7,17 @@ namespace DragonFruit.Orbit.API.Requests
 {
     public class OsuBeatmapsetLookupRequest : OrbitApiRequest
     {
-        protected override string Route => $"/beatmapsets/lookup";
+        protected override string Route => "/beatmapsets/lookup";
 
+        /// <summary>
+        /// Get a beatmapsets' info based on the id of a containing map
+        /// </summary>
         public OsuBeatmapsetLookupRequest(uint mapId)
         {
             Id = mapId;
         }
 
         [QueryParameter("beatmap_id")]
-        public uint Id { get; set; }
+        public uint? Id { get; set; }
     }
 }

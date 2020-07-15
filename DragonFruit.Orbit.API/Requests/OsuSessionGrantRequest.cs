@@ -9,6 +9,9 @@ namespace DragonFruit.Orbit.API.Requests
     {
         public override string Grant => "authorization_code";
 
+        /// <summary>
+        /// Convert a user's auth code into a usable access token
+        /// </summary>
         public OsuSessionGrantRequest(string code, string redirectUrl)
         {
             AuthCode = code;
