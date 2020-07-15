@@ -25,11 +25,7 @@ namespace DragonFruit.Orbit.API.Objects.Enums
 
         public static OsuCommentTarget FromQueryable(string input)
         {
-            return input switch
-            {
-                "news_post" => OsuCommentTarget.NewsPost,
-                _ => (OsuCommentTarget)Enum.Parse(typeof(OsuCommentTarget), input, true)
-            };
+            return Enum.Parse<OsuCommentTarget>(input.Replace("_", string.Empty), true);
         }
     }
 }

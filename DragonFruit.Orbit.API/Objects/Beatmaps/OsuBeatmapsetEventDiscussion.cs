@@ -10,28 +10,28 @@ namespace DragonFruit.Orbit.API.Objects.Beatmaps
     public class OsuBeatmapsetEventDiscussion
     {
         [JsonProperty("id")]
-        public long Id { get; set; }
+        public ulong Id { get; set; }
 
         [JsonProperty("beatmapset_id")]
-        public long BeatmapsetId { get; set; }
+        public uint BeatmapsetId { get; set; }
 
         [JsonProperty("beatmap_id")]
-        public long? BeatmapId { get; set; }
+        public uint? BeatmapId { get; set; }
 
         [JsonProperty("user_id")]
-        public long UserId { get; set; }
+        public uint UserId { get; set; }
 
         [JsonProperty("deleted_by_id")]
-        public object DeletedById { get; set; }
+        public uint? DeletedById { get; set; }
 
         [JsonProperty("message_type")]
         public OsuBeatmapsetEventMessageType MessageType { get; set; }
 
         [JsonProperty("parent_id")]
-        public object ParentId { get; set; }
+        public uint? ParentId { get; set; }
 
         [JsonProperty("timestamp")]
-        public long? Timestamp { get; set; }
+        public ulong? Timestamp { get; set; }
 
         [JsonProperty("resolved")]
         public bool Resolved { get; set; }
@@ -49,7 +49,7 @@ namespace DragonFruit.Orbit.API.Objects.Beatmaps
         public DateTimeOffset UpdatedAt { get; set; }
 
         [JsonProperty("deleted_at")]
-        public object DeletedAt { get; set; }
+        public ulong? DeletedAt { get; set; }
 
         [JsonProperty("last_post_at")]
         public DateTimeOffset LastPostAt { get; set; }
