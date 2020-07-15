@@ -124,17 +124,11 @@ namespace DragonFruit.Orbit.API
             return base.Perform<T>(requestData);
         }
 
-        protected override T ValidateAndProcess<T>(Task<HttpResponseMessage> response) where T : class
-        {
-            switch (response.Result.StatusCode)
+        protected override T ValidateAndProcess<T>(Task<HttpResponseMessage> response) where T : class =>
+            response.Result.StatusCode switch
             {
-                case HttpStatusCode.Unauthorized:
-                    throw new TokenExpiredException(_token);
-
-                //todo add more status codes
-            }
-
-            return base.ValidateAndProcess<T>(response);
-        }
+                HttpStatusCode.Unauthorized => throw new TokenExpiredException(_token),
+                _ => base.ValidateAndProcess<T>(response)
+            };
     }
 }

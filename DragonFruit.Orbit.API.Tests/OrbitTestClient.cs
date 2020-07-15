@@ -50,7 +50,7 @@ namespace DragonFruit.Orbit.API.Tests
             return base.Perform<T>(requestData);
         }
 
-        private string GetKey(string env) =>
+        private static string GetKey(string env) =>
             RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
                 ? Environment.GetEnvironmentVariable(env, EnvironmentVariableTarget.User)
                   ?? Environment.GetEnvironmentVariable(env, EnvironmentVariableTarget.Machine) ?? Environment.GetEnvironmentVariable(env)

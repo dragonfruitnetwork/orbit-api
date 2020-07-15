@@ -5,6 +5,7 @@ using System;
 using System.Linq;
 using DragonFruit.Orbit.API.Legacy.Objects;
 using DragonFruit.Orbit.API.Legacy.Requests;
+using DragonFruit.Orbit.API.Objects.Enums;
 using NUnit.Framework;
 
 namespace DragonFruit.Orbit.API.Tests.Legacy
@@ -39,6 +40,14 @@ namespace DragonFruit.Orbit.API.Tests.Legacy
 
             var result = Client.Perform<LegacyBeatmap>(request);
             Assert.True(result.Any(x => x.BeatmapID == actualMapId));
+        }
+
+        [TestCase(1822450u, OsuMods.None)]
+        [TestCase(2039519u, OsuMods.Hidden)]
+        public void TestBeatmapScoreLookup(uint mapId, OsuMods mods)
+        {
+            var request = new LegacyBeatmapScoresRequest(mapId, mods);
+            Client.Perform<LegacyScore>(request);
         }
     }
 }
