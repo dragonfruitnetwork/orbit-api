@@ -41,7 +41,7 @@ namespace DragonFruit.Orbit.API.Objects.User
         public double? PP { get; set; }
 
         [JsonProperty("rank")]
-        public OsuScoreGrade Rank { get; set; }
+        public OsuScoreGrade Grade { get; set; }
 
         [JsonProperty("created_at")]
         public DateTimeOffset CreatedAt { get; set; }
