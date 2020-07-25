@@ -19,6 +19,9 @@ namespace DragonFruit.Orbit.API.Objects.Beatmaps
         [JsonProperty("version")]
         public string Version { get; set; }
 
+        //todo check json
+        public string Hash { get; set; }
+        
         [JsonProperty("ranked")]
         public OsuBeatmapsetStatus Ranked { get; set; }
 

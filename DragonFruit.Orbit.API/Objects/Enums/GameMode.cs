@@ -8,8 +8,8 @@ namespace DragonFruit.Orbit.API.Objects.Enums
 {
     public enum GameMode
     {
-        [Description("osu!standard")]
-        Osu = 0,
+        [Description("osu!")]
+        osu = 0,
 
         [Description("osu!taiko")]
         Taiko = 1,
