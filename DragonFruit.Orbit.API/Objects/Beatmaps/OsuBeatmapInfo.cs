@@ -35,22 +35,22 @@ namespace DragonFruit.Orbit.API.Objects.Beatmaps
         public bool IsConverted { get; set; }
 
         [JsonProperty("ar")]
-        public float AR { get; set; }
+        public double AR { get; set; }
 
         [JsonProperty("cs")]
-        public float CS { get; set; }
+        public double CS { get; set; }
 
         [JsonProperty("drain")]
-        public float Drain { get; set; }
+        public double Drain { get; set; }
 
         [JsonProperty("accuracy")]
-        public float Accuracy { get; set; }
+        public double Accuracy { get; set; }
 
         [JsonProperty("difficulty_rating")]
-        public float DifficultyRating { get; set; }
+        public double DifficultyRating { get; set; }
 
         [JsonProperty("bpm")]
-        public float BPM { get; set; }
+        public double BPM { get; set; }
 
         [JsonProperty("count_circles")]
         public uint CountCircles { get; set; }

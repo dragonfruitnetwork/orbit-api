@@ -32,7 +32,7 @@ namespace DragonFruit.Orbit.API.Objects.Beatmaps
         public string Source { get; set; }
 
         [JsonProperty("status")]
-        public string Status { get; set; }
+        public OsuBeatmapsetStatus Status { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }
