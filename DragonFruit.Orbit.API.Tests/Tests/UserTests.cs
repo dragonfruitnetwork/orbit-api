@@ -36,7 +36,7 @@ namespace DragonFruit.Orbit.API.Tests.Tests
             var bests = Client.GetUserScores(userId, OsuUserScoreType.Best);
             Assert.True(bests.Count() >= 10);
 
-            _ = Client.GetUserScores(userId, GameMode.Osu, OsuUserScoreType.Recent, true);
+            _ = Client.GetUserScores(userId, GameMode.osu, OsuUserScoreType.Recent, true);
         }
 
         [TestCase(2u)]

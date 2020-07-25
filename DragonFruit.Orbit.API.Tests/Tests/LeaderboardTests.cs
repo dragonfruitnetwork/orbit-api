@@ -13,15 +13,15 @@ namespace DragonFruit.Orbit.API.Tests.Tests
         [Test]
         public void TestCountryLeaderboard()
         {
-            _ = Client.GetCountryRankings(GameMode.Osu);
-            _ = Client.GetCountryRankings(GameMode.Osu, 2);
+            _ = Client.GetCountryRankings(GameMode.osu);
+            _ = Client.GetCountryRankings(GameMode.osu, 2);
         }
 
         [Test]
         public void TestPerformanceLeaderboard()
         {
             _ = Client.GetPerformanceRankings(GameMode.Taiko);
-            _ = Client.GetCountryRankings(GameMode.Osu, 2);
+            _ = Client.GetCountryRankings(GameMode.osu, 2);
         }
     }
 }

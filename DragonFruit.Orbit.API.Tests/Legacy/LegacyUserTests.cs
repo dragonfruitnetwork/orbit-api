@@ -23,8 +23,8 @@ namespace DragonFruit.Orbit.API.Tests.Legacy
             Assert.IsTrue(Client.Perform<LegacyOsuUser>(specificModeRequest).Count() == 1);
         }
 
-        [TestCase(15645406u, GameMode.Osu, 5u)]
-        [TestCase(13723332u, GameMode.Osu, 30u)]
+        [TestCase(15645406u, GameMode.osu, 5u)]
+        [TestCase(13723332u, GameMode.osu, 30u)]
         public void TestUserBestScores(uint id, GameMode mode, uint limit)
         {
             var request = new LegacyUserBestPerformancesRequest(id, mode)
@@ -36,7 +36,7 @@ namespace DragonFruit.Orbit.API.Tests.Legacy
             Assert.IsTrue(scores.Count() <= limit);
         }
 
-        [TestCase(13723332u, GameMode.Osu)]
+        [TestCase(13723332u, GameMode.osu)]
         public void TestUserRecentScores(uint id, GameMode mode)
         {
             var request = new LegacyUserRecentPerformancesRequest(id, mode);

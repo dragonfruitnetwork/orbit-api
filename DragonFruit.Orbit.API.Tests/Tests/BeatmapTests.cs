@@ -50,7 +50,7 @@ namespace DragonFruit.Orbit.API.Tests.Tests
         [TestCase(1431578u)]
         public void TestBeatmapScores(uint mapId)
         {
-            Client.GetBeatmapScores(mapId, GameMode.Osu, BeatmapLeaderboardScope.Global);
+            Client.GetBeatmapScores(mapId, GameMode.osu, BeatmapLeaderboardScope.Global);
         }
 
         [Test]

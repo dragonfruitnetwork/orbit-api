@@ -15,7 +15,7 @@ namespace DragonFruit.Orbit.API.Tests.Tests
         public void TestSpotlights()
         {
             var spotlights = Client.GetSpotlights();
-            _ = Client.GetSpotlightLeaderboard(GameMode.Osu, spotlights.First().Id);
+            _ = Client.GetSpotlightLeaderboard(GameMode.osu, spotlights.First().Id);
         }
     }
 }
