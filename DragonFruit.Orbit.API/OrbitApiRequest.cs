@@ -8,8 +8,8 @@ namespace DragonFruit.Orbit.API
     public abstract class OrbitApiRequest : ApiRequest
     {
         public override string Path => "https://osu.ppy.sh/api/v2" + Route;
-        public override bool RequireAuth => true;
-        public override string AcceptedContent => "application/json";
+
+        protected override bool RequireAuth => true;
 
         protected abstract string Route { get; }
     }

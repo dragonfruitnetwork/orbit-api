@@ -6,6 +6,7 @@ namespace DragonFruit.Orbit.API.Requests
     public class OsuCommentRequest : OrbitApiRequest
     {
         protected override string Route => $"/comments/{CommentId}";
+        protected override bool RequireAuth => false;
 
         /// <summary>
         /// Create a request to get a comment and its replies (for up to two levels)

@@ -13,7 +13,7 @@ namespace DragonFruit.Orbit.API.Objects.Beatmaps
         public uint Id { get; set; }
 
         [JsonProperty("type")]
-        private string CommentType
+        private string QueryableType
         {
             get => Type.ToQueryable();
             set => Type = OsuBeatmapsetEventTypeExtensions.FromQueryable(value);

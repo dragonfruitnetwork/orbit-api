@@ -1,10 +1,11 @@
 ﻿// Orbit API Copyright 2020 DragonFruit Network
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
+using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Net;
 using System.Net.Http;
-using System.Threading.Tasks;
 using DragonFruit.Common.Data;
 using DragonFruit.Common.Data.Handlers;
 using DragonFruit.Orbit.API.Exceptions;
@@ -16,6 +17,7 @@ using DragonFruit.Orbit.API.Requests;
 
 namespace DragonFruit.Orbit.API
 {
+    [SuppressMessage("ReSharper", "MemberCanBeProtected.Global")]
     public abstract class OrbitClient : ApiClient
     {
         protected abstract OsuSessionTokenBase GetSessionToken();
@@ -33,8 +35,8 @@ namespace DragonFruit.Orbit.API
         /// </summary>
         protected OrbitClient(HttpMessageHandler handler)
         {
-            //some urls like "/users/papacurry" redirect to another url.
-            //the normal handler will strip the auth header giving us a 401...
+            // some urls like "/users/papacurry" redirect to another url.
+            // the normal handler will strip the auth header giving us a 401...
             switch (handler)
             {
                 case HeaderPreservingRedirectHandler _:
@@ -49,19 +51,19 @@ namespace DragonFruit.Orbit.API
 
         #region APIv2 OAuth
 
-        protected virtual string ClientId { get; }
-        protected virtual string ClientSecret { get; }
+        protected virtual string? ClientId => null;
+        protected virtual string? ClientSecret => null;
 
         public OsuSessionToken Perform<T>(T requestData) where T : OsuAuthRequest
         {
-            //inject the clientid and secret if they haven't been set
+            // inject the clientid and secret if they haven't been set
             if (string.IsNullOrEmpty(requestData.ClientSecret))
             {
-                requestData.ClientId = ClientId;
-                requestData.ClientSecret = ClientSecret;
+                requestData.ClientId = ClientId ?? throw new NullReferenceException($"The {nameof(ClientId)} property has not been set");
+                requestData.ClientSecret = ClientSecret ?? throw new NullReferenceException($"The {nameof(ClientSecret)} property has not been set");
             }
 
-            //bypass the _token checks as we're getting them now...
+            // bypass the _token checks as we're getting them now...
             return base.Perform<OsuSessionToken>(requestData);
         }
 
@@ -72,7 +74,7 @@ namespace DragonFruit.Orbit.API
         /// <summary>
         /// Global Legacy API key, can be obtained from https://old.ppy.sh/p/api
         /// </summary>
-        protected virtual string LegacyApiKey { get; }
+        protected virtual string? LegacyApiKey => null;
 
         /// <summary>
         /// Perform a legacy request, returning the result as an <see cref="IEnumerable{T}"/>.
@@ -92,22 +94,28 @@ namespace DragonFruit.Orbit.API
             return base.Perform<T>(requestData);
         }
 
+        /// <summary>
+        /// Private method for injecting the osu!API v1 key into the <see cref="LegacyRequest.ApiKey"/> property
+        /// </summary>
         private void InjectLegacyApiKey(LegacyRequest requestData)
         {
-            if (string.IsNullOrEmpty(requestData.ApiKey))
-            {
-                requestData.ApiKey = LegacyApiKey ?? throw new LegacyApiException("Legacy API Request attempted with no key");
-            }
+            requestData.ApiKey = LegacyApiKey ?? throw new LegacyApiException("Legacy API Request attempted with no key");
         }
 
         #endregion
 
         #region API v2 Auth
 
-        protected void ProcessToken()
+        private void ProcessToken()
         {
             _token = GetSessionToken();
-            Authorization = $"{_token!.TokenType} {_token.AccessToken}";
+
+            if (_token == null)
+            {
+                throw new NullReferenceException("Token provided was null");
+            }
+
+            Authorization = $"{_token.TokenType} {_token.AccessToken}";
         }
 
         private OsuSessionTokenBase? _token;
@@ -124,11 +132,11 @@ namespace DragonFruit.Orbit.API
             return base.Perform<T>(requestData);
         }
 
-        protected override T ValidateAndProcess<T>(Task<HttpResponseMessage> response) where T : class =>
-            response.Result.StatusCode switch
+        protected override T ValidateAndProcess<T>(HttpResponseMessage response, HttpRequestMessage request) where T : class =>
+            response.StatusCode switch
             {
                 HttpStatusCode.Unauthorized => throw new TokenExpiredException(_token),
-                _ => base.ValidateAndProcess<T>(response)
+                _ => base.ValidateAndProcess<T>(response, request)
             };
     }
 }

@@ -11,7 +11,7 @@ namespace DragonFruit.Orbit.API.Requests
         private OsuCommentTarget _target;
 
         protected override string Route => "/comments/";
-        public override bool RequireAuth => false;
+        protected override bool RequireAuth => false;
         protected override bool UsesOffset => false;
 
         /// <summary>

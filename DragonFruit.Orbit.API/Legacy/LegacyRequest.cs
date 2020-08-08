@@ -10,8 +10,6 @@ namespace DragonFruit.Orbit.API.Legacy
 {
     public abstract class LegacyRequest : ApiRequest
     {
-        public override string AcceptedContent => "application/json";
-
         [QueryParameter("k")]
         internal string ApiKey { get; set; }
 

@@ -8,7 +8,11 @@ namespace DragonFruit.Orbit.API.Objects.Enums
     public enum OsuBeatmapsetEventType
     {
         IssueResolve,
+        IssueReopen,
         KudosuGain,
+        LanguageEdit,
+        GenreEdit,
+        Hype,
         Nominate
 
         //todo find the rest of these...
@@ -21,7 +25,11 @@ namespace DragonFruit.Orbit.API.Objects.Enums
             return type switch
             {
                 OsuBeatmapsetEventType.IssueResolve => "issue_resolve",
+                OsuBeatmapsetEventType.IssueReopen => "issue_reopen",
                 OsuBeatmapsetEventType.KudosuGain => "kudosu_gain",
+                OsuBeatmapsetEventType.LanguageEdit => "language_edit",
+                OsuBeatmapsetEventType.GenreEdit => "genre_edit",
+
                 _ => type.ToString().ToLowerInvariant()
             };
         }

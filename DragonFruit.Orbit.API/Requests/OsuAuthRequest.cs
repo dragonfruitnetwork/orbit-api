@@ -13,7 +13,7 @@ namespace DragonFruit.Orbit.API.Requests
     {
         public override string Path => "https://osu.ppy.sh/oauth/token";
         protected override Methods Method => Methods.Post;
-        protected override DataTypes DataType => DataTypes.Encoded;
+        protected override BodyType BodyType => BodyType.Encoded;
 
         [FormParameter("grant_type")]
         public virtual string Grant { get; }
