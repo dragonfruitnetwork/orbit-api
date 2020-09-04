@@ -49,4 +49,4 @@ Want to give this a try? Check out the [getting started guide](https://github.co
 
 ## Testing
 
-Test project will be written once the `client_credential` grant goes live.
+See the test project and its structure for how tests are performed
