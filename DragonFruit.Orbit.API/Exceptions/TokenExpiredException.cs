@@ -15,7 +15,7 @@ namespace DragonFruit.Orbit.API.Exceptions
         {
         }
 
-        public TokenExpiredException(OsuSessionTokenBase token)
+        public TokenExpiredException(OsuSessionTokenBase? token)
             : this()
         {
             Token = token;
