@@ -14,7 +14,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="beatmapId">The id of the beatmap (not the set)</param>
-        public static OsuBeatmapInfo GetBeatmapInfoById(this OrbitClient client, uint beatmapId)
+        public static OsuBeatmapInfo GetBeatmapInfoById<T>(this T client, uint beatmapId) where T : OrbitClient
         {
             var request = new OsuBeatmapInfoRequest(beatmapId);
             return client.Perform<OsuBeatmapInfo>(request);
@@ -25,7 +25,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="filename">The name of the beatmap (including ".osu" extension)</param>
-        public static OsuBeatmapInfo GetBeatmapInfoByFilename(this OrbitClient client, string filename)
+        public static OsuBeatmapInfo GetBeatmapInfoByFilename<T>(this T client, string filename) where T : OrbitClient
         {
             var request = new OsuBeatmapLookupRequest { Filename = filename };
             return client.Perform<OsuBeatmapInfo>(request);
@@ -36,7 +36,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="md5">The MD5 hash of the beatmap file</param>
-        public static OsuBeatmapInfo GetBeatmapInfoByHash(this OrbitClient client, string md5)
+        public static OsuBeatmapInfo GetBeatmapInfoByHash<T>(this T client, string md5) where T : OrbitClient
         {
             var request = new OsuBeatmapLookupRequest { Md5Hash = md5 };
             return client.Perform<OsuBeatmapInfo>(request);
@@ -52,7 +52,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// The type of leaderboard to return.
         /// Should be set to <see cref="BeatmapLeaderboardScope.Global"/> unless the user is a supporter
         /// </param>
-        public static OsuBeatmapScoreContainer GetBeatmapScores(this OrbitClient client, uint mapId, GameMode mode, BeatmapLeaderboardScope scoreboardType)
+        public static OsuBeatmapScoreContainer GetBeatmapScores<T>(this T client, uint mapId, GameMode mode, BeatmapLeaderboardScope scoreboardType) where T : OrbitClient
         {
             var request = new OsuBeatmapScoresRequest(mapId, mode, scoreboardType);
             return client.Perform<OsuBeatmapScoreContainer>(request);

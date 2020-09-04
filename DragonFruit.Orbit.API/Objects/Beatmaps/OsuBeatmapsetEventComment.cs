@@ -9,7 +9,7 @@ namespace DragonFruit.Orbit.API.Objects.Beatmaps
     public class OsuBeatmapsetEventComment
     {
         [JsonProperty("beatmap_discussion_id")]
-        public uint BeatmapDiscussionId { get; set; }
+        public uint? BeatmapDiscussionId { get; set; }
 
         [JsonProperty("beatmap_discussion_post_id")]
         public uint? BeatmapDiscussionPostId { get; set; }

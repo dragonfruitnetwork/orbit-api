@@ -14,7 +14,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// Get osu! changelogs from recent releases
         /// </summary>
         /// <param name="client">The <see cref="ApiClient"/> to use</param>
-        public static OsuChangelogIndex GetChangelog(this ApiClient client)
+        public static OsuChangelogIndex GetChangelog<T>(this T client) where T : ApiClient
         {
             return client.Perform<OsuChangelogIndex>(new OsuChangelogRequest());
         }
@@ -25,7 +25,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// <param name="client">The <see cref="ApiClient"/> to use</param>
         /// <param name="stream">The <see cref="OsuChangelogStream"/> the <see cref="version"/> is associated with</param>
         /// <param name="version">The version to get the changelog for</param>
-        public static OsuChangelogRelease GetChangelog(this ApiClient client, OsuChangelogStream stream, string version)
+        public static OsuChangelogRelease GetChangelog<T>(this T client, OsuChangelogStream stream, string version) where T : ApiClient
         {
             var request = new OsuChangelogRequest(stream, version);
             return client.Perform<OsuChangelogRelease>(request);

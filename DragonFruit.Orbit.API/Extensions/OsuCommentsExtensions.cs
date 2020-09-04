@@ -15,7 +15,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// </summary>
         /// <param name="client">The <see cref="ApiClient"/> to use</param>
         /// <returns>A container with the comments, cursor and users concerned</returns>
-        public static OsuCommentsContainer GetComments(this ApiClient client)
+        public static OsuCommentsContainer GetComments<T>(this T client) where T : ApiClient
         {
             return client.GetComments(1);
         }
@@ -27,7 +27,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// <param name="target">Id of the thing to get comments for (the beatmapset id, news post id, etc.)</param>
         /// <param name="targetType">The type of item the <see cref="target"/> is</param>
         /// <returns>A container with the comments and users concerned</returns>
-        public static OsuCommentsContainer GetCommentsFor(this ApiClient client, uint target, OsuCommentTarget targetType)
+        public static OsuCommentsContainer GetCommentsFor<T>(this T client, uint target, OsuCommentTarget targetType) where T : ApiClient
         {
             return GetCommentsFor(client, target, targetType, 0);
         }
@@ -39,7 +39,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// <param name="target">Id of the thing to get comments for (the beatmapset id, news post id, etc.)</param>
         /// <param name="targetType">The type of item the <see cref="target"/> is</param>
         /// <returns>A container with the comments and users concerned</returns>
-        public static OsuCommentsContainer GetCommentsFor(this ApiClient client, uint target, OsuCommentTarget targetType, uint page)
+        public static OsuCommentsContainer GetCommentsFor<T>(this T client, uint target, OsuCommentTarget targetType, uint page) where T : ApiClient
         {
             var request = new OsuCommentsRequest(target, targetType, page);
             return client.Perform<OsuCommentsContainer>(request);
@@ -51,7 +51,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// <param name="client">The <see cref="ApiClient"/> to use</param>
         /// <param name="page">The page number to return</param>
         /// <returns>A container with the comments, cursor and users concerned</returns>
-        public static OsuCommentsContainer GetComments(this ApiClient client, uint page)
+        public static OsuCommentsContainer GetComments<T>(this T client, uint page) where T : ApiClient
         {
             var request = new OsuCommentsRequest
             {
@@ -67,7 +67,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// <param name="client">The <see cref="ApiClient"/> to use</param>
         /// <param name="comment">Id of the comment to return</param>
         /// <returns>A container with the comments, cursor and users concerned</returns>
-        public static OsuCommentsContainer GetComment(this ApiClient client, uint comment)
+        public static OsuCommentsContainer GetComment<T>(this T client, uint comment) where T : OrbitClient
         {
             var request = new OsuCommentRequest(comment);
             return client.Perform<OsuCommentsContainer>(request);

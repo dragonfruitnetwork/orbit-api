@@ -26,10 +26,10 @@ namespace DragonFruit.Orbit.API.Objects.User
         public string[] Mods { get; set; }
 
         [JsonProperty("score")]
-        public uint Score { get; set; }
+        public int Score { get; set; }
 
         [JsonProperty("max_combo")]
-        public uint MaxCombo { get; set; }
+        public int MaxCombo { get; set; }
 
         [JsonProperty("perfect")]
         public bool Perfect { get; set; }

@@ -13,7 +13,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// Get the osu!Spotlights info (name, date, etc.)
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
-        public static IEnumerable<OsuSpotlightEntry> GetSpotlights(this OrbitClient client)
+        public static IEnumerable<OsuSpotlightEntry> GetSpotlights<T>(this T client) where T : OrbitClient
         {
             var request = new OsuSpotlightsRequest();
             return client.Perform<OsuSpotlightsInfoContainer>(request).Spotlights;

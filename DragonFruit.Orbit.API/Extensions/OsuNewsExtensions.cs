@@ -2,6 +2,7 @@
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
 using System.Collections.Generic;
+using DragonFruit.Common.Data;
 using DragonFruit.Orbit.API.Objects.News;
 using DragonFruit.Orbit.API.Requests;
 
@@ -14,7 +15,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <returns>A container with an <see cref="IEnumerable{T}"/> of posts and a cursor for searching</returns>
-        public static OsuNewsContainer GetLatestNews(this OrbitClient client)
+        public static OsuNewsContainer GetLatestNews<T>(this T client) where T : ApiClient
         {
             var request = new OsuNewsRequest();
             return client.Perform<OsuNewsContainer>(request);

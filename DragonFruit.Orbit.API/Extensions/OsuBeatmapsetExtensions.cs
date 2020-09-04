@@ -15,7 +15,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="beatmapsetId">The id of the mapset/collection</param>
-        public static OsuBeatmapsetInfo GetBeatmapSetInfo(this OrbitClient client, uint beatmapsetId)
+        public static OsuBeatmapsetInfo GetBeatmapSetInfo<T>(this T client, uint beatmapsetId) where T : OrbitClient
         {
             var request = new OsuBeatmapsetInfoRequest(beatmapsetId);
             return client.Perform<OsuBeatmapsetInfo>(request);
@@ -26,7 +26,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="childMapId">An id of a map in the mapset/collection</param>
-        public static OsuBeatmapsetInfo GetBeatmapsetInfoByMapId(this OrbitClient client, uint childMapId)
+        public static OsuBeatmapsetInfo GetBeatmapsetInfoByMapId<T>(this T client, uint childMapId) where T : OrbitClient
         {
             var request = new OsuBeatmapsetLookupRequest(childMapId);
             return client.Perform<OsuBeatmapsetInfo>(request);
@@ -38,7 +38,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="query">The search query</param>
         /// <returns>An <see cref="IEnumerable{T}"/> of <see cref="OsuBeatmapInfo"/>s matching the search criteria</returns>
-        public static IEnumerable<OsuBeatmapsetInfo> SearchForBeatmapsets(this OrbitClient client, string query)
+        public static IEnumerable<OsuBeatmapsetInfo> SearchForBeatmapsets<T>(this T client, string query) where T : OrbitClient
         {
             var request = new OsuBeatmapsetSearchRequest(query);
             return client.Perform<OsuBeatmapsetSearchResultContainer>(request).Beatmapsets;
@@ -52,7 +52,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// <param name="mode">The game mode to return maps for</param>
         /// <param name="sortCriteria">The sort filters to apply to the search</param>
         /// <returns>An <see cref="IEnumerable{T}"/> of <see cref="OsuBeatmapInfo"/>s matching the search criteria</returns>
-        public static IEnumerable<OsuBeatmapsetInfo> SearchForBeatmapsets(this OrbitClient client, string query, GameMode mode, OsuBeatmapsetSearchSortCriteria sortCriteria)
+        public static IEnumerable<OsuBeatmapsetInfo> SearchForBeatmapsets<T>(this T client, string query, GameMode mode, OsuBeatmapsetSearchSortCriteria sortCriteria) where T : OrbitClient
         {
             var request = new OsuBeatmapsetSearchRequest
             {
@@ -71,7 +71,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// <param name="query">The search query</param>
         /// <param name="sortCriteria">The sort filters to apply to the search</param>
         /// <returns>An <see cref="IEnumerable{T}"/> of <see cref="OsuBeatmapInfo"/>s matching the search criteria</returns>
-        public static IEnumerable<OsuBeatmapsetInfo> SearchForBeatmapsets(this OrbitClient client, string query, OsuBeatmapsetSearchSortCriteria sortCriteria)
+        public static IEnumerable<OsuBeatmapsetInfo> SearchForBeatmapsets<T>(this T client, string query, OsuBeatmapsetSearchSortCriteria sortCriteria) where T : OrbitClient
         {
             var request = new OsuBeatmapsetSearchRequest
             {
@@ -87,7 +87,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <returns>A <see cref="OsuBeatmapsetEventsResultContainer"/> with the latest posts and the users concerned</returns>
-        public static OsuBeatmapsetEventsResultContainer GetBeatmapsetEvents(this OrbitClient client)
+        public static OsuBeatmapsetEventsResultContainer GetBeatmapsetEvents<T>(this T client) where T : OrbitClient
         {
             return GetBeatmapsetEvents(client, 0);
         }
@@ -98,7 +98,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="page">The page number to return results for</param>
         /// <returns>A <see cref="OsuBeatmapsetEventsResultContainer"/> with the latest posts and the users concerned</returns>
-        public static OsuBeatmapsetEventsResultContainer GetBeatmapsetEvents(this OrbitClient client, uint page)
+        public static OsuBeatmapsetEventsResultContainer GetBeatmapsetEvents<T>(this T client, uint page) where T : OrbitClient
         {
             var request = new OsuBeatmapsetEventsRequest
             {

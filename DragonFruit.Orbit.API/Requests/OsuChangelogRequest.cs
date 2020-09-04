@@ -11,7 +11,7 @@ namespace DragonFruit.Orbit.API.Requests
     public class OsuChangelogRequest : OrbitApiRequest
     {
         protected override string Route => $"/changelog/{(!string.IsNullOrEmpty(_streamName) ? $"{_streamName}/{Version}" : string.Empty)}";
-        public override bool RequireAuth => false;
+        protected override bool RequireAuth => false;
 
         /// <summary>
         /// Get the latest changelog entries

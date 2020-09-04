@@ -2,7 +2,6 @@
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
 using System;
-using DragonFruit.Orbit.API.Objects.Enums;
 using Newtonsoft.Json;
 
 namespace DragonFruit.Orbit.API.Objects.Beatmaps
@@ -13,14 +12,7 @@ namespace DragonFruit.Orbit.API.Objects.Beatmaps
         public uint Id { get; set; }
 
         [JsonProperty("type")]
-        private string CommentType
-        {
-            get => Type.ToQueryable();
-            set => Type = OsuBeatmapsetEventTypeExtensions.FromQueryable(value);
-        }
-
-        [JsonIgnore]
-        public OsuBeatmapsetEventType Type { get; set; }
+        private string Type { get; set; }
 
         [JsonProperty("comment")]
         public OsuBeatmapsetEventComment Comment { get; set; }

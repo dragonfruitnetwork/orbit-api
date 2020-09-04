@@ -15,14 +15,14 @@ namespace DragonFruit.Orbit.API.Extensions
         /// Get the authorising users' profile and info (publically accessible)
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
-        public static OsuUser GetCurrentUser(this OrbitClient client) => client.Perform<OsuUser>(new OsuUserRequest());
+        public static OsuUser GetCurrentUser<T>(this T client) where T : OrbitClient => client.Perform<OsuUser>(new OsuUserRequest());
 
         /// <summary>
         /// Get the authorising users' friend list
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <returns>an <see cref="IEnumerable{T}"/> of condensed <see cref="OsuUser"/>s</returns>
-        public static IEnumerable<OsuCondensedUser> GetFriends(this OrbitClient client) => client.Perform<IEnumerable<OsuCondensedUser>>(new OsuUserFriendsRequest());
+        public static IEnumerable<OsuCondensedUser> GetFriends<T>(this T client) where T : OrbitClient => client.Perform<IEnumerable<OsuCondensedUser>>(new OsuUserFriendsRequest());
 
         #region Non-Authenticating User Lookup
 
@@ -31,7 +31,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="user">The username/id of the user to lookup</param>
-        public static OsuUser GetUser(this OrbitClient client, string user)
+        public static OsuUser GetUser<T>(this T client, string user) where T : OrbitClient
         {
             var request = new OsuUserRequest(user);
             return client.Perform<OsuUser>(request);
@@ -43,7 +43,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="user">The username/id of the user to lookup</param>
         /// <param name="mode">Optional <see cref="GameMode"/> to return data for</param>
-        public static OsuUser GetUser(this OrbitClient client, string user, GameMode? mode)
+        public static OsuUser GetUser<T>(this T client, string user, GameMode? mode) where T : OrbitClient
         {
             var request = new OsuUserRequest
             {
@@ -63,7 +63,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="userId">The id of the user to lookup</param>
-        public static IEnumerable<OsuUserRecentActivity> GetRecentActivity(this OrbitClient client, uint userId)
+        public static IEnumerable<OsuUserRecentActivity> GetRecentActivity<T>(this T client, uint userId) where T : OrbitClient
         {
             return GetRecentActivity(client, userId, 0);
         }
@@ -74,7 +74,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="userId">The id of the user to lookup</param>
         /// <param name="page">The page number to return results for</param>
-        public static IEnumerable<OsuUserRecentActivity> GetRecentActivity(this OrbitClient client, uint userId, uint page)
+        public static IEnumerable<OsuUserRecentActivity> GetRecentActivity<T>(this T client, uint userId, uint page) where T : OrbitClient
         {
             var request = new OsuUserRecentActivityRequest(userId, page);
             return client.Perform<IEnumerable<OsuUserRecentActivity>>(request);
@@ -90,7 +90,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="userId">The id of the user to lookup</param>
         /// <param name="type">The <see cref="OsuUserScoreType"/> to return scores for</param>
-        public static IEnumerable<OsuUserScoreInfo> GetUserScores(this OrbitClient client, uint userId, OsuUserScoreType type)
+        public static IEnumerable<OsuUserScoreInfo> GetUserScores<T>(this T client, uint userId, OsuUserScoreType type) where T : OrbitClient
         {
             return GetUserScores(client, userId, null, type, 0, false);
         }
@@ -103,7 +103,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// <param name="type">The <see cref="OsuUserScoreType"/> to return scores for</param>
         /// <param name="mode">The <see cref="GameMode"/> to return scores for</param>
         /// <param name="includeRecentFails">If <see cref="OsuUserScoreType"/> is set to Recents, whether the API should include failed performances and quits</param>
-        public static IEnumerable<OsuUserScoreInfo> GetUserScores(this OrbitClient client, uint userId, GameMode? mode, OsuUserScoreType type, bool? includeRecentFails)
+        public static IEnumerable<OsuUserScoreInfo> GetUserScores<T>(this T client, uint userId, GameMode? mode, OsuUserScoreType type, bool? includeRecentFails) where T : OrbitClient
         {
             return GetUserScores(client, userId, mode, type, 0, includeRecentFails);
         }
@@ -117,7 +117,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// <param name="mode">The <see cref="GameMode"/> to return scores for</param>
         /// <param name="page">The page number to return results for</param>
         /// <param name="includeRecentFails">If <see cref="OsuUserScoreType"/> is set to Recents, whether the API should include failed performances and quits</param>
-        public static IEnumerable<OsuUserScoreInfo> GetUserScores(this OrbitClient client, uint userId, GameMode? mode, OsuUserScoreType type, uint page, bool? includeRecentFails)
+        public static IEnumerable<OsuUserScoreInfo> GetUserScores<T>(this T client, uint userId, GameMode? mode, OsuUserScoreType type, uint page, bool? includeRecentFails) where T : OrbitClient
         {
             var request = new OsuUserScoresRequest(userId, type)
             {
@@ -138,7 +138,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="userId">The id of the user to lookup</param>
-        public static IEnumerable<KudosuHistory> GetKudosuHistory(this OrbitClient client, uint userId)
+        public static IEnumerable<KudosuHistory> GetKudosuHistory<T>(this T client, uint userId) where T : OrbitClient
         {
             return GetKudosuHistory(client, userId, 0);
         }
@@ -149,7 +149,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="userId">The id of the user to lookup</param>
         /// <param name="page">The page to return results for</param>
-        public static IEnumerable<KudosuHistory> GetKudosuHistory(this OrbitClient client, uint userId, uint page)
+        public static IEnumerable<KudosuHistory> GetKudosuHistory<T>(this T client, uint userId, uint page) where T : OrbitClient
         {
             var request = new OsuUserKudosuRequest(userId, page);
             return client.Perform<IEnumerable<KudosuHistory>>(request);
@@ -166,7 +166,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// <param name="userId">The id of the user authoring the maps</param>
         /// <param name="type">The <see cref="OsuUserBeatmapsetStatus"/> to find maps for</param>
         /// <returns>An <see cref="IEnumerable{T}"/> of <see cref="OsuBeatmapInfo"/>s</returns>
-        public static IEnumerable<OsuBeatmapsetInfo> GetUserBeatmapsets(this OrbitClient client, uint userId, OsuUserBeatmapsetStatus type)
+        public static IEnumerable<OsuBeatmapsetInfo> GetUserBeatmapsets<T>(this T client, uint userId, OsuUserBeatmapsetStatus type) where T : OrbitClient
         {
             return GetUserBeatmapsets(client, userId, type, 0);
         }
@@ -179,7 +179,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// <param name="type">The <see cref="OsuUserBeatmapsetStatus"/> to find maps for</param>
         /// <param name="page">The page to return results for</param>
         /// <returns>An <see cref="IEnumerable{T}"/> of <see cref="OsuBeatmapInfo"/>s</returns>
-        public static IEnumerable<OsuBeatmapsetInfo> GetUserBeatmapsets(this OrbitClient client, uint userId, OsuUserBeatmapsetStatus type, uint page)
+        public static IEnumerable<OsuBeatmapsetInfo> GetUserBeatmapsets<T>(this T client, uint userId, OsuUserBeatmapsetStatus type, uint page) where T : OrbitClient
         {
             var request = new OsuUserBeatmapRequest(userId, type, page);
             return client.Perform<IEnumerable<OsuBeatmapsetInfo>>(request);

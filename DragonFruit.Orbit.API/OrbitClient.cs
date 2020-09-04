@@ -4,7 +4,6 @@
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
-using System.Threading.Tasks;
 using DragonFruit.Common.Data;
 using DragonFruit.Common.Data.Handlers;
 using DragonFruit.Orbit.API.Exceptions;
@@ -124,11 +123,11 @@ namespace DragonFruit.Orbit.API
             return base.Perform<T>(requestData);
         }
 
-        protected override T ValidateAndProcess<T>(Task<HttpResponseMessage> response) where T : class =>
-            response.Result.StatusCode switch
+        protected override T ValidateAndProcess<T>(HttpResponseMessage response, HttpRequestMessage request) where T : class =>
+            response.StatusCode switch
             {
                 HttpStatusCode.Unauthorized => throw new TokenExpiredException(_token),
-                _ => base.ValidateAndProcess<T>(response)
+                _ => base.ValidateAndProcess<T>(response, request)
             };
     }
 }

@@ -19,7 +19,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="mode">The <see cref="GameMode"/> to load rankings for</param>
-        public static OsuLeaderboardContainer<OsuCountryLeaderboardEntry> GetCountryRankings(this OrbitClient client, GameMode mode)
+        public static OsuLeaderboardContainer<OsuCountryLeaderboardEntry> GetCountryRankings<T>(this T client, GameMode mode) where T : OrbitClient
             => GetCountryRankings(client, mode, DefaultPage);
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="mode">The <see cref="GameMode"/> to load rankings for</param>
-        public static OsuLeaderboardContainer<OsuPlayerLeaderboardEntry> GetPerformanceRankings(this OrbitClient client, GameMode mode)
+        public static OsuLeaderboardContainer<OsuPlayerLeaderboardEntry> GetPerformanceRankings<T>(this T client, GameMode mode) where T : OrbitClient
             => GetPerformanceRankings(client, mode, DefaultPage);
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace DragonFruit.Orbit.API.Extensions
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="mode">The <see cref="GameMode"/> to load rankings for</param>
-        public static OsuLeaderboardContainer<OsuPlayerLeaderboardEntry> GetTotalRankedScoreRankings(this OrbitClient client, GameMode mode)
+        public static OsuLeaderboardContainer<OsuPlayerLeaderboardEntry> GetTotalRankedScoreRankings<T>(this T client, GameMode mode) where T : OrbitClient
             => GetTotalRankedScoreRankings(client, mode, DefaultPage);
 
         #endregion
@@ -45,31 +45,31 @@ namespace DragonFruit.Orbit.API.Extensions
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="mode">The <see cref="GameMode"/> to load rankings for</param>
-        public static OsuLeaderboardContainer<OsuCountryLeaderboardEntry> GetCountryRankings(this OrbitClient client, GameMode mode, uint page)
-            => GetLeaderboard<OsuCountryLeaderboardEntry>(client, mode, OsuLeaderboardRankingType.Country, page);
+        public static OsuLeaderboardContainer<OsuCountryLeaderboardEntry> GetCountryRankings<T>(this T client, GameMode mode, uint page) where T : OrbitClient
+            => GetLeaderboard<OsuCountryLeaderboardEntry, T>(client, mode, OsuLeaderboardRankingType.Country, page);
 
         /// <summary>
         /// List the specified page of the osu! top performing players leaderboard
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="mode">The <see cref="GameMode"/> to load rankings for</param>
-        public static OsuLeaderboardContainer<OsuPlayerLeaderboardEntry> GetPerformanceRankings(this OrbitClient client, GameMode mode, uint page)
-            => GetLeaderboard<OsuPlayerLeaderboardEntry>(client, mode, OsuLeaderboardRankingType.Country, page);
+        public static OsuLeaderboardContainer<OsuPlayerLeaderboardEntry> GetPerformanceRankings<T>(this T client, GameMode mode, uint page) where T : OrbitClient
+            => GetLeaderboard<OsuPlayerLeaderboardEntry, T>(client, mode, OsuLeaderboardRankingType.Country, page);
 
         /// <summary>
         /// List the specified page of the osu! top performances leaderboard
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="mode">The <see cref="GameMode"/> to load rankings for</param>
-        public static OsuLeaderboardContainer<OsuPlayerLeaderboardEntry> GetTotalRankedScoreRankings(this OrbitClient client, GameMode mode, uint page)
-            => GetLeaderboard<OsuPlayerLeaderboardEntry>(client, mode, OsuLeaderboardRankingType.Score, page);
+        public static OsuLeaderboardContainer<OsuPlayerLeaderboardEntry> GetTotalRankedScoreRankings<T>(this T client, GameMode mode, uint page) where T : OrbitClient
+            => GetLeaderboard<OsuPlayerLeaderboardEntry, T>(client, mode, OsuLeaderboardRankingType.Score, page);
 
         /// <summary>
         /// Get the leaderboard for a specified osu!Spotlights leaderboard
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="mode">The <see cref="GameMode"/> to load rankings for</param>
-        public static OsuSpotlightsLeaderboardContainer GetSpotlightLeaderboard(this OrbitClient client, GameMode mode, uint spotlightsId)
+        public static OsuSpotlightsLeaderboardContainer GetSpotlightLeaderboard<T>(this T client, GameMode mode, uint spotlightsId) where T : OrbitClient
         {
             var request = new OsuSpotlightsLeaderboardRequest(mode, spotlightsId);
             return client.Perform<OsuSpotlightsLeaderboardContainer>(request);
@@ -78,7 +78,9 @@ namespace DragonFruit.Orbit.API.Extensions
         /// <summary>
         /// Generic method for getting most leaderboard types
         /// </summary>
-        private static OsuLeaderboardContainer<T> GetLeaderboard<T>(this OrbitClient client, GameMode mode, OsuLeaderboardRankingType type, uint page) where T : class
+        private static OsuLeaderboardContainer<T> GetLeaderboard<T, TClient>(this TClient client, GameMode mode, OsuLeaderboardRankingType type, uint page)
+            where T : class
+            where TClient : OrbitClient
         {
             var request = new OsuLeaderboardRequest(mode, type)
             {
