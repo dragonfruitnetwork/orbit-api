@@ -1,0 +1,30 @@
+﻿// Orbit API Copyright 2020 DragonFruit Network
+// Licensed under the MIT License - see the LICENSE file at the root of the project for more info
+
+using System;
+using DragonFruit.Common.Data.Parameters;
+
+namespace DragonFruit.Orbit.Api.Legacy.Requests
+{
+    public class OsuLegacyUserRequest : OsuLegacyUserBasedRequest
+    {
+        private uint? _dateRange;
+
+        public override string Target => "user";
+
+        [QueryParameter("event_days")]
+        public uint EventDateRange
+        {
+            get => _dateRange ??= 7;
+            set
+            {
+                if (value > 31 || value <= 0)
+                {
+                    throw new ArgumentOutOfRangeException(nameof(EventDateRange), "Must be in the range 1-31");
+                }
+
+                _dateRange = value;
+            }
+        }
+    }
+}
