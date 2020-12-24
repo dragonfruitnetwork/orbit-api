@@ -10,7 +10,7 @@ namespace DragonFruit.Orbit.Api
         public override string Path => $"{OrbitClient.BaseEndpoint}/api/v2/{Stub}";
         protected override bool RequireAuth => true;
 
-        protected abstract string Stub { get; set; }
+        protected abstract string Stub { get; }
 
         // RequireAuth is protected/internal so the client can't see it (so we create a redirect)
         internal bool ValidateToken => RequireAuth;

@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Net.Http;
 using System.Security.Authentication;
 using System.Threading;
@@ -108,5 +109,18 @@ namespace DragonFruit.Orbit.Api
             // we need to wrap the handler in a header preservation handler because of user lookup redirs
             return handler is HeaderPreservingRedirectHandler ? handler : new HeaderPreservingRedirectHandler(handler);
         }
+
+        protected override T ValidateAndProcess<T>(HttpResponseMessage response, HttpRequestMessage request) => response.StatusCode switch
+        {
+            HttpStatusCode.NoContent => default,
+            // todo add others/error message
+
+            _ => base.ValidateAndProcess<T>(response, request)
+        };
+
+        /// <summary>
+        /// Signals to the client the token should be reset
+        /// </summary>
+        protected internal void InvalidateToken() => _token = null;
     }
 }
