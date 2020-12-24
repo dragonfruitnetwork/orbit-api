@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 
 namespace DragonFruit.Orbit.Api.Legacy.Entities
 {
+    [Serializable]
     public class OsuLegacyMatchRound
     {
         [JsonProperty("game_id")]

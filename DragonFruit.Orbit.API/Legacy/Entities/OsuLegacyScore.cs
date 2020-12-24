@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 
 namespace DragonFruit.Orbit.Api.Legacy.Entities
 {
+    [Serializable]
     public class OsuLegacyScore
     {
         [JsonProperty("user_id")]

@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 
 namespace DragonFruit.Orbit.Api.Legacy.Entities
 {
+    [Serializable]
     public class OsuLegacyUserEvent
     {
         [JsonProperty("display_html")]
