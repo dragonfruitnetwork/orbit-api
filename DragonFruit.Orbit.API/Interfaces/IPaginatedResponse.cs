@@ -7,6 +7,6 @@ namespace DragonFruit.Orbit.Api.Interfaces
 {
     public interface IPaginatedResponse
     {
-        public IEnumerable<KeyValuePair<string, string>> Cursor { get; set; }
+        public IReadOnlyDictionary<string, string> Cursor { get; set; }
     }
 }

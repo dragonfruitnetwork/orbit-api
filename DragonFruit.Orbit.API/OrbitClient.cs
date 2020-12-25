@@ -50,12 +50,16 @@ namespace DragonFruit.Orbit.Api
         /// </summary>
         public T Perform<T>(OrbitRequest request, CancellationToken token = default) where T : class
         {
-            if (request.ValidateToken && _token?.Expired != false)
+            if (request.ValidateToken)
             {
-                _token = GetToken();
+                if (_token?.Expired != false)
+                {
+                    _token = GetToken();
+                }
+
+                request.WithAuthHeader($"Bearer {_token.AccessToken}");
             }
 
-            request.WithAuthHeader($"Bearer {_token.AccessToken}");
             return base.Perform<T>(request, token);
         }
 

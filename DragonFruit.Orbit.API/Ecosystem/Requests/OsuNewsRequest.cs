@@ -18,6 +18,6 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Requests
         [QueryParameter("limit")]
         public uint? Limit { get; set; }
 
-        public IEnumerable<KeyValuePair<string, string>> Cursor { get; set; }
+        public IReadOnlyDictionary<string, string> Cursor { get; set; }
     }
 }

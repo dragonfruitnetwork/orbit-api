@@ -10,7 +10,7 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Requests
     /// </summary>
     public class OsuChangelogRequest : OrbitRequest
     {
-        protected override string Stub => $"changelogs/{Target.ToString().ToLower()}/{Version}";
+        protected override string Stub => $"changelog/{Target.ToString().ToLower()}/{Version}";
         protected override bool RequireAuth => false;
 
         public OsuChangelogRequest(ChangelogTarget target, string version)

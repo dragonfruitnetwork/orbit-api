@@ -11,7 +11,7 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Entities
     public class OsuChangelogEntry
     {
         [JsonProperty("id")]
-        public uint Id { get; set; }
+        public uint? Id { get; set; }
 
         [CanBeNull]
         [JsonProperty("repository")]
