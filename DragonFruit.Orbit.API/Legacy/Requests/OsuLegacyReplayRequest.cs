@@ -14,6 +14,9 @@ namespace DragonFruit.Orbit.Api.Legacy.Requests
         // this is the same as a legacy score request but has no limit
         public override uint? Limit => null;
 
+        [QueryParameter("s")]
+        public ulong? ScoreId { get; set; }
+
         [QueryParameter("mods", EnumHandlingMode.Numeric)]
         public LegacyMods? Mods { get; set; }
     }

@@ -5,6 +5,6 @@ namespace DragonFruit.Orbit.Api.Tests
 {
     public abstract class OrbitApiTest
     {
-        
+        protected OrbitTestClient Client { get; } = new();
     }
 }

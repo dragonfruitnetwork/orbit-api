@@ -53,5 +53,21 @@ namespace DragonFruit.Orbit.Api.Legacy.Extensions
 
             return client.Perform<OsuLegacyReplayContent>((OsuLegacyRequest)request);
         }
+
+        /// <summary>
+        /// Get a replay from a username and map id
+        /// </summary>
+        /// <param name="client">The <see cref="OrbitClient"/> to use</param>
+        /// <param name="scoreId">The id of the score</param>
+        /// <returns>Container for the Base64 encoded replay. This is not the .osr file, but just the input data (key/mouse)</returns>
+        public static OsuLegacyReplayContent GetBeatmapReplay<T>(this T client, ulong scoreId) where T : OrbitClient
+        {
+            var request = new OsuLegacyReplayRequest
+            {
+                ScoreId = scoreId
+            };
+
+            return client.Perform<OsuLegacyReplayContent>((OsuLegacyRequest)request);
+        }
     }
 }
