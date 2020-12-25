@@ -6,7 +6,7 @@ using DragonFruit.Common.Data.Parameters;
 
 namespace DragonFruit.Orbit.Api.Legacy.Requests
 {
-    public abstract class OrbitLegacyRequest : ApiRequest
+    public abstract class OsuLegacyRequest : ApiRequest
     {
         public override string Path => $"{OrbitClient.BaseEndpoint}/api/get_{Target}";
 

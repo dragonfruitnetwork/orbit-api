@@ -63,10 +63,10 @@ namespace DragonFruit.Orbit.Api
 
         public IEnumerable<T> Perform<T>(OsuLegacyUserBasedRequest request, CancellationToken token = default) where T : class
         {
-            return Perform<IEnumerable<T>>((OrbitLegacyRequest)request, token);
+            return Perform<IEnumerable<T>>((OsuLegacyRequest)request, token);
         }
 
-        public T Perform<T>(OrbitLegacyRequest request, CancellationToken token = default) where T : class
+        public T Perform<T>(OsuLegacyRequest request, CancellationToken token = default) where T : class
         {
             request.ApiKey = LegacyKey ?? throw new AuthenticationException($"{nameof(LegacyKey)} has no value");
             return base.Perform<T>(request, token);

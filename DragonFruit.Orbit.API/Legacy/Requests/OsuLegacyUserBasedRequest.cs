@@ -6,7 +6,7 @@ using DragonFruit.Orbit.Api.Legacy.Enums;
 
 namespace DragonFruit.Orbit.Api.Legacy.Requests
 {
-    public abstract class OsuLegacyUserBasedRequest : OrbitLegacyRequest
+    public abstract class OsuLegacyUserBasedRequest : OsuLegacyRequest
     {
         [QueryParameter("u")]
         public string UserIdentifier { get; set; }

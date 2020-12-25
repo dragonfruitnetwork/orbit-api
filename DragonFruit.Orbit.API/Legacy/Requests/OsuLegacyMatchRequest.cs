@@ -5,9 +5,14 @@ using DragonFruit.Common.Data.Parameters;
 
 namespace DragonFruit.Orbit.Api.Legacy.Requests
 {
-    public class OsuLegacyMatchInfoRequest : OrbitLegacyRequest
+    public class OsuLegacyMatchRequest : OsuLegacyRequest
     {
         public override string Target => "match";
+
+        public OsuLegacyMatchRequest(uint matchId)
+        {
+            MatchId = matchId;
+        }
 
         [QueryParameter("mp")]
         public uint MatchId { get; set; }
