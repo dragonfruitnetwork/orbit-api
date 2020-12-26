@@ -15,7 +15,7 @@ namespace DragonFruit.Orbit.Api.Utils
     /// </remarks>
     internal static class EnumUtils
     {
-        public static string ToDisplayValue(this Enum value)
+        public static string ToExternalValue(this Enum value)
         {
             var enumType = value.GetType();
             var enumTypeInfo = enumType.GetTypeInfo();
@@ -26,7 +26,7 @@ namespace DragonFruit.Orbit.Api.Utils
                                  .Cast<Enum>()
                                  .Where(e => e.CompareTo(Convert.ChangeType(Enum.ToObject(enumType, 0), enumType)) != 0)
                                  .Where(value.HasFlag)
-                                 .Select(e => e.ToDisplayValue());
+                                 .Select(e => e.ToExternalValue());
 
                 return string.Join(",", values);
             }
@@ -47,7 +47,7 @@ namespace DragonFruit.Orbit.Api.Utils
         {
             return Enum.GetValues(type)
                        .Cast<Enum>()
-                       .FirstOrDefault(x => x.ToDisplayValue() == value);
+                       .FirstOrDefault(x => x.ToExternalValue() == value);
         }
     }
 }

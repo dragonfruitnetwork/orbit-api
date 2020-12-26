@@ -17,7 +17,7 @@ namespace DragonFruit.Orbit.Api.Utils
                 return;
             }
 
-            writer.WriteValue(((Enum)value).ToDisplayValue());
+            writer.WriteValue(((Enum)value).ToExternalValue());
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)

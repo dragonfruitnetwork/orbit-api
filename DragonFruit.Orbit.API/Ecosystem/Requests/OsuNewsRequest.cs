@@ -2,9 +2,9 @@
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
 using System.Collections.Generic;
-using System.Linq;
 using DragonFruit.Common.Data.Parameters;
 using DragonFruit.Orbit.Api.Interfaces;
+using DragonFruit.Orbit.Api.Utils;
 
 namespace DragonFruit.Orbit.Api.Ecosystem.Requests
 {
@@ -13,7 +13,7 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Requests
         protected override string Stub => "news";
 
         protected override bool RequireAuth => false;
-        protected override IEnumerable<KeyValuePair<string, string>> AdditionalQueries => Cursor?.Select(x => new KeyValuePair<string, string>($"cursor[{x.Key}]", x.Value));
+        protected override IEnumerable<KeyValuePair<string, string>> AdditionalQueries => CursorUtils.ToQueries(Cursor);
 
         [QueryParameter("limit")]
         public uint? Limit { get; set; }
