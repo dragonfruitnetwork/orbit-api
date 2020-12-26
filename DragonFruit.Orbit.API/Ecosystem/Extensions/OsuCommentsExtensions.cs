@@ -22,7 +22,7 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Extensions
 
         public static OsuCommentsSummary GetComments<T>(this T client, uint commentId, OsuCommentsSummary last = null, uint? limit = null) where T : OrbitClient
         {
-            var request = new OsuCommentsRequest(commentId)
+            var request = new OsuCommentsRequest(commentId, true)
             {
                 Limit = limit,
                 Cursor = last?.Cursor
@@ -34,6 +34,17 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Extensions
         public static OsuCommentsSummary GetComments<T>(this T client, CommentableType type, uint typeId, OsuCommentsSummary last = null, uint? limit = null) where T : OrbitClient
         {
             var request = new OsuCommentsRequest(type, typeId)
+            {
+                Limit = limit,
+                Cursor = last?.Cursor
+            };
+
+            return client.Perform<OsuCommentsSummary>(request);
+        }
+
+        public static OsuCommentsSummary GetComment<T>(this T client, uint commentId, OsuCommentsSummary last = null, uint? limit = null) where T : OrbitClient
+        {
+            var request = new OsuCommentsRequest(commentId, false)
             {
                 Limit = limit,
                 Cursor = last?.Cursor

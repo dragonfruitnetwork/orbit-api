@@ -11,7 +11,8 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Requests
 {
     public class OsuCommentsRequest : OrbitRequest, IPaginatedRequest
     {
-        protected override string Stub => "comments";
+        protected override string Stub => CommentId.HasValue ? $"comments/{CommentId.Value}" : "comments";
+
         protected override IEnumerable<KeyValuePair<string, string>> AdditionalQueries => CursorUtils.ToQueries(Cursor);
 
         /// <summary>
@@ -33,10 +34,12 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Requests
         /// <summary>
         /// Get the replies to a comment (by providing the parent id)
         /// </summary>
-        public OsuCommentsRequest(uint? parentId)
+        public OsuCommentsRequest(uint parentId, bool parent)
         {
             ParentId = parentId;
         }
+
+        public uint? CommentId { get; set; }
 
         /// <summary>
         /// Sort method for the comments
