@@ -2,7 +2,7 @@
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
 using System.Linq;
-using DragonFruit.Orbit.Api.Ecosystem.Enum;
+using DragonFruit.Orbit.Api.Ecosystem.Enums;
 using DragonFruit.Orbit.Api.Ecosystem.Extensions;
 using NUnit.Framework;
 
@@ -11,6 +11,7 @@ namespace DragonFruit.Orbit.Api.Tests.Ecosystem
     [TestFixture]
     public class OsuChangelogTests : OrbitApiTest
     {
+        [TestCase(ChangelogTarget.Stable, "20201210.2", new[] { 10184u, 10190u })]
         [TestCase(ChangelogTarget.Lazer, "2020.1225.0", new[] { 10184u, 10190u })]
         public void TestTargetedChangelogs(ChangelogTarget target, string version, params uint[] expectedIds)
         {

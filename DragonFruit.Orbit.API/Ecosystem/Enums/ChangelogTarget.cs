@@ -2,19 +2,23 @@
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
 using System.ComponentModel;
+using DragonFruit.Orbit.Api.Utils;
 
-namespace DragonFruit.Orbit.Api.Ecosystem.Enum
+namespace DragonFruit.Orbit.Api.Ecosystem.Enums
 {
     public enum ChangelogTarget
     {
         [Description("Stable")]
-        Stable40,
-
-        [Description("Stable Fallback")]
+        [ExternalValue("stable40")]
         Stable,
 
+        [Description("Stable Fallback")]
+        [ExternalValue("stable")]
+        StableFallback,
+
         [Description("Beta")]
-        Beta40,
+        [ExternalValue("beta40")]
+        Beta,
 
         [Description("Cutting Edge")]
         CuttingEdge,

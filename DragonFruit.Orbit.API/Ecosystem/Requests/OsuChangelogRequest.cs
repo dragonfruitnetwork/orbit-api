@@ -1,7 +1,8 @@
 ﻿// Orbit API Copyright 2020 DragonFruit Network
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
-using DragonFruit.Orbit.Api.Ecosystem.Enum;
+using DragonFruit.Orbit.Api.Ecosystem.Enums;
+using DragonFruit.Orbit.Api.Utils;
 
 namespace DragonFruit.Orbit.Api.Ecosystem.Requests
 {
@@ -10,7 +11,7 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Requests
     /// </summary>
     public class OsuChangelogRequest : OrbitRequest
     {
-        protected override string Stub => $"changelog/{Target.ToString().ToLower()}/{Version}";
+        protected override string Stub => $"changelog/{Target.ToDisplayValue()}/{Version}";
         protected override bool RequireAuth => false;
 
         public OsuChangelogRequest(ChangelogTarget target, string version)

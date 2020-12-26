@@ -2,6 +2,8 @@
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
 using System;
+using DragonFruit.Orbit.Api.Ecosystem.Enums;
+using DragonFruit.Orbit.Api.Utils;
 using JetBrains.Annotations;
 using Newtonsoft.Json;
 
@@ -14,7 +16,8 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Entities
         public uint Id { get; set; }
 
         [JsonProperty("name")]
-        public string Name { get; set; }
+        [JsonConverter(typeof(ExternalEnumConverter))]
+        public ChangelogTarget Target { get; set; }
 
         [JsonProperty("display_name")]
         public string DisplayName { get; set; }

@@ -10,7 +10,7 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Entities
     public class OsuChangelogEntryAuthor
     {
         [JsonProperty("id")]
-        public uint Id { get; set; }
+        public uint? Id { get; set; }
 
         [JsonProperty("display_name")]
         public string DisplayName { get; set; }

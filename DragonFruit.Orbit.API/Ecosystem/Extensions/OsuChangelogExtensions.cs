@@ -2,7 +2,7 @@
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
 using DragonFruit.Orbit.Api.Ecosystem.Entities;
-using DragonFruit.Orbit.Api.Ecosystem.Enum;
+using DragonFruit.Orbit.Api.Ecosystem.Enums;
 using DragonFruit.Orbit.Api.Ecosystem.Requests;
 
 namespace DragonFruit.Orbit.Api.Ecosystem.Extensions
