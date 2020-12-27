@@ -15,7 +15,7 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Entities
         public bool More { get; set; }
 
         [JsonProperty("has_more_id")]
-        public uint? ModeId { get; set; }
+        public uint? MoreId { get; set; }
 
         [JsonProperty("sort")]
         [JsonConverter(typeof(ExternalEnumConverter))]
