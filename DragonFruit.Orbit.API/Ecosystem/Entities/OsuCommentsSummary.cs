@@ -13,7 +13,7 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Entities
 {
     [Serializable]
     [JsonObject(MemberSerialization.OptIn)]
-    public class OsuCommentsSummary : IPaginatedResponse
+    public class OsuCommentsSummary : IPaginatedContent
     {
         private string _sortMethodName;
 

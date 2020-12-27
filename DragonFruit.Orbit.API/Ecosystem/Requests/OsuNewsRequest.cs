@@ -8,7 +8,7 @@ using DragonFruit.Orbit.Api.Utils;
 
 namespace DragonFruit.Orbit.Api.Ecosystem.Requests
 {
-    public class OsuNewsRequest : OrbitRequest, IPaginatedRequest
+    public class OsuNewsRequest : OrbitRequest, IPaginatedContent, IHasLimit
     {
         protected override string Stub => "news";
 

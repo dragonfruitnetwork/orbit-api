@@ -1,10 +1,11 @@
 ﻿// Orbit API Copyright 2020 DragonFruit Network
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
-namespace DragonFruit.Orbit.Api.Interfaces
+namespace DragonFruit.Orbit.Api.Leaderboards.Enums
 {
-    public interface IPaginatedRequest : IPaginatedResponse
+    public enum LeaderboardFilterMode
     {
-        public uint? Limit { get; set; }
+        All,
+        Friends
     }
 }

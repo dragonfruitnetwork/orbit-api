@@ -13,7 +13,6 @@
     <ItemGroup>
       <Folder Include="Beatmaps" />
       <Folder Include="Changelogs" />
-      <Folder Include="Leaderboards\Requests" />
       <Folder Include="Users" />
     </ItemGroup>
 
