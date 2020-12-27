@@ -9,7 +9,7 @@ using DragonFruit.Orbit.Api.Utils;
 
 namespace DragonFruit.Orbit.Api.Leaderboards.Requests
 {
-    public class OsuRankingRequest : OrbitRequest, IPaginatedContent
+    public class OsuRankingRequest : OrbitRequest, IPaginatedByCursor
     {
         private string _country;
         private uint? _spotlight;

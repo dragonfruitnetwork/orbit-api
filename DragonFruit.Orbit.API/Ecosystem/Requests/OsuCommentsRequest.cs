@@ -9,7 +9,7 @@ using DragonFruit.Orbit.Api.Utils;
 
 namespace DragonFruit.Orbit.Api.Ecosystem.Requests
 {
-    public class OsuCommentsRequest : OrbitRequest, IPaginatedContent, IHasLimit
+    public class OsuCommentsRequest : OrbitRequest, IPaginatedByCursor, IHasLimit
     {
         protected override string Stub => CommentId.HasValue ? $"comments/{CommentId.Value}" : "comments";
 

@@ -10,7 +10,7 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Entities
 {
     [Serializable]
     [JsonObject(MemberSerialization.OptIn)]
-    public class OsuNewsFeed : IPaginatedContent
+    public class OsuNewsFeed : IPaginatedByCursor
     {
         [JsonProperty("news_posts")]
         public IEnumerable<OsuNewsEntry> Entries { get; set; }

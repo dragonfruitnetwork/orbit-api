@@ -7,6 +7,8 @@ namespace DragonFruit.Orbit.Api
 {
     public abstract class OrbitRequest : ApiRequest
     {
+        protected const uint DefaultLimit = 15;
+
         public override string Path => $"{OrbitClient.BaseEndpoint}/api/v2/{Stub}";
         protected override bool RequireAuth => true;
 
