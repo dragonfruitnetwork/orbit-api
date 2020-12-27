@@ -5,6 +5,7 @@ using DragonFruit.Common.Data.Parameters;
 using DragonFruit.Orbit.Api.Interfaces;
 using DragonFruit.Orbit.Api.User.Enums;
 using DragonFruit.Orbit.Api.Utils;
+using JetBrains.Annotations;
 
 namespace DragonFruit.Orbit.Api.User.Requests
 {
@@ -41,6 +42,7 @@ namespace DragonFruit.Orbit.Api.User.Requests
         [QueryParameter("include_fails")]
         public bool? IncludeFails { get; set; }
 
+        [NotNull]
         [QueryParameter("limit")]
         public uint? Limit
         {
@@ -49,7 +51,6 @@ namespace DragonFruit.Orbit.Api.User.Requests
         }
 
         [QueryParameter("offset")]
-        // ReSharper disable once PossibleInvalidOperationException
         public uint Offset => Page * Limit.Value;
     }
 }

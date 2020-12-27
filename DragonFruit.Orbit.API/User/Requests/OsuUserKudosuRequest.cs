@@ -3,6 +3,7 @@
 
 using DragonFruit.Common.Data.Parameters;
 using DragonFruit.Orbit.Api.Interfaces;
+using JetBrains.Annotations;
 
 namespace DragonFruit.Orbit.Api.User.Requests
 {
@@ -20,6 +21,7 @@ namespace DragonFruit.Orbit.Api.User.Requests
         public uint Id { get; set; }
         public uint Page { get; set; }
 
+        [NotNull]
         [QueryParameter("limit")]
         public uint? Limit
         {
@@ -27,7 +29,6 @@ namespace DragonFruit.Orbit.Api.User.Requests
             set => _limit = value;
         }
 
-        // ReSharper disable once PossibleInvalidOperationException
         [QueryParameter("offset")]
         public uint Offset => Page * Limit.Value;
     }
