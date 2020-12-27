@@ -32,11 +32,18 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Requests
         }
 
         /// <summary>
-        /// Get the replies to a comment (by providing the parent id)
+        /// Get a comment or the replies to a comment
         /// </summary>
-        public OsuCommentsRequest(uint parentId, bool parent)
+        public OsuCommentsRequest(uint id, bool parent)
         {
-            ParentId = parentId;
+            if (parent)
+            {
+                ParentId = id;
+            }
+            else
+            {
+                CommentId = id;
+            }
         }
 
         public uint? CommentId { get; set; }
