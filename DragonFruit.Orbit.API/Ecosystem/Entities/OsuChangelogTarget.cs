@@ -10,14 +10,26 @@ using Newtonsoft.Json;
 namespace DragonFruit.Orbit.Api.Ecosystem.Entities
 {
     [Serializable]
+    [JsonObject(MemberSerialization.OptIn)]
     public class OsuChangelogTarget
     {
+        private string _targetName;
+
         [JsonProperty("id")]
         public uint Id { get; set; }
 
         [JsonProperty("name")]
-        [JsonConverter(typeof(ExternalEnumConverter))]
-        public ChangelogTarget Target { get; set; }
+        public string TargetName
+        {
+            get => _targetName;
+            set
+            {
+                _targetName = value;
+                Target = EnumUtils.GetInternalValue<ChangelogTarget>(value);
+            }
+        }
+
+        public ChangelogTarget? Target { get; set; }
 
         [JsonProperty("display_name")]
         public string DisplayName { get; set; }

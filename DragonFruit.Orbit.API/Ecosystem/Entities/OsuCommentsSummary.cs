@@ -1,6 +1,7 @@
 ﻿// Orbit API Copyright 2020 DragonFruit Network
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
+using System;
 using System.Collections.Generic;
 using DragonFruit.Orbit.Api.Ecosystem.Enums;
 using DragonFruit.Orbit.Api.Interfaces;
@@ -9,8 +10,12 @@ using Newtonsoft.Json;
 
 namespace DragonFruit.Orbit.Api.Ecosystem.Entities
 {
+    [Serializable]
+    [JsonObject(MemberSerialization.OptIn)]
     public class OsuCommentsSummary : IPaginatedResponse
     {
+        private string _sortMethodName;
+
         [JsonProperty("has_more")]
         public bool More { get; set; }
 
@@ -18,8 +23,17 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Entities
         public uint? MoreId { get; set; }
 
         [JsonProperty("sort")]
-        [JsonConverter(typeof(ExternalEnumConverter))]
-        public CommentSort SortedBy { get; set; }
+        public string SortMethodName
+        {
+            get => _sortMethodName;
+            set
+            {
+                _sortMethodName = value;
+                SortedBy = EnumUtils.GetInternalValue<CommentSort>(value);
+            }
+        }
+
+        public CommentSort? SortedBy { get; set; }
 
         // todo add users and user votes
 

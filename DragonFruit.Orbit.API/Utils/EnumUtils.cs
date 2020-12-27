@@ -4,6 +4,7 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using JetBrains.Annotations;
 
 namespace DragonFruit.Orbit.Api.Utils
 {
@@ -43,11 +44,12 @@ namespace DragonFruit.Orbit.Api.Utils
             return elementName.ToLowerInvariant();
         }
 
-        public static Enum GetDisplayValue(this Type type, string value)
+        [CanBeNull]
+        public static T GetInternalValue<T>(string value) where T : Enum
         {
-            return Enum.GetValues(type)
-                       .Cast<Enum>()
-                       .FirstOrDefault(x => x.ToExternalValue() == value);
+            return (T)Enum.GetValues(typeof(T))
+                          .Cast<Enum>()
+                          .FirstOrDefault(x => x.ToExternalValue() == value);
         }
     }
 }

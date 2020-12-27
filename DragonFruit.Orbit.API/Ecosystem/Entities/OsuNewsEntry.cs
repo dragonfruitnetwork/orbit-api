@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 namespace DragonFruit.Orbit.Api.Ecosystem.Entities
 {
     [Serializable]
+    [JsonObject(MemberSerialization.OptIn)]
     public class OsuNewsEntry
     {
         [JsonProperty("id")]

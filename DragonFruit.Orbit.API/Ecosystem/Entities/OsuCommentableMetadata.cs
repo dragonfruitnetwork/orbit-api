@@ -1,20 +1,34 @@
 ﻿// Orbit API Copyright 2020 DragonFruit Network
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
+using System;
 using DragonFruit.Orbit.Api.Ecosystem.Enums;
 using DragonFruit.Orbit.Api.Utils;
 using Newtonsoft.Json;
 
 namespace DragonFruit.Orbit.Api.Ecosystem.Entities
 {
+    [Serializable]
+    [JsonObject(MemberSerialization.OptIn)]
     public class OsuCommentableMetadata
     {
+        private string _typeName;
+
         [JsonProperty("id")]
         public uint Id { get; set; }
 
         [JsonProperty("type")]
-        [JsonConverter(typeof(ExternalEnumConverter))]
-        public CommentableType Type { get; set; }
+        public string TypeName
+        {
+            get => _typeName;
+            set
+            {
+                _typeName = value;
+                Type = EnumUtils.GetInternalValue<CommentableType>(value);
+            }
+        }
+
+        public CommentableType? Type { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }

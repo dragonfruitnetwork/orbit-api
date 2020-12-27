@@ -54,6 +54,11 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Requests
         public CommentSort? Sort { get; set; }
 
         /// <summary>
+        /// Optional override for when <see cref="CommentableType"/> enum can't be used
+        /// </summary>
+        public string TypeName { get; set; }
+
+        /// <summary>
         /// The type of entity the comment was posted on
         /// </summary>
         public CommentableType? Type { get; set; }
@@ -80,7 +85,7 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Requests
         protected string CommentSortMode => Sort?.ToExternalValue();
 
         [QueryParameter("commentable_type")]
-        protected string CommentTargetType => Type?.ToExternalValue();
+        protected string CommentTargetType => Type?.ToExternalValue() ?? TypeName;
 
         public IReadOnlyDictionary<string, string> Cursor { get; set; }
     }

@@ -9,8 +9,12 @@ using Newtonsoft.Json;
 
 namespace DragonFruit.Orbit.Api.Ecosystem.Entities
 {
+    [Serializable]
+    [JsonObject(MemberSerialization.OptIn)]
     public class OsuComment
     {
+        private string _commentableTypeName;
+
         [JsonProperty("id")]
         public uint Id { get; set; }
 
@@ -30,8 +34,17 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Entities
         public uint VoteCount { get; set; }
 
         [JsonProperty("commentable_type")]
-        [JsonConverter(typeof(ExternalEnumConverter))]
-        public CommentableType CommentableType { get; set; }
+        public string CommentableTypeName
+        {
+            get => _commentableTypeName;
+            set
+            {
+                _commentableTypeName = value;
+                CommentableType = EnumUtils.GetInternalValue<CommentableType>(value);
+            }
+        }
+
+        public CommentableType? CommentableType { get; set; }
 
         [JsonProperty("commentable_id")]
         public uint CommentableId { get; set; }
