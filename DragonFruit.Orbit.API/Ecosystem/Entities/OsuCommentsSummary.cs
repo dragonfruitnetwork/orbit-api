@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using DragonFruit.Orbit.Api.Ecosystem.Enums;
 using DragonFruit.Orbit.Api.Interfaces;
 using DragonFruit.Orbit.Api.Utils;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 
 namespace DragonFruit.Orbit.Api.Ecosystem.Entities
@@ -40,9 +41,11 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Entities
         [JsonProperty("comments")]
         public IEnumerable<OsuComment> Comments { get; set; }
 
+        [CanBeNull]
         [JsonProperty("pinned_comments")]
         public IEnumerable<OsuComment> PinnedComments { get; set; }
 
+        [CanBeNull]
         [JsonProperty("included_comments")]
         public IEnumerable<OsuComment> IncludedComments { get; set; }
 

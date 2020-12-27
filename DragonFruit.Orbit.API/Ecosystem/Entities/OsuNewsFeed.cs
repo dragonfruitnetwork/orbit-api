@@ -4,7 +4,6 @@
 using System;
 using System.Collections.Generic;
 using DragonFruit.Orbit.Api.Interfaces;
-using JetBrains.Annotations;
 using Newtonsoft.Json;
 
 namespace DragonFruit.Orbit.Api.Ecosystem.Entities
@@ -16,7 +15,6 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Entities
         [JsonProperty("news_posts")]
         public IEnumerable<OsuNewsEntry> Entries { get; set; }
 
-        [CanBeNull]
         [JsonProperty("cursor")]
         public IReadOnlyDictionary<string, string> Cursor { get; set; }
     }

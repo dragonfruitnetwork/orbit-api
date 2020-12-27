@@ -17,6 +17,12 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Entities
         [JsonProperty("id")]
         public uint Id { get; set; }
 
+        [JsonProperty("title")]
+        public string Title { get; set; }
+
+        [JsonProperty("url")]
+        public string Url { get; set; }
+
         [JsonProperty("type")]
         public string TypeName
         {
@@ -29,12 +35,6 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Entities
         }
 
         public CommentableType? Type { get; set; }
-
-        [JsonProperty("title")]
-        public string Title { get; set; }
-
-        [JsonProperty("url")]
-        public string Url { get; set; }
 
         [JsonProperty("owner_id")]
         public uint? OwnerId { get; set; }
