@@ -6,7 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="DragonFruit.Common.Data" Version="2020.1224.26" />
+      <PackageReference Include="DragonFruit.Common.Data" Version="2020.1228.27" />
       <PackageReference Include="JetBrains.Annotations" Version="2020.3.0" />
     </ItemGroup>
     

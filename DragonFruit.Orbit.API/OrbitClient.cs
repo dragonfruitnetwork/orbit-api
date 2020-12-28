@@ -101,7 +101,7 @@ namespace DragonFruit.Orbit.Api
 
         #endregion
 
-        protected sealed override HttpMessageHandler CreateHandler()
+        protected override HttpMessageHandler CreateHandler()
         {
             var handler = base.CreateHandler();
 

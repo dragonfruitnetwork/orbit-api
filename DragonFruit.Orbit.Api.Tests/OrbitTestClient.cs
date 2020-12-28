@@ -3,9 +3,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Threading;
+using DragonFruit.Common.Data.Services;
 using DragonFruit.Orbit.Api.Auth;
 using DragonFruit.Orbit.Api.Auth.Extensions;
 using NUnit.Framework;
@@ -14,7 +16,9 @@ namespace DragonFruit.Orbit.Api.Tests
 {
     public class OrbitTestClient : OrbitClient
     {
-        private readonly Dictionary<string, string> _envCache = new(3);
+        private static string TokenCacheFile => Path.Combine(Path.GetTempPath(), "orbit-token.json");
+
+        private readonly Dictionary<string, string> _envCache = new Dictionary<string, string>(3);
 
         protected override string LegacyKey => GetEnvironmentVariable("orbit_legacy_key");
 
@@ -23,12 +27,19 @@ namespace DragonFruit.Orbit.Api.Tests
 
         protected override OsuAuthToken GetToken()
         {
-            // todo check/write to filesystem
+            var token = FileServices.ReadFileOrDefault<OsuAuthToken>(TokenCacheFile);
 
-            if (string.IsNullOrEmpty(ClientId) || string.IsNullOrEmpty(ClientSecret))
-                Assert.Inconclusive("Client Id/Secret Missing");
+            if (token?.Expired != false)
+            {
+                if (string.IsNullOrEmpty(ClientId) || string.IsNullOrEmpty(ClientSecret))
+                    Assert.Inconclusive("Client Id/Secret Missing");
 
-            return this.GetSessionToken();
+                token = this.GetSessionToken();
+
+                FileServices.WriteFile(TokenCacheFile, token);
+            }
+
+            return token;
         }
 
         protected override void SetupRequest(HttpRequestMessage request)

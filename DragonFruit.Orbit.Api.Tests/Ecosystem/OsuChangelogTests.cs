@@ -11,7 +11,6 @@ namespace DragonFruit.Orbit.Api.Tests.Ecosystem
     [TestFixture]
     public class OsuChangelogTests : OrbitApiTest
     {
-        [TestCase(ChangelogTarget.Stable, "20201210.2", new[] { 10184u, 10190u })]
         [TestCase(ChangelogTarget.Lazer, "2020.1225.0", new[] { 10184u, 10190u })]
         public void TestTargetedChangelogs(ChangelogTarget target, string version, params uint[] expectedIds)
         {

@@ -79,6 +79,9 @@ namespace DragonFruit.Orbit.Api.User.Entities
         [JsonProperty("rank_history")]
         public OsuUserRankHistory RankHistory { get; set; }
 
+        [JsonProperty("statistics")]
+        public OsuUserModeStats ModeStats { get; set; }
+
         [CanBeNull]
         [JsonProperty("page")]
         public OsuUserAboutPage Page { get; set; }
@@ -167,7 +170,7 @@ namespace DragonFruit.Orbit.Api.User.Entities
             {
                 _playstyleNames = value;
 
-                var values = value.Select(EnumUtils.GetInternalValue<UserPlaystyle?>).Where(x => x != null).ToArray();
+                var values = value.Select(x => (UserPlaystyle?)EnumUtils.GetInternalValue<UserPlaystyle>(x)).Where(x => x != null).ToArray();
                 Playstyle = values.Any() ? values.Aggregate((a, b) => a | b) : null;
             }
         }
@@ -183,7 +186,7 @@ namespace DragonFruit.Orbit.Api.User.Entities
         [JsonProperty("groups")]
         public IEnumerable<OsuUserGroup> Groups { get; set; }
 
-        [JsonProperty("achievements")]
+        [JsonProperty("user_achievements")]
         public IEnumerable<OsuUserAchievement> Achievements { get; set; }
 
         [CanBeNull]
