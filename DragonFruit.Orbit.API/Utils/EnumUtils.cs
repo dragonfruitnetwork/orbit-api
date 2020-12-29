@@ -2,6 +2,7 @@
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
 using System;
+using System.Data;
 using System.Linq;
 using System.Reflection;
 using JetBrains.Annotations;
@@ -45,11 +46,16 @@ namespace DragonFruit.Orbit.Api.Utils
         }
 
         [CanBeNull]
-        public static T GetInternalValue<T>(string value) where T : Enum
+        public static T? GetInternalValue<T>(string value) where T : struct
         {
-            return (T)Enum.GetValues(typeof(T))
-                          .Cast<Enum>()
-                          .FirstOrDefault(x => x.ToExternalValue() == value);
+            var type = typeof(T);
+
+            if (!type.IsEnum)
+                throw new InvalidConstraintException($"{nameof(T)} was not an enum type");
+
+            return Enum.GetValues(type)
+                       .Cast<Enum>()
+                       .FirstOrDefault(x => x.ToExternalValue() == value) as T?;
         }
     }
 }
