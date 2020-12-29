@@ -6,7 +6,7 @@ using DragonFruit.Orbit.Api.Utils;
 
 namespace DragonFruit.Orbit.Api.User.Enums
 {
-    public enum OsuUserActivityType
+    public enum OsuActivityType
     {
         [Description("Achievement unlocked")]
         [ExternalValue("achievement")]
