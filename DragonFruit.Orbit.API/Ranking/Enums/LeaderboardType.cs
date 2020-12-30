@@ -3,7 +3,7 @@
 
 using DragonFruit.Orbit.Api.Utils;
 
-namespace DragonFruit.Orbit.Api.Leaderboards.Enums
+namespace DragonFruit.Orbit.Api.Ranking.Enums
 {
     public enum LeaderboardType
     {

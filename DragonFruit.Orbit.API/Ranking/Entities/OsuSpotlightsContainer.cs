@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace DragonFruit.Orbit.Api.Leaderboards.Entities
+namespace DragonFruit.Orbit.Api.Ranking.Entities
 {
     [Serializable]
     [JsonObject(MemberSerialization.OptIn)]

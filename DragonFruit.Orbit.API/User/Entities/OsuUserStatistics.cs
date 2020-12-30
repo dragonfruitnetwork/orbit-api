@@ -9,7 +9,7 @@ namespace DragonFruit.Orbit.Api.User.Entities
 {
     [Serializable]
     [JsonObject(MemberSerialization.OptIn)]
-    public class OsuUserModeStats
+    public class OsuUserStatistics
     {
         [JsonProperty("is_ranked")]
         public bool IsRanked { get; set; }

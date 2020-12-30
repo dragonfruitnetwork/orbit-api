@@ -4,12 +4,12 @@
 using System.Collections.Generic;
 using DragonFruit.Common.Data.Parameters;
 using DragonFruit.Orbit.Api.Interfaces;
-using DragonFruit.Orbit.Api.Leaderboards.Enums;
+using DragonFruit.Orbit.Api.Ranking.Enums;
 using DragonFruit.Orbit.Api.Utils;
 
-namespace DragonFruit.Orbit.Api.Leaderboards.Requests
+namespace DragonFruit.Orbit.Api.Ranking.Requests
 {
-    public class OsuRankingRequest : OrbitRequest, IPaginatedByCursor
+    public class OsuLeaderboardRequest : OrbitRequest, IPaginatedByCursor
     {
         private string _country;
         private uint? _spotlight;
@@ -20,9 +20,10 @@ namespace DragonFruit.Orbit.Api.Leaderboards.Requests
 
         public GameMode Mode { get; set; }
         public LeaderboardType Type { get; set; }
+        public LeaderboardFilterMode? Filter { get; set; }
 
         [QueryParameter("filter")]
-        public LeaderboardFilterMode? Filter { get; set; }
+        public string FilterName => Filter?.ToExternalValue();
 
         [QueryParameter("country")]
         public string Country

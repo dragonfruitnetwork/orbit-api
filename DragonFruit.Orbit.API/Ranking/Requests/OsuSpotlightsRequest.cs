@@ -1,11 +1,10 @@
 ﻿// Orbit API Copyright 2020 DragonFruit Network
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
-namespace DragonFruit.Orbit.Api.Leaderboards.Enums
+namespace DragonFruit.Orbit.Api.Ranking.Requests
 {
-    public enum LeaderboardFilterMode
+    public class OsuSpotlightsRequest : OrbitRequest
     {
-        All,
-        Friends
+        protected override string Stub => "spotlights";
     }
 }

@@ -2,11 +2,11 @@
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
 using System;
-using DragonFruit.Orbit.Api.Leaderboards.Enums;
+using DragonFruit.Orbit.Api.Ranking.Enums;
 using DragonFruit.Orbit.Api.Utils;
 using Newtonsoft.Json;
 
-namespace DragonFruit.Orbit.Api.Leaderboards.Entities
+namespace DragonFruit.Orbit.Api.Ranking.Entities
 {
     [Serializable]
     [JsonObject(MemberSerialization.OptIn)]

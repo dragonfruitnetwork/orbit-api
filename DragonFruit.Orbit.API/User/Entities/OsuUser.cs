@@ -80,7 +80,7 @@ namespace DragonFruit.Orbit.Api.User.Entities
         public OsuUserRankHistory RankHistory { get; set; }
 
         [JsonProperty("statistics")]
-        public OsuUserModeStats ModeStats { get; set; }
+        public OsuUserStatistics Statistics { get; set; }
 
         [CanBeNull]
         [JsonProperty("page")]
