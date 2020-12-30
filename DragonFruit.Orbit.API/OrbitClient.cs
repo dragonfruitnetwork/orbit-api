@@ -50,7 +50,7 @@ namespace DragonFruit.Orbit.Api
         /// </summary>
         public T Perform<T>(OrbitRequest request, CancellationToken token = default) where T : class
         {
-            if (request.ValidateToken)
+            if (request.IncludeToken)
             {
                 if (_token?.Expired != false)
                 {

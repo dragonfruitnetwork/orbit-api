@@ -15,6 +15,6 @@ namespace DragonFruit.Orbit.Api
         protected abstract string Stub { get; }
 
         // RequireAuth is protected/internal so the client can't see it (so we create a redirect)
-        internal bool ValidateToken => RequireAuth;
+        internal bool IncludeToken => RequireAuth;
     }
 }
