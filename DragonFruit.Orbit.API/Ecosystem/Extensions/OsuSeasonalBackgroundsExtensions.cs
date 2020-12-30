@@ -14,8 +14,7 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Extensions
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         public static OsuSeasonalBackgroundCollection GetSeasonalBackgrounds<T>(this T client) where T : OrbitClient
         {
-            var request = new OsuSeasonalBackgroundsRequest();
-            return client.Perform<OsuSeasonalBackgroundCollection>(request);
+            return client.Perform<OsuSeasonalBackgroundCollection>(new OsuSeasonalBackgroundsRequest());
         }
     }
 }

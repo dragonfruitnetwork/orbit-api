@@ -4,16 +4,16 @@
 using System;
 using Newtonsoft.Json;
 
-namespace DragonFruit.Orbit.Api.User.Entities
+namespace DragonFruit.Orbit.Api.Ranking.Entities
 {
     [Serializable]
     [JsonObject(MemberSerialization.OptIn)]
-    public class OsuUserLevelProgress
+    public class OsuScoreWeighting
     {
-        [JsonProperty("current")]
-        public uint Current { get; set; }
+        [JsonProperty("percentage")]
+        public float Percentage { get; set; }
 
-        [JsonProperty("progress")]
-        public float Progress { get; set; }
+        [JsonProperty("pp")]
+        public float Value { get; set; }
     }
 }

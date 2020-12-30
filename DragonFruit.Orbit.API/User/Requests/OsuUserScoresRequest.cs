@@ -25,6 +25,7 @@ namespace DragonFruit.Orbit.Api.User.Requests
         public uint Id { get; set; }
         public UserScoreType Type { get; set; }
         public uint Page { get; set; }
+        public bool IncludeFails { get; set; }
 
         public GameMode? Mode
         {
@@ -39,15 +40,26 @@ namespace DragonFruit.Orbit.Api.User.Requests
         [QueryParameter("mode")]
         public string ModeName { get; set; }
 
-        [QueryParameter("include_fails")]
-        public bool? IncludeFails { get; set; }
-
         [NotNull]
         [QueryParameter("limit")]
         public uint? Limit
         {
             get => _limit ?? DefaultLimit;
             set => _limit = value;
+        }
+
+        [QueryParameter("include_fails")]
+        protected string IncludeFailsValue
+        {
+            get
+            {
+                if (Type == UserScoreType.Recent)
+                {
+                    return IncludeFails ? "1" : "0";
+                }
+
+                return null;
+            }
         }
 
         [QueryParameter("offset")]

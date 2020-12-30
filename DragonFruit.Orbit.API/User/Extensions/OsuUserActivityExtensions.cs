@@ -16,7 +16,7 @@ namespace DragonFruit.Orbit.Api.User.Extensions
         /// <param name="user">The user to lookup</param>
         /// <param name="page">Optional page number to return entries for</param>
         /// <param name="limit">Optional limit to cap responses. Make sure this is equal to the max or lower otherwise pagination will fail</param>
-        public static IEnumerable<OsuRecentActivity> GetUserActivity<T>(this T client, OsuUserCard user, uint? page = null, uint? limit = null) where T : OrbitClient
+        public static IEnumerable<OsuRecentActivity> GetUserActivity<T>(this T client, OsuUserCard user, uint page = 0, uint? limit = null) where T : OrbitClient
         {
             return client.GetUserActivity(user.Id, page, limit);
         }
@@ -28,11 +28,11 @@ namespace DragonFruit.Orbit.Api.User.Extensions
         /// <param name="id">The id of the user</param>
         /// <param name="page">Optional page number to return entries for</param>
         /// <param name="limit">Optional limit to cap responses. Make sure this is equal to the max or lower otherwise pagination will fail</param>
-        public static IEnumerable<OsuRecentActivity> GetUserActivity<T>(this T client, uint id, uint? page = null, uint? limit = null) where T : OrbitClient
+        public static IEnumerable<OsuRecentActivity> GetUserActivity<T>(this T client, uint id, uint page = 0, uint? limit = null) where T : OrbitClient
         {
             var request = new OsuUserRecentActivityRequest(id)
             {
-                Page = page ?? 0,
+                Page = page,
                 Limit = limit
             };
 

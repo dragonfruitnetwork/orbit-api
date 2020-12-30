@@ -16,8 +16,7 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Extensions
         /// <returns>Summary of targets and recent releases</returns>
         public static OsuChangelogDetails GetChangelogs<T>(this T client) where T : OrbitClient
         {
-            var request = new OsuChangelogsRequest();
-            return client.Perform<OsuChangelogDetails>(request);
+            return client.Perform<OsuChangelogDetails>(new OsuChangelogsRequest());
         }
 
         /// <summary>
