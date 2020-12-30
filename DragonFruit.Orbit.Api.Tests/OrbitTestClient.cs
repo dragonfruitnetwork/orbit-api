@@ -17,7 +17,6 @@ namespace DragonFruit.Orbit.Api.Tests
     public class OrbitTestClient : OrbitClient
     {
         private static string TokenCacheFile => Path.Combine(Path.GetTempPath(), "orbit-token.json");
-
         private readonly Dictionary<string, string> _envCache = new Dictionary<string, string>(3);
 
         protected override string LegacyKey => GetEnvironmentVariable("orbit_legacy_key");

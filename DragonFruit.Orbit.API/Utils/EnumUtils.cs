@@ -19,6 +19,9 @@ namespace DragonFruit.Orbit.Api.Utils
     {
         public static string ToExternalValue(this Enum value)
         {
+            if (value == null)
+                return null;
+
             var enumType = value.GetType();
             var enumTypeInfo = enumType.GetTypeInfo();
 
@@ -55,7 +58,7 @@ namespace DragonFruit.Orbit.Api.Utils
 
             return Enum.GetValues(type)
                        .Cast<Enum>()
-                       .FirstOrDefault(x => x.ToExternalValue() == value) as T?;
+                       .FirstOrDefault(x => x.ToExternalValue().Equals(value, StringComparison.OrdinalIgnoreCase)) as T?;
         }
     }
 }

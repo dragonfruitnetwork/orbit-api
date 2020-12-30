@@ -4,6 +4,7 @@
 using System;
 using DragonFruit.Orbit.Api.Beatmaps.Enums;
 using DragonFruit.Orbit.Api.Utils;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 
 namespace DragonFruit.Orbit.Api.Beatmaps.Entities
@@ -83,6 +84,7 @@ namespace DragonFruit.Orbit.Api.Beatmaps.Entities
         [JsonProperty("passcount")]
         public uint PassCount { get; set; }
 
+        [CanBeNull]
         [JsonProperty("failtimes")]
         public OsuBeatmapFailTimes Fails { get; set; }
 

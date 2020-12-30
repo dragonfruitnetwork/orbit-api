@@ -7,7 +7,7 @@ namespace DragonFruit.Orbit.Api.User.Enums
 {
     public enum UserScoreType
     {
-        [ExternalValue("bests")]
+        [ExternalValue("best")]
         Best,
 
         [ExternalValue("firsts")]
