@@ -3,10 +3,10 @@
 
 namespace DragonFruit.Orbit.Api.Beatmaps.Enums
 {
-    public enum BeatmapLeaderboardType
+    public enum BeatmapsetPlayStatus
     {
-        Global,
-        Country,
-        Friend,
+        Any,
+        Played,
+        Unplayed
     }
 }

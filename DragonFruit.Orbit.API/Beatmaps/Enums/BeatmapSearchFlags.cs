@@ -3,10 +3,9 @@
 
 namespace DragonFruit.Orbit.Api.Beatmaps.Enums
 {
-    public enum BeatmapLeaderboardType
+    public enum BeatmapSearchFlags
     {
-        Global,
-        Country,
-        Friend,
+        Video,
+        Storyboard
     }
 }

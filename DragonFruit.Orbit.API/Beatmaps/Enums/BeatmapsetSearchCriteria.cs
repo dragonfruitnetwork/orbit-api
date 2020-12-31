@@ -3,10 +3,15 @@
 
 namespace DragonFruit.Orbit.Api.Beatmaps.Enums
 {
-    public enum BeatmapLeaderboardType
+    public enum BeatmapsetSearchCriteria
     {
-        Global,
-        Country,
-        Friend,
+        Title,
+        Artist,
+        Difficulty,
+        Ranked,
+        Rating,
+        Plays,
+        Favourites,
+        Relevance
     }
 }

@@ -17,7 +17,7 @@ namespace DragonFruit.Orbit.Api.Utils
     /// </remarks>
     internal static class EnumUtils
     {
-        public static string ToExternalValue(this Enum value)
+        public static string ToExternalValue(this Enum value, string concat = ",")
         {
             if (value == null)
                 return null;
@@ -33,7 +33,7 @@ namespace DragonFruit.Orbit.Api.Utils
                                  .Where(value.HasFlag)
                                  .Select(e => e.ToExternalValue());
 
-                return string.Join(",", values);
+                return string.Join(concat, values);
             }
 
             var elementName = value.ToString();

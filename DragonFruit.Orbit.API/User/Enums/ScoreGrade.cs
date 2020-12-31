@@ -7,13 +7,21 @@ namespace DragonFruit.Orbit.Api.User.Enums
 {
     public enum ScoreGrade
     {
-        [Description("SS+")]
-        SSH,
-        SS,
-
-        [Description("S+")]
-        SH,
+        N,
+        F,
+        D,
+        C,
+        B,
+        A,
         S,
-        A
+
+        [Description(@"S+")]
+        SH,
+
+        [Description(@"SS")]
+        X,
+
+        [Description(@"SS+")]
+        XH,
     }
 }
