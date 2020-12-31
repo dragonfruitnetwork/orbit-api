@@ -18,6 +18,12 @@ namespace DragonFruit.Orbit.Api.Ranking.Requests
         protected override string Stub => $"rankings/{Mode.ToExternalValue()}/{Type.ToExternalValue()}";
         protected override IEnumerable<KeyValuePair<string, string>> AdditionalQueries => CursorUtils.ToQueries(Cursor);
 
+        public OsuLeaderboardRequest(GameMode mode, LeaderboardType type)
+        {
+            Mode = mode;
+            Type = type;
+        }
+
         public GameMode Mode { get; set; }
         public LeaderboardType Type { get; set; }
         public LeaderboardFilterMode? Filter { get; set; }
@@ -28,7 +34,7 @@ namespace DragonFruit.Orbit.Api.Ranking.Requests
         [QueryParameter("country")]
         public string Country
         {
-            get => Type == LeaderboardType.Country ? _country.ToUpperInvariant() : null;
+            get => Type != LeaderboardType.Country ? _country?.ToUpperInvariant() : null;
             set => _country = value;
         }
 

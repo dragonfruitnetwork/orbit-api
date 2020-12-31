@@ -11,18 +11,18 @@ namespace DragonFruit.Orbit.Api.User.Entities
     public class OsuUserGradeCount
     {
         [JsonProperty("a")]
-        public uint CountA { get; set; }
+        public int CountA { get; set; }
 
         [JsonProperty("s")]
-        public uint CountS { get; set; }
+        public int CountS { get; set; }
 
         [JsonProperty("sh")]
-        public uint CountSPlus { get; set; }
+        public int CountSPlus { get; set; }
 
         [JsonProperty("ss")]
-        public uint CountSS { get; set; }
+        public int CountSS { get; set; }
 
         [JsonProperty("ssh")]
-        public uint CountSSPlus { get; set; }
+        public int CountSSPlus { get; set; }
     }
 }

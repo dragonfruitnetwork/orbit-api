@@ -13,13 +13,13 @@ namespace DragonFruit.Orbit.Api.Ranking.Entities
 {
     [Serializable]
     [JsonObject(MemberSerialization.OptIn)]
-    public class OsuLeaderboard : IPaginatedByCursor
+    public class OsuLeaderboard<T> : IPaginatedByCursor
     {
         [JsonProperty("total")]
         public uint TotalEntries { get; set; }
 
         [JsonProperty("ranking")]
-        public IEnumerable<OsuUserStatistics> Ranking { get; set; }
+        public IEnumerable<T> Ranking { get; set; }
 
         [CanBeNull]
         [JsonProperty("spotlight")]
@@ -31,5 +31,13 @@ namespace DragonFruit.Orbit.Api.Ranking.Entities
 
         [JsonProperty("cursor")]
         public IReadOnlyDictionary<string, string> Cursor { get; set; }
+    }
+
+    public class OsuCountryLeaderboard : OsuLeaderboard<OsuCountryStatistics>
+    {
+    }
+
+    public class OsuUserLeaderboard : OsuLeaderboard<OsuUserStatistics>
+    {
     }
 }
