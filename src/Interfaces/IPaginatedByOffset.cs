@@ -7,6 +7,6 @@ namespace DragonFruit.Orbit.Api.Interfaces
     {
         public uint Page { get; set; }
 
-        public uint Offset { get; }
+        public uint Offset { get; set; }
     }
 }
