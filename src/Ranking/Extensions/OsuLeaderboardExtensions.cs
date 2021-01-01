@@ -1,4 +1,4 @@
-﻿// Orbit API Copyright 2020 DragonFruit Network
+﻿// Orbit API Copyright (C) 2019-2021 DragonFruit Network
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
 using System;
@@ -21,7 +21,8 @@ namespace DragonFruit.Orbit.Api.Ranking.Extensions
         /// <param name="spotlight">Optional spotlight id to return entries for</param>
         /// <param name="variant"><see cref="LeaderboardVariant"/> for osu!mania 4/7 keys</param>
         /// <param name="last">Optional previous response that is used to get the next set</param>
-        public static OsuUserLeaderboard GetLeaderboard<T>(this T client, GameMode mode, LeaderboardType type, LeaderboardFilterMode? filter = null, string country = null, uint? spotlight = null, LeaderboardVariant? variant = null, OsuUserLeaderboard last = null)
+        public static OsuUserLeaderboard GetLeaderboard<T>(this T client, GameMode mode, LeaderboardType type, LeaderboardFilterMode? filter = null, string country = null, uint? spotlight = null,
+                                                           LeaderboardVariant? variant = null, OsuUserLeaderboard last = null)
             where T : OrbitClient
         {
             if (type == LeaderboardType.Country)
@@ -51,7 +52,8 @@ namespace DragonFruit.Orbit.Api.Ranking.Extensions
         /// <param name="spotlight">Optional spotlight id to return entries for</param>
         /// <param name="variant"><see cref="LeaderboardVariant"/> for osu!mania 4/7 keys</param>
         /// <param name="last">Optional previous response that is used to get the next set</param>
-        public static OsuCountryLeaderboard GetCountryLeaderboard<T>(this T client, GameMode mode, LeaderboardFilterMode? filter = null, LeaderboardVariant? variant = null, OsuCountryLeaderboard last = null)
+        public static OsuCountryLeaderboard GetCountryLeaderboard<T>(this T client, GameMode mode, LeaderboardFilterMode? filter = null, LeaderboardVariant? variant = null,
+                                                                     OsuCountryLeaderboard last = null)
             where T : OrbitClient
         {
             var request = new OsuLeaderboardRequest(mode, LeaderboardType.Country)
