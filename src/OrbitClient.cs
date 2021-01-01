@@ -18,9 +18,12 @@ namespace DragonFruit.Orbit.Api
 {
     public abstract class OrbitClient : ApiClient
     {
-        internal const string BaseEndpoint = "https://osu.ppy.sh";
-
         private OsuAuthToken _token;
+
+        /// <summary>
+        /// Base endpoint all <see cref="OrbitRequest"/>s are sent to
+        /// </summary>
+        internal const string BaseEndpoint = "https://osu.ppy.sh";
 
         /// <summary>
         /// Optional flag to allow <see cref="HttpStatusCode.NotFound"/> to return null instead of an exception
