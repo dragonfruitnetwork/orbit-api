@@ -13,7 +13,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\DragonFruit.Orbit.Api\DragonFruit.Orbit.Api.csproj" />
+      <ProjectReference Include="..\src\DragonFruit.Orbit.Api.csproj" />
     </ItemGroup>
 
 </Project>
