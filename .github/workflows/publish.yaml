@@ -23,9 +23,9 @@ jobs:
         run: Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force
 
       - name: NuGet Build and Publish (Release)
-        run: ./Nuget.ps1 -ApiKey ${{ secrets.NUGET_KEY }}
+        run: ./res/Nuget.ps1 -ApiKey ${{ secrets.NUGET_KEY }}
         if: "!github.event.release.prerelease"
 
       - name: Nuget Build and Publish (Beta)
-        run: ./Nuget.ps1 -ApiKey ${{ secrets.NUGET_KEY }} -Suffix "-beta"
+        run: ./res/Nuget.ps1 -ApiKey ${{ secrets.NUGET_KEY }} -Suffix "-beta"
         if: "github.event.release.prerelease"
