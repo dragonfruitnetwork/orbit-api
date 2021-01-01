@@ -2,9 +2,9 @@
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DragonFruit.Orbit.Api", "DragonFruit.Orbit.Api\DragonFruit.Orbit.Api.csproj", "{55D806AB-7AD5-4E24-8900-ED16B05A6207}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DragonFruit.Orbit.Api", "src\DragonFruit.Orbit.Api.csproj", "{27B981B1-7387-44FC-B917-785768576CCF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DragonFruit.Orbit.Api.Tests", "DragonFruit.Orbit.Api.Tests\DragonFruit.Orbit.Api.Tests.csproj", "{59CDB03C-2F9D-4264-8E30-8DDEFED7EB42}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DragonFruit.Orbit.Api.Tests", "tests\DragonFruit.Orbit.Api.Tests.csproj", "{9D34E1A2-1EC3-4564-A6DA-C240C6E192F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,14 +12,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{55D806AB-7AD5-4E24-8900-ED16B05A6207}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{55D806AB-7AD5-4E24-8900-ED16B05A6207}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{55D806AB-7AD5-4E24-8900-ED16B05A6207}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{55D806AB-7AD5-4E24-8900-ED16B05A6207}.Release|Any CPU.Build.0 = Release|Any CPU
-		{59CDB03C-2F9D-4264-8E30-8DDEFED7EB42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{59CDB03C-2F9D-4264-8E30-8DDEFED7EB42}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{59CDB03C-2F9D-4264-8E30-8DDEFED7EB42}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{59CDB03C-2F9D-4264-8E30-8DDEFED7EB42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27B981B1-7387-44FC-B917-785768576CCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27B981B1-7387-44FC-B917-785768576CCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27B981B1-7387-44FC-B917-785768576CCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27B981B1-7387-44FC-B917-785768576CCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D34E1A2-1EC3-4564-A6DA-C240C6E192F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D34E1A2-1EC3-4564-A6DA-C240C6E192F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D34E1A2-1EC3-4564-A6DA-C240C6E192F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D34E1A2-1EC3-4564-A6DA-C240C6E192F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
