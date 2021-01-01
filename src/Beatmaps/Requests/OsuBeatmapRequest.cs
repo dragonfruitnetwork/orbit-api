@@ -21,7 +21,7 @@ namespace DragonFruit.Orbit.Api.Beatmaps.Requests
         [QueryParameter("filename")]
         public string Filename
         {
-            get => Uri.EscapeUriString(_filename);
+            get => !string.IsNullOrEmpty(_filename) ? Uri.EscapeUriString(_filename) : null;
             set => _filename = value;
         }
     }

@@ -1,8 +1,11 @@
 ﻿// Orbit API Copyright (C) 2019-2021 DragonFruit Network
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
+using System;
+
 namespace DragonFruit.Orbit.Api.Legacy.Enums
 {
+    [Flags]
     public enum LegacyMods
     {
         None = 0,
@@ -20,7 +23,7 @@ namespace DragonFruit.Orbit.Api.Legacy.Enums
         Autoplay = 2048,
         SpunOut = 4096,
         Relax2 = 8192, // Autopilot
-        Perfect = 16384, // Only set along with SuddenDeath. i.e: PF only gives 16416  
+        Perfect = 16384, // Only set along with SuddenDeath. i.e: PF only gives 16416
         Key4 = 32768,
         Key5 = 65536,
         Key6 = 131072,
