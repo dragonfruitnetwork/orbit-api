@@ -8,9 +8,10 @@ namespace DragonFruit.Orbit.Api.User.Enums
     [Flags]
     public enum UserPlaystyle
     {
-        Mouse,
-        Touch,
-        Keyboard,
-        Tablet
+        // numeric values mean nothing - codacy was moaning about it... (SonarCSharp_S2345)
+        Mouse = 1,
+        Touch = 2,
+        Keyboard = 4,
+        Tablet = 8
     }
 }
