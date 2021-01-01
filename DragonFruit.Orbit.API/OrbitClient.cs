@@ -23,6 +23,11 @@ namespace DragonFruit.Orbit.Api
         private OsuAuthToken _token;
 
         /// <summary>
+        /// Optional flag to allow <see cref="HttpStatusCode.NotFound"/> to return null instead of an exception
+        /// </summary>
+        protected virtual bool ThrowNotFound => false;
+
+        /// <summary>
         /// Legacy api key to use with v1 requests
         /// </summary>
         protected virtual string LegacyKey => null;
@@ -114,13 +119,20 @@ namespace DragonFruit.Orbit.Api
             return handler is HeaderPreservingRedirectHandler ? handler : new HeaderPreservingRedirectHandler(handler);
         }
 
-        protected override T ValidateAndProcess<T>(HttpResponseMessage response, HttpRequestMessage request) => response.StatusCode switch
+        protected override T ValidateAndProcess<T>(HttpResponseMessage response, HttpRequestMessage request)
         {
-            HttpStatusCode.NoContent => default,
-            // todo add others/error message
+            switch (response.StatusCode)
+            {
+                // todo add token exp exception
 
-            _ => base.ValidateAndProcess<T>(response, request)
-        };
+                case HttpStatusCode.NoContent:
+                case HttpStatusCode.NotFound when !ThrowNotFound:
+                    return default;
+
+                default:
+                    return base.ValidateAndProcess<T>(response, request);
+            }
+        }
 
         /// <summary>
         /// Signals to the client the token should be reset
