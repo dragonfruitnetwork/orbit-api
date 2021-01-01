@@ -1,7 +1,7 @@
 # Getting Started
-![CI](https://github.com/dragonfruitnetwork/Orbit-API/workflows/Publish/badge.svg)
+![CI](https://github.com/dragonfruitnetwork/Orbit-Api/workflows/Publish/badge.svg)
 [![Codacy](https://api.codacy.com/project/badge/Grade/d4cc27241ce741a482169f3efaa018af)](https://www.codacy.com/gh/dragonfruitnetwork/Orbit-API)
-[![NuGet](https://img.shields.io/nuget/v/DragonFruit.Orbit.API.svg?style=popout)](https://www.nuget.org/packages/DragonFruit.Orbit.API/)
+[![NuGet](https://img.shields.io/nuget/v/DragonFruit.Orbit.Api.svg?style=popout)](https://www.nuget.org/packages/DragonFruit.Orbit.API/)
 [![DragonFruit Discord](https://img.shields.io/discord/482528405292843018?label=Discord&style=popout)](https://discord.gg/VA26u5Z)
 
 Using the Orbit API is easy:
