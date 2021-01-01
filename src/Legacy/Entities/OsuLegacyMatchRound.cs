@@ -18,16 +18,16 @@ namespace DragonFruit.Orbit.Api.Legacy.Entities
         public DateTime StartTimeUtc { get; set; }
 
         [JsonProperty("end_time")]
-        public DateTime EndTimeUtc { get; set; }
+        public DateTime? EndTimeUtc { get; set; }
 
         [JsonIgnore]
-        public TimeSpan Duration => EndTimeUtc - StartTimeUtc;
+        public TimeSpan? Duration => EndTimeUtc - StartTimeUtc;
 
         [JsonProperty("beatmap_id")]
         public uint BeatmapId { get; set; }
 
         [JsonProperty("play_mode")]
-        public LegacyMode Mode { get; set; }
+        public GameMode Mode { get; set; }
 
         [JsonProperty("scoring_type")]
         public LegacyWinCondition ScoreMode { get; set; }

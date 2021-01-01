@@ -12,6 +12,11 @@ namespace DragonFruit.Orbit.Api.Legacy.Requests
 
         public override string Target => "user";
 
+        public OsuLegacyUserRequest(string userIdentifier)
+            : base(userIdentifier)
+        {
+        }
+
         [QueryParameter("event_days")]
         public uint EventDateRange
         {

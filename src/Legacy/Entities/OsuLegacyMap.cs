@@ -17,7 +17,7 @@ namespace DragonFruit.Orbit.Api.Legacy.Entities
         public uint BeatmapsetId { get; set; }
 
         [JsonProperty("mode")]
-        public LegacyMode Mode { get; set; }
+        public GameMode Mode { get; set; }
 
         [JsonProperty("title")]
         public string Title { get; set; }

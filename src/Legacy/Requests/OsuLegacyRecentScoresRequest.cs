@@ -12,6 +12,11 @@ namespace DragonFruit.Orbit.Api.Legacy.Requests
 
         public override string Target => "user_recent";
 
+        public OsuLegacyRecentScoresRequest(string userIdentifier)
+            : base(userIdentifier)
+        {
+        }
+
         [QueryParameter("limit")]
         public uint? Limit
         {

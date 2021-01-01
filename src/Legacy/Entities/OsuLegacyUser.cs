@@ -10,7 +10,6 @@ namespace DragonFruit.Orbit.Api.Legacy.Entities
     public class OsuLegacyUser
     {
         [JsonProperty("user_id")]
-
         public uint UserId { get; set; }
 
         [JsonProperty("username")]
@@ -20,61 +19,52 @@ namespace DragonFruit.Orbit.Api.Legacy.Entities
         public DateTime JoinDateUtc { get; set; }
 
         [JsonProperty("count300")]
-
         public uint Count300 { get; set; }
 
         [JsonProperty("count100")]
-
         public uint Count100 { get; set; }
 
         [JsonProperty("count50")]
-
         public uint Count50 { get; set; }
 
         [JsonProperty("playcount")]
-
         public uint PlayCount { get; set; }
 
         [JsonProperty("ranked_score")]
-
-        public uint RankedScore { get; set; }
+        public ulong RankedScore { get; set; }
 
         [JsonProperty("total_score")]
-
-        public uint TotalScore { get; set; }
+        public ulong TotalScore { get; set; }
 
         [JsonProperty("pp_raw")]
-
-        public uint PP { get; set; }
+        public float PP { get; set; }
 
         [JsonProperty("pp_rank")]
-
-        public uint GlobalRank { get; set; }
+        public int? GlobalRank { get; set; }
 
         [JsonProperty("pp_country_rank")]
-
-        public uint CountryRank { get; set; }
+        public int? CountryRank { get; set; }
 
         [JsonProperty("level")]
-        public string Level { get; set; }
+        public float Level { get; set; }
 
         [JsonProperty("accuracy")]
-        public string Accuracy { get; set; }
+        public float Accuracy { get; set; }
 
         [JsonProperty("count_rank_ss")]
-        public uint CountRankSS { get; set; }
+        public int CountRankSS { get; set; }
 
         [JsonProperty("count_rank_ssh")]
-        public uint CountRankSSPlus { get; set; }
+        public int CountRankSSPlus { get; set; }
 
         [JsonProperty("count_rank_s")]
-        public uint CountRankS { get; set; }
+        public int CountRankS { get; set; }
 
         [JsonProperty("count_rank_sh")]
-        public uint CountRankSPlus { get; set; }
+        public int CountRankSPlus { get; set; }
 
         [JsonProperty("count_rank_a")]
-        public uint CountRankA { get; set; }
+        public int CountRankA { get; set; }
 
         [JsonProperty("country")]
         public string CountryCode { get; set; }

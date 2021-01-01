@@ -46,6 +46,15 @@ namespace DragonFruit.Orbit.Api.Legacy.Entities
         [JsonProperty("countkatu")]
         public uint CountKatu { get; set; }
 
+        [JsonProperty("score_id")]
+        public ulong? ScoreId { get; set; }
+
+        [JsonProperty("pp")]
+        public float? PP { get; set; }
+
+        [JsonProperty("replay_available")]
+        public LegacyBool? ReplayAvailable { get; set; }
+
         [JsonProperty("date")]
         public DateTime TimePerformedUtc { get; set; }
 

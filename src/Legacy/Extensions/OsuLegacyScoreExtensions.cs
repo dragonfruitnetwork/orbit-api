@@ -15,10 +15,10 @@ namespace DragonFruit.Orbit.Api.Legacy.Extensions
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="mapId">The map id to retrieve scores for</param>
-        /// <param name="mode">The <see cref="LegacyMode"/> to retrieve scores for</param>
+        /// <param name="mode">The <see cref="GameMode"/> to retrieve scores for</param>
         /// <param name="limit">Optional limit for number of scores to return</param>
         /// <returns>Collection of scores</returns>
-        public static IEnumerable<OsuLegacyHighScore> GetLegacyBeatmapScores<T>(this T client, uint mapId, LegacyMode? mode = null, uint? limit = null) where T : OrbitClient
+        public static IEnumerable<OsuLegacyScore> GetLegacyBeatmapScores<T>(this T client, uint mapId, GameMode? mode = null, uint? limit = null) where T : OrbitClient
         {
             var request = new OsuLegacyBeatmapScoresRequest
             {
@@ -27,7 +27,7 @@ namespace DragonFruit.Orbit.Api.Legacy.Extensions
                 Limit = limit
             };
 
-            return client.Perform<OsuLegacyHighScore>(request);
+            return client.Perform<OsuLegacyScore>(request);
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace DragonFruit.Orbit.Api.Legacy.Extensions
         /// <param name="mode">The game mode the map was played in</param>
         /// <param name="mods">The mods the map was played with</param>
         /// <returns>Container for the Base64 encoded replay. This is not the .osr file, but just the input data (key/mouse)</returns>
-        public static OsuLegacyReplayContent GetBeatmapReplay<T>(this T client, uint mapId, string identifier, LegacyMode mode, LegacyMods? mods = null, bool? isUsername = null) where T : OrbitClient
+        public static OsuLegacyReplayContent GetBeatmapReplay<T>(this T client, uint mapId, string identifier, GameMode mode, LegacyMods? mods = null, bool? isUsername = null) where T : OrbitClient
         {
             var request = new OsuLegacyReplayRequest
             {

@@ -8,12 +8,13 @@ namespace DragonFruit.Orbit.Api.Legacy.Enums
     public enum LegacyRank
     {
         [Description("SS+")]
-        SSH,
+        XH,
 
         [Description("S+")]
         SH,
 
-        SS,
+        [Description("SS")]
+        X,
         S,
         A,
         B,
@@ -22,6 +23,6 @@ namespace DragonFruit.Orbit.Api.Legacy.Enums
         F,
 
         [Description("Unknown")]
-        N = F
+        N
     }
 }

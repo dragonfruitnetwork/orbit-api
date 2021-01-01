@@ -12,6 +12,11 @@ namespace DragonFruit.Orbit.Api.Legacy.Requests
 
         public override string Target => "scores";
 
+        public OsuLegacyBeatmapScoresRequest()
+            : base(null)
+        {
+        }
+
         [QueryParameter("b")]
         public uint? BeatmapId { get; set; }
 
