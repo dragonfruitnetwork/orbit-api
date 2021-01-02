@@ -1,7 +1,5 @@
 param ([string] $ApiKey, [string]$Suffix = "")
 
-Set-Location -Path "..\"
-
 # versioning info
 $VERSION = "$(Get-Date -UFormat "%Y.%m%d").$($env:GITHUB_RUN_NUMBER)$($Suffix)"
 $WORKINGDIR = Get-Location

@@ -1,7 +1,7 @@
 # Orbit (API)
 ![CI](https://github.com/dragonfruitnetwork/Orbit-API/workflows/Publish/badge.svg)
 ![Code Quality](https://github.com/dragonfruitnetwork/Orbit-API/workflows/Code%20Quality/badge.svg)
-[![Codacy](https://api.codacy.com/project/badge/Grade/d4cc27241ce741a482169f3efaa018af)](https://www.codacy.com/gh/dragonfruitnetwork/Orbit-API)
+[![Codacy](https://api.codacy.com/project/badge/Grade/d4cc27241ce741a482169f3efaa018af)](https://www.codacy.com/gh/dragonfruitnetwork/orbit-api)
 [![NuGet](https://img.shields.io/nuget/v/DragonFruit.Orbit.API.svg?style=popout)](https://www.nuget.org/packages/DragonFruit.Orbit.API/)
 [![DragonFruit Discord](https://img.shields.io/discord/482528405292843018?label=Discord&style=popout)](https://discord.gg/VA26u5Z)
 
@@ -49,4 +49,4 @@ Want to give this a try? Check out the [getting started guide](https://github.co
 
 ## Testing
 
-Test project will be written once the `client_credential` grant goes live.
+See the test project and its structure for how tests are performed
