@@ -34,7 +34,7 @@ namespace DragonFruit.Orbit.Api.Ranking.Entities
         public double Accuracy { get; set; }
 
         [JsonProperty("max_combo")]
-        public uint MaxCombo { get; set; }
+        public int MaxCombo { get; set; }
 
         [JsonProperty("score")]
         public long Score { get; set; }
