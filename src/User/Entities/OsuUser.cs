@@ -26,7 +26,7 @@ namespace DragonFruit.Orbit.Api.User.Entities
         public bool HasSupported { get; set; }
 
         [JsonProperty("support_level")]
-        public uint? SupporterLevel { get; set; }
+        public int? SupporterLevel { get; set; }
 
         #region Socials
 
@@ -89,13 +89,13 @@ namespace DragonFruit.Orbit.Api.User.Entities
         #region Counts
 
         [JsonProperty("post_count")]
-        public uint PostCount { get; set; }
+        public int PostCount { get; set; }
 
         [JsonProperty("favourite_beatmapset_count")]
-        public uint FavouriteMapsetCount { get; set; }
+        public int FavouriteMapsetCount { get; set; }
 
         [JsonProperty("graveyard_beatmapset_count")]
-        public uint GraveyardMapsetCount { get; set; }
+        public int GraveyardMapsetCount { get; set; }
 
         [JsonProperty("loved_beatmapset_count")]
         public uint LovedMapsetCount { get; set; }

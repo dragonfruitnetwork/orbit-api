@@ -16,7 +16,7 @@ namespace DragonFruit.Orbit.Api.Ranking.Entities
     public class OsuLeaderboard<T> : IPaginatedByCursor
     {
         [JsonProperty("total")]
-        public uint TotalEntries { get; set; }
+        public int TotalEntries { get; set; }
 
         [JsonProperty("ranking")]
         public IEnumerable<T> Ranking { get; set; }

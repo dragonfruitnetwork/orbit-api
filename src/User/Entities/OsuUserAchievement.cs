@@ -11,7 +11,7 @@ namespace DragonFruit.Orbit.Api.User.Entities
     public class OsuUserAchievement
     {
         [JsonProperty("achievement_id")]
-        public uint AchievementId { get; set; }
+        public int AchievementId { get; set; }
 
         [JsonProperty("achieved_at")]
         public DateTimeOffset UnlockedAt { get; set; }

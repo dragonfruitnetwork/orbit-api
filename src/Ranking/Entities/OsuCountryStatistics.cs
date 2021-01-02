@@ -15,7 +15,7 @@ namespace DragonFruit.Orbit.Api.Ranking.Entities
         public string Code { get; set; }
 
         [JsonProperty("active_users")]
-        public uint ActiveUsers { get; set; }
+        public int ActiveUsers { get; set; }
 
         [JsonProperty("play_count")]
         public ulong PlayCount { get; set; }
