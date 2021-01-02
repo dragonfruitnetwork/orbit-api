@@ -8,7 +8,7 @@ namespace DragonFruit.Orbit.Api.Legacy.Requests
 {
     public class OsuLegacyUserRequest : OsuLegacyUserBasedRequest
     {
-        private uint? _dateRange;
+        private int? _dateRange;
 
         public override string Target => "user";
 
@@ -18,7 +18,7 @@ namespace DragonFruit.Orbit.Api.Legacy.Requests
         }
 
         [QueryParameter("event_days")]
-        public uint EventDateRange
+        public int EventDateRange
         {
             get => _dateRange ??= 7;
             set

@@ -11,7 +11,7 @@ namespace DragonFruit.Orbit.Api.Ranking.Entities
     public class OsuUserBestScore
     {
         [JsonProperty("position")]
-        public uint? Position { get; set; }
+        public int? Position { get; set; }
 
         [JsonProperty("score")]
         public OsuScore Score { get; set; }

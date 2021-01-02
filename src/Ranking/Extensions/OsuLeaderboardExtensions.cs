@@ -21,7 +21,7 @@ namespace DragonFruit.Orbit.Api.Ranking.Extensions
         /// <param name="spotlight">Optional spotlight id to return entries for</param>
         /// <param name="variant"><see cref="LeaderboardVariant"/> for osu!mania 4/7 keys</param>
         /// <param name="last">Optional previous response that is used to get the next set</param>
-        public static OsuUserLeaderboard GetLeaderboard<T>(this T client, GameMode mode, LeaderboardType type, LeaderboardFilterMode? filter = null, string country = null, uint? spotlight = null,
+        public static OsuUserLeaderboard GetLeaderboard<T>(this T client, GameMode mode, LeaderboardType type, LeaderboardFilterMode? filter = null, string country = null, int? spotlight = null,
                                                            LeaderboardVariant? variant = null, OsuUserLeaderboard last = null)
             where T : OrbitClient
         {

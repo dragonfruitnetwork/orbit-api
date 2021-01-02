@@ -12,7 +12,7 @@ namespace DragonFruit.Orbit.Api.Ranking.Requests
     public class OsuLeaderboardRequest : OrbitRequest, IPaginatedByCursor
     {
         private string _country;
-        private uint? _spotlight;
+        private int? _spotlight;
         private LeaderboardVariant? _variant;
 
         protected override string Stub => $"rankings/{Mode.ToExternalValue()}/{Type.ToExternalValue()}";
@@ -39,7 +39,7 @@ namespace DragonFruit.Orbit.Api.Ranking.Requests
         }
 
         [QueryParameter("spotlight")]
-        public uint? Spotlight
+        public int? Spotlight
         {
             get => Type == LeaderboardType.Spotlight ? _spotlight : null;
             set => _spotlight = value;

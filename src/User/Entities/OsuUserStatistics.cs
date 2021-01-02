@@ -27,13 +27,13 @@ namespace DragonFruit.Orbit.Api.User.Entities
         public double Performance { get; set; }
 
         [JsonProperty("pp_rank")]
-        public uint GlobalRank { get; set; }
+        public int GlobalRank { get; set; }
 
         [JsonProperty("hit_accuracy")]
         public double Accuracy { get; set; }
 
         [JsonProperty("maximum_combo")]
-        public uint MaxCombo { get; set; }
+        public int MaxCombo { get; set; }
 
         [JsonProperty("play_count")]
         public uint TotalPerformances { get; set; }

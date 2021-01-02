@@ -11,21 +11,21 @@ namespace DragonFruit.Orbit.Api.Ranking.Entities
     public class OsuScoreStatistics
     {
         [JsonProperty("count_50")]
-        public uint Count50 { get; set; }
+        public int Count50 { get; set; }
 
         [JsonProperty("count_100")]
-        public uint Count100 { get; set; }
+        public int Count100 { get; set; }
 
         [JsonProperty("count_300")]
-        public uint Count300 { get; set; }
+        public int Count300 { get; set; }
 
         [JsonProperty("count_geki")]
-        public uint CountGeki { get; set; }
+        public int CountGeki { get; set; }
 
         [JsonProperty("count_katu")]
-        public uint CountKatu { get; set; }
+        public int CountKatu { get; set; }
 
         [JsonProperty("count_miss")]
-        public uint CountMiss { get; set; }
+        public int CountMiss { get; set; }
     }
 }
