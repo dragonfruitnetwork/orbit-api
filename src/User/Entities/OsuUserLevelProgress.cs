@@ -11,9 +11,9 @@ namespace DragonFruit.Orbit.Api.User.Entities
     public class OsuUserLevelProgress
     {
         [JsonProperty("current")]
-        public uint Current { get; set; }
+        public int Current { get; set; }
 
         [JsonProperty("progress")]
-        public float Progress { get; set; }
+        public double Progress { get; set; }
     }
 }

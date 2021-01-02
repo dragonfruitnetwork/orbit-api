@@ -21,7 +21,7 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Entities
         public string DisplayVersion { get; set; }
 
         [JsonProperty("users")]
-        public uint? Users { get; set; }
+        public int? Users { get; set; }
 
         [JsonProperty("created_at")]
         public DateTimeOffset Created { get; set; }

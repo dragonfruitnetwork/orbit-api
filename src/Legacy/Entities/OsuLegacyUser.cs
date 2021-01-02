@@ -19,16 +19,16 @@ namespace DragonFruit.Orbit.Api.Legacy.Entities
         public DateTime JoinDateUtc { get; set; }
 
         [JsonProperty("count300")]
-        public uint Count300 { get; set; }
+        public int Count300 { get; set; }
 
         [JsonProperty("count100")]
-        public uint Count100 { get; set; }
+        public int Count100 { get; set; }
 
         [JsonProperty("count50")]
-        public uint Count50 { get; set; }
+        public int Count50 { get; set; }
 
         [JsonProperty("playcount")]
-        public uint PlayCount { get; set; }
+        public int PlayCount { get; set; }
 
         [JsonProperty("ranked_score")]
         public ulong RankedScore { get; set; }
@@ -37,7 +37,7 @@ namespace DragonFruit.Orbit.Api.Legacy.Entities
         public ulong TotalScore { get; set; }
 
         [JsonProperty("pp_raw")]
-        public float PP { get; set; }
+        public double PP { get; set; }
 
         [JsonProperty("pp_rank")]
         public int? GlobalRank { get; set; }
@@ -46,10 +46,10 @@ namespace DragonFruit.Orbit.Api.Legacy.Entities
         public int? CountryRank { get; set; }
 
         [JsonProperty("level")]
-        public float Level { get; set; }
+        public double Level { get; set; }
 
         [JsonProperty("accuracy")]
-        public float Accuracy { get; set; }
+        public double Accuracy { get; set; }
 
         [JsonProperty("count_rank_ss")]
         public int CountRankSS { get; set; }
@@ -70,7 +70,7 @@ namespace DragonFruit.Orbit.Api.Legacy.Entities
         public string CountryCode { get; set; }
 
         [JsonProperty("total_seconds_played")]
-        public uint TotalSecondsPlayed { get; set; }
+        public int TotalSecondsPlayed { get; set; }
 
         [JsonProperty("events")]
         public OsuLegacyUserEvent[] Events { get; set; }

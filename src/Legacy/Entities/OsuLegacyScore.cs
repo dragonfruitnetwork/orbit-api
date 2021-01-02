@@ -17,10 +17,10 @@ namespace DragonFruit.Orbit.Api.Legacy.Entities
         public uint BeatmapId { get; set; }
 
         [JsonProperty("score")]
-        public uint Score { get; set; }
+        public int Score { get; set; }
 
         [JsonProperty("max_combo")]
-        public uint MaxCombo { get; set; }
+        public int MaxCombo { get; set; }
 
         [JsonProperty("rank")]
         public LegacyRank Rank { get; set; }
@@ -29,28 +29,28 @@ namespace DragonFruit.Orbit.Api.Legacy.Entities
         public LegacyBool Perfect { get; set; }
 
         [JsonProperty("count300")]
-        public uint Count300 { get; set; }
+        public int Count300 { get; set; }
 
         [JsonProperty("count100")]
-        public uint Count100 { get; set; }
+        public int Count100 { get; set; }
 
         [JsonProperty("count50")]
-        public uint Count50 { get; set; }
+        public int Count50 { get; set; }
 
         [JsonProperty("countmiss")]
-        public uint CountMiss { get; set; }
+        public int CountMiss { get; set; }
 
         [JsonProperty("countgeki")]
-        public uint CountGeki { get; set; }
+        public int CountGeki { get; set; }
 
         [JsonProperty("countkatu")]
-        public uint CountKatu { get; set; }
+        public int CountKatu { get; set; }
 
         [JsonProperty("score_id")]
         public ulong? ScoreId { get; set; }
 
         [JsonProperty("pp")]
-        public float? PP { get; set; }
+        public double? PP { get; set; }
 
         [JsonProperty("replay_available")]
         public LegacyBool? ReplayAvailable { get; set; }

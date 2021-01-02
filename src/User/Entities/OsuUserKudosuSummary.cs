@@ -11,9 +11,9 @@ namespace DragonFruit.Orbit.Api.User.Entities
     public class OsuUserKudosuSummary
     {
         [JsonProperty("total")]
-        public uint Total { get; set; }
+        public int Total { get; set; }
 
         [JsonProperty("available")]
-        public uint Available { get; set; }
+        public int Available { get; set; }
     }
 }

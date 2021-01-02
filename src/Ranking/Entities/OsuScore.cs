@@ -31,7 +31,7 @@ namespace DragonFruit.Orbit.Api.Ranking.Entities
         public DateTimeOffset DatePerformed { get; set; }
 
         [JsonProperty("accuracy")]
-        public float Accuracy { get; set; }
+        public double Accuracy { get; set; }
 
         [JsonProperty("max_combo")]
         public uint MaxCombo { get; set; }
@@ -43,7 +43,7 @@ namespace DragonFruit.Orbit.Api.Ranking.Entities
         public bool ReplayAvailable { get; set; }
 
         [JsonProperty("pp")]
-        public float? PP { get; set; }
+        public double? PP { get; set; }
 
         [CanBeNull]
         [JsonProperty("mods")]

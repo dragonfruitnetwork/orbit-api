@@ -11,9 +11,9 @@ namespace DragonFruit.Orbit.Api.Beatmaps.Entities
     public class OsuBeatmapsetNominations
     {
         [JsonProperty("current")]
-        public uint Current { get; set; }
+        public int Current { get; set; }
 
         [JsonProperty("required")]
-        public uint Required { get; set; }
+        public int Required { get; set; }
     }
 }

@@ -13,10 +13,10 @@ namespace DragonFruit.Orbit.Api.Beatmaps.Entities
         public IEnumerable<OsuBeatmapset> Beatmapsets { get; set; }
 
         [JsonProperty("total")]
-        public uint TotalResults { get; set; }
+        public int TotalResults { get; set; }
 
         [JsonProperty("recommended_difficulty")]
-        public float? RecommendedDifficulty { get; set; }
+        public double? RecommendedDifficulty { get; set; }
 
         [JsonProperty("cursor")]
         public IReadOnlyDictionary<string, string> Cursor { get; set; }

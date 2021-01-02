@@ -31,47 +31,47 @@ namespace DragonFruit.Orbit.Api.Beatmaps.Entities
         #region Ratings/Difficulty Attributes
 
         [JsonProperty("difficulty_rating")]
-        public float DifficultyRating { get; set; }
+        public double DifficultyRating { get; set; }
 
         [JsonProperty("accuracy")]
-        public float Accuracy { get; set; }
+        public double Accuracy { get; set; }
 
         [JsonProperty("ar")]
-        public float ApproachRate { get; set; }
+        public double ApproachRate { get; set; }
 
         [JsonProperty("bpm")]
-        public float BPM { get; set; }
+        public double BPM { get; set; }
 
         [JsonProperty("cs")]
-        public float CircleSize { get; set; }
+        public double CircleSize { get; set; }
 
         [JsonProperty("drain")]
-        public float Drain { get; set; }
+        public double Drain { get; set; }
 
         [JsonProperty("count_circles")]
-        public uint CountCircles { get; set; }
+        public int CountCircles { get; set; }
 
         [JsonProperty("count_sliders")]
-        public uint CountSliders { get; set; }
+        public int CountSliders { get; set; }
 
         [JsonProperty("count_spinners")]
-        public uint CountSpinners { get; set; }
+        public int CountSpinners { get; set; }
 
         [JsonProperty("covert")]
         public bool IsConverted { get; set; }
 
         [JsonProperty("max_combo")]
-        public uint MaxCombo { get; set; }
+        public int MaxCombo { get; set; }
 
         #endregion
 
         #region Length
 
         [JsonProperty("total_length")]
-        public uint TotalLengthSeconds { get; set; }
+        public int TotalLengthSeconds { get; set; }
 
         [JsonProperty("hit_length")]
-        public uint HitLengthSeconds { get; set; }
+        public int HitLengthSeconds { get; set; }
 
         public TimeSpan TotalLength => _totalLength ??= TimeSpan.FromSeconds(TotalLengthSeconds);
         public TimeSpan HitLength => _hitLength ??= TimeSpan.FromSeconds(HitLengthSeconds);
@@ -79,10 +79,10 @@ namespace DragonFruit.Orbit.Api.Beatmaps.Entities
         #endregion
 
         [JsonProperty("playcount")]
-        public uint PlayCount { get; set; }
+        public int PlayCount { get; set; }
 
         [JsonProperty("passcount")]
-        public uint PassCount { get; set; }
+        public int PassCount { get; set; }
 
         [CanBeNull]
         [JsonProperty("failtimes")]
