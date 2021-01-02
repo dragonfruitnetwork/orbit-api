@@ -1,7 +1,5 @@
 param ([string] $ApiKey, [string]$Suffix = "")
 
-Set-Location -Path "..\"
-
 # versioning info
 $VERSION = "$(Get-Date -UFormat "%Y.%m%d").$($env:GITHUB_RUN_NUMBER)$($Suffix)"
 $WORKINGDIR = Get-Location
@@ -15,7 +13,7 @@ dotnet build -c Release /p:PackageVersion=$VERSION
 # pack into nuget files with the suffix if we have one
 
 Write-Output "Publishing Orbit Version $VERSION"
-dotnet pack ".\src\DragonFruit.Orbit.Api.csproj" -o $WORKINGDIR -c Release -p:PackageVersion=$VERSION
+dotnet pack "..\src\DragonFruit.Orbit.Api.csproj" -o $WORKINGDIR -c Release -p:PackageVersion=$VERSION
 
 # recursively push all nuget files created
 
