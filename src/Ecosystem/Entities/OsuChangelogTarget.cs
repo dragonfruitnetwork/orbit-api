@@ -38,7 +38,7 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Entities
         public bool Featured { get; set; }
 
         [JsonProperty("user_count")]
-        public uint? Users { get; set; }
+        public int? Users { get; set; }
 
         [CanBeNull]
         [JsonProperty("latest_build")]

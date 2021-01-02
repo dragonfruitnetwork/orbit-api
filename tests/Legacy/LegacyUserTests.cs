@@ -10,16 +10,16 @@ namespace DragonFruit.Orbit.Api.Tests.Legacy
     [TestFixture]
     public class LegacyUserTests : OrbitApiTest
     {
-        [TestCase("PaPaCurry", GameMode.Standard, 2990f)]
-        [TestCase("4539503", GameMode.Taiko, 0f)]
-        public void TestUserLookup(string id, GameMode? mode, float? minPP)
+        [TestCase("PaPaCurry", GameMode.Standard, 2990d)]
+        [TestCase("4539503", GameMode.Taiko, 0d)]
+        public void TestUserLookup(string id, GameMode? mode, double? minPP)
         {
             var user = Client.GetLegacyUser(id, mode);
             Assert.GreaterOrEqual(user.PP, minPP);
         }
 
         [TestCase("PaPaCurry", GameMode.Standard, 160f)]
-        public void TestUserScoreRetrieval(string identifier, GameMode mode, float minPP)
+        public void TestUserScoreRetrieval(string identifier, GameMode mode, double minPP)
         {
             var bestScores = Client.GetLegacyBestScores(identifier, mode);
 

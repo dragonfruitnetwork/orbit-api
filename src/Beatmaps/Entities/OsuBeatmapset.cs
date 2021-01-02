@@ -72,7 +72,7 @@ namespace DragonFruit.Orbit.Api.Beatmaps.Entities
         public string AudioPreview { get; set; }
 
         [JsonProperty("bpm")]
-        public float BPM { get; set; }
+        public double BPM { get; set; }
 
         #endregion
 

@@ -28,6 +28,6 @@ namespace DragonFruit.Orbit.Api.User.Entities
         public GameMode? Mode { get; set; }
 
         [JsonProperty("data")]
-        public IEnumerable<uint> Positions { get; set; }
+        public IEnumerable<int> Positions { get; set; }
     }
 }

@@ -65,7 +65,7 @@ namespace DragonFruit.Orbit.Api.Legacy.Entities
         public string Tags { get; set; }
 
         [JsonProperty("rating")]
-        public float Rating { get; set; }
+        public double Rating { get; set; }
 
         [JsonProperty("favourite_count")]
         public uint FavouriteCount { get; set; }
@@ -92,28 +92,28 @@ namespace DragonFruit.Orbit.Api.Legacy.Entities
         public uint ObjectCountSpinner { get; set; }
 
         [JsonProperty("bpm")]
-        public float BPM { get; set; }
+        public double BPM { get; set; }
 
         [JsonProperty("difficultyrating")]
-        public float DifficultyRating { get; set; }
+        public double DifficultyRating { get; set; }
 
         [JsonProperty("diff_aim")]
-        public float DifficultyAim { get; set; }
+        public double DifficultyAim { get; set; }
 
         [JsonProperty("diff_speed")]
-        public float DifficultySpeed { get; set; }
+        public double DifficultySpeed { get; set; }
 
         [JsonProperty("diff_size")]
-        public float DifficultySize { get; set; }
+        public double DifficultySize { get; set; }
 
         [JsonProperty("diff_overall")]
-        public float DifficultyOverall { get; set; }
+        public double DifficultyOverall { get; set; }
 
         [JsonProperty("diff_approach")]
-        public float DifficultyApproach { get; set; }
+        public double DifficultyApproach { get; set; }
 
         [JsonProperty("diff_drain")]
-        public float DifficultyDrain { get; set; }
+        public double DifficultyDrain { get; set; }
 
         [JsonProperty("storyboard")]
         public LegacyBool Storyboard { get; set; }

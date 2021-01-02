@@ -11,9 +11,9 @@ namespace DragonFruit.Orbit.Api.Ranking.Entities
     public class OsuScoreWeighting
     {
         [JsonProperty("percentage")]
-        public float Percentage { get; set; }
+        public double Percentage { get; set; }
 
         [JsonProperty("pp")]
-        public float Value { get; set; }
+        public double Value { get; set; }
     }
 }

@@ -28,10 +28,10 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Entities
         public bool Pinned { get; set; }
 
         [JsonProperty("replies_count")]
-        public uint ReplyCount { get; set; }
+        public int ReplyCount { get; set; }
 
         [JsonProperty("votes_count")]
-        public uint VoteCount { get; set; }
+        public int VoteCount { get; set; }
 
         [JsonProperty("commentable_type")]
         public string CommentableTypeName
