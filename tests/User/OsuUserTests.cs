@@ -15,6 +15,12 @@ namespace DragonFruit.Orbit.Api.Tests.User
             Client.GetUser(id, mode);
         }
 
+        [TestCase(13723332u, "taiko")]
+        public void TestUserModeNameLookup(uint id, string mode)
+        {
+            Client.GetUser(id, mode);
+        }
+
         [TestCase("PaPaCurry", 13723332u)]
         public void TestUserRedirectLookup(string username, uint id)
         {

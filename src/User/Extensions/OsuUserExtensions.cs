@@ -20,12 +20,35 @@ namespace DragonFruit.Orbit.Api.User.Extensions
         }
 
         /// <summary>
+        /// Lookup a user by their numeric identifier
+        /// </summary>
+        /// <param name="client">The <see cref="OrbitClient"/> to use</param>
+        /// <param name="userId">The user id</param>
+        /// <param name="mode">Optional mode name to return stats for</param>
+        public static OsuUser GetUser<T>(this T client, uint userId, string mode) where T : OrbitClient
+        {
+            return GetUser(client, userId.ToString(), mode);
+        }
+
+        /// <summary>
         /// Lookup a user by their username
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="username">The username</param>
         /// <param name="mode">Optional mode to return stats for</param>
         public static OsuUser GetUser<T>(this T client, string username, GameMode? mode = null) where T : OrbitClient
+        {
+            var request = new OsuUserRequest(username, mode);
+            return client.Perform<OsuUser>(request);
+        }
+
+        /// <summary>
+        /// Lookup a user by their username
+        /// </summary>
+        /// <param name="client">The <see cref="OrbitClient"/> to use</param>
+        /// <param name="username">The username</param>
+        /// <param name="mode">Optional mode name to return stats for</param>
+        public static OsuUser GetUser<T>(this T client, string username, string mode) where T : OrbitClient
         {
             var request = new OsuUserRequest(username, mode);
             return client.Perform<OsuUser>(request);
