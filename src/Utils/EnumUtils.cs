@@ -56,6 +56,9 @@ namespace DragonFruit.Orbit.Api.Utils
             if (!type.IsEnum)
                 throw new InvalidConstraintException($"{nameof(T)} was not an enum type");
 
+            if (string.IsNullOrWhiteSpace(value))
+                return default;
+
             return Enum.GetValues(type)
                        .Cast<Enum>()
                        .FirstOrDefault(x => x.ToExternalValue().Equals(value, StringComparison.OrdinalIgnoreCase)) as T?;
