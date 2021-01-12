@@ -11,9 +11,9 @@ namespace DragonFruit.Orbit.Api.User.Entities
     public class OsuUserRankPosition
     {
         [JsonProperty("global")]
-        public int Global { get; set; }
+        public int? Global { get; set; }
 
         [JsonProperty("country")]
-        public int Country { get; set; }
+        public int? Country { get; set; }
     }
 }
