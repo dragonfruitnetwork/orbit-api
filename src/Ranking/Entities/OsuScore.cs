@@ -22,7 +22,7 @@ namespace DragonFruit.Orbit.Api.Ranking.Entities
         public ulong Id { get; set; }
 
         [JsonProperty("best_id")]
-        public ulong BestScoreId { get; set; }
+        public ulong? BestScoreId { get; set; }
 
         [JsonProperty("user_id")]
         public uint UserId { get; set; }
