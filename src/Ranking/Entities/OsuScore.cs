@@ -16,7 +16,7 @@ namespace DragonFruit.Orbit.Api.Ranking.Entities
     [JsonObject(MemberSerialization.OptIn)]
     public class OsuScore
     {
-        private string _gradeName;
+        private string _gradeName, _modeName;
 
         [JsonProperty("id")]
         public ulong Id { get; set; }
@@ -63,6 +63,18 @@ namespace DragonFruit.Orbit.Api.Ranking.Entities
             }
         }
 
+        [JsonProperty("mode")]
+        public string ModeName
+        {
+            get => _modeName;
+            set
+            {
+                _modeName = value;
+                Mode = EnumUtils.GetInternalValue<GameMode>(value);
+            }
+        }
+
+        public GameMode? Mode { get; set; }
         public ScoreGrade? Grade { get; set; }
 
         [CanBeNull]
