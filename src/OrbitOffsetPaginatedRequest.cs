@@ -11,7 +11,13 @@ namespace DragonFruit.Orbit.Api
     /// </summary>
     public abstract class OrbitOffsetPaginatedRequest : OrbitRequest, IPaginatedByOffset
     {
-        private uint? _offset;
+        private uint? _offset, _limit;
+
+        /// <summary>
+        /// Internal default limit for when a <see cref="Limit"/> is not set.
+        /// Internally customisable at a per-request level
+        /// </summary>
+        internal virtual uint DefaultLimit => 15;
 
         /// <summary>
         /// 0-based page number
@@ -23,7 +29,11 @@ namespace DragonFruit.Orbit.Api
         /// Do not change between requests regarding the same dataset - it'll break the page system
         /// </summary>
         [QueryParameter("limit")]
-        public uint? Limit { get; set; }
+        public uint? Limit
+        {
+            get => _limit ?? DefaultLimit;
+            set => _limit = value;
+        }
 
         /// <summary>
         /// Offset that is sent to the server. Can be overridden or calculated based on the limit and page.
@@ -32,7 +42,8 @@ namespace DragonFruit.Orbit.Api
         public uint Offset
         {
             // this allows the user to pick their own offset or use the page number
-            get => _offset ?? Page * (Limit ?? 15);
+            // ReSharper disable once PossibleInvalidOperationException (we null-coalesce in Limit)
+            get => _offset ?? Page * Limit.Value;
             set => _offset = value;
         }
     }
