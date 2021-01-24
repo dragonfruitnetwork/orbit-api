@@ -1,6 +1,7 @@
 ﻿// Orbit API Copyright (C) 2019-2021 DragonFruit Network
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
+using System.Collections.Generic;
 using DragonFruit.Orbit.Api.User.Entities;
 using DragonFruit.Orbit.Api.User.Requests;
 
@@ -52,6 +53,19 @@ namespace DragonFruit.Orbit.Api.User.Extensions
         {
             var request = new OsuUserRequest(username, mode);
             return client.Perform<OsuUser>(request);
+        }
+
+        /// <summary>
+        /// Get the authenticating user's friends.
+        /// </summary>
+        /// <remarks>
+        /// This fails if client_credentials are used to perform the request.
+        /// </remarks>
+        /// <param name="client">The <see cref="OrbitClient"/> to use</param>
+        public static IEnumerable<OsuUserCard> GetFriends<T>(this T client) where T : OrbitClient
+        {
+            var request = new OsuUserFriendsRequest();
+            return client.Perform<IEnumerable<OsuUserCard>>(request);
         }
     }
 }
