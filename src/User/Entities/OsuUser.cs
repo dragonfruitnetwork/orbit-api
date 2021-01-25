@@ -16,6 +16,7 @@ namespace DragonFruit.Orbit.Api.User.Entities
     public class OsuUser : OsuUserCard
     {
         private string _defaultModeName;
+        private int? _currentModeRank;
         private IEnumerable<string> _playstyleNames;
 
         // removed for now as everything can be retrieved from the cover object
@@ -73,6 +74,14 @@ namespace DragonFruit.Orbit.Api.User.Entities
 
         [JsonProperty("rank_history")]
         public OsuUserRankHistory RankHistory { get; set; }
+
+        // this is only available in usercards, but we can just redirect to the actual location
+        [JsonIgnore]
+        public override int? CurrentModeRank
+        {
+            get => _currentModeRank ?? Statistics?.GlobalRank;
+            set => _currentModeRank = value;
+        }
 
         [JsonProperty("statistics")]
         public OsuUserStatistics Statistics { get; set; }

@@ -61,7 +61,7 @@ namespace DragonFruit.Orbit.Api.Utils
 
             return Enum.GetValues(type)
                        .Cast<Enum>()
-                       .Where(x => x.ToExternalValue().Equals(value, StringComparison.OrdinalIgnoreCase)) as T?;
+                       .FirstOrDefault(x => x.ToExternalValue().Equals(value, StringComparison.OrdinalIgnoreCase)) as T?;
         }
     }
 }

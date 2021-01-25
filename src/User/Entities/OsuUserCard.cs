@@ -23,9 +23,9 @@ namespace DragonFruit.Orbit.Api.User.Entities
 
         [JsonProperty("default_group")]
         public string DefaultGroup { get; set; }
-        
+
         [JsonProperty("current_mode_rank")]
-        public int? CurrentModeRank { get; set; }
+        public virtual int? CurrentModeRank { get; set; }
 
         [JsonProperty("is_active")]
         public bool IsActive { get; set; }
