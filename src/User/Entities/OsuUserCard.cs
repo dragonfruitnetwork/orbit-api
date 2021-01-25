@@ -12,11 +12,17 @@ namespace DragonFruit.Orbit.Api.User.Entities
     [JsonObject(MemberSerialization.OptIn)]
     public class OsuUserCard
     {
+        private string _avatarUrl;
+
         [JsonProperty("id")]
         public uint Id { get; set; }
 
         [JsonProperty("avatar_url")]
-        public string AvatarUrl { get; set; }
+        public string AvatarUrl
+        {
+            get => _avatarUrl;
+            set => _avatarUrl = value.StartsWith("/") ? OrbitClient.BaseEndpoint + value : value;
+        }
 
         [JsonProperty("username")]
         public string Username { get; set; }
