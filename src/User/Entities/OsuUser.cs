@@ -16,11 +16,8 @@ namespace DragonFruit.Orbit.Api.User.Entities
     public class OsuUser : OsuUserCard
     {
         private string _defaultModeName;
+        private int? _currentModeRank;
         private IEnumerable<string> _playstyleNames;
-
-        [NotNull]
-        [JsonProperty("cover_uurl")]
-        public string CoverUrl { get; set; }
 
         [JsonProperty("has_supported")]
         public bool HasSupported { get; set; }
@@ -70,14 +67,16 @@ namespace DragonFruit.Orbit.Api.User.Entities
         [JsonProperty("kudosu")]
         public OsuUserKudosuSummary Kudosu { get; set; }
 
-        [JsonProperty("cover")]
-        public OsuUserCover Cover { get; set; }
-
-        [JsonProperty("country")]
-        public OsuUserCountry Country { get; set; }
-
         [JsonProperty("rank_history")]
         public OsuUserRankHistory RankHistory { get; set; }
+
+        // this is only available in usercards, but we can just redirect to the actual location
+        [JsonIgnore]
+        public override int? CurrentModeRank
+        {
+            get => _currentModeRank ?? Statistics?.GlobalRank;
+            set => _currentModeRank = value;
+        }
 
         [JsonProperty("statistics")]
         public OsuUserStatistics Statistics { get; set; }
@@ -170,7 +169,7 @@ namespace DragonFruit.Orbit.Api.User.Entities
             {
                 _playstyleNames = value;
 
-                var values = value.Select(x => (UserPlaystyle?)EnumUtils.GetInternalValue<UserPlaystyle>(x)).Where(x => x != null).ToArray();
+                var values = value.Select(EnumUtils.GetInternalValue<UserPlaystyle>).Where(x => x != null).ToArray();
                 Playstyle = values.Any() ? values.Aggregate((a, b) => a | b) : null;
             }
         }
@@ -181,10 +180,6 @@ namespace DragonFruit.Orbit.Api.User.Entities
         [CanBeNull]
         [JsonProperty("badges")]
         public IEnumerable<OsuUserBadge> Badges { get; set; }
-
-        [CanBeNull]
-        [JsonProperty("groups")]
-        public IEnumerable<OsuUserGroup> Groups { get; set; }
 
         [JsonProperty("user_achievements")]
         public IEnumerable<OsuUserAchievement> Achievements { get; set; }
