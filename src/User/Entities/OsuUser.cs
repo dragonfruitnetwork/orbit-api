@@ -169,8 +169,12 @@ namespace DragonFruit.Orbit.Api.User.Entities
             {
                 _playstyleNames = value;
 
-                var values = value.Select(EnumUtils.GetInternalValue<UserPlaystyle>).Where(x => x != null).ToArray();
-                Playstyle = values.Any() ? values.Aggregate((a, b) => a | b) : null;
+                var values = value?.Select(EnumUtils.GetInternalValue<UserPlaystyle>).Where(x => x != null).ToArray();
+
+                if (values != null)
+                {
+                    Playstyle = values.Any() ? values.Aggregate((a, b) => a | b) : null;
+                }
             }
         }
 
