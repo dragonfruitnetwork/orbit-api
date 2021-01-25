@@ -19,11 +19,6 @@ namespace DragonFruit.Orbit.Api.User.Entities
         private int? _currentModeRank;
         private IEnumerable<string> _playstyleNames;
 
-        // removed for now as everything can be retrieved from the cover object
-        // [NotNull]
-        // [JsonProperty("cover_url")]
-        // public string CoverUrl { get; set; }
-
         [JsonProperty("has_supported")]
         public bool HasSupported { get; set; }
 
