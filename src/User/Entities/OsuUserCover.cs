@@ -2,6 +2,7 @@
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
 using System;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 
 namespace DragonFruit.Orbit.Api.User.Entities
@@ -10,6 +11,7 @@ namespace DragonFruit.Orbit.Api.User.Entities
     [JsonObject(MemberSerialization.OptIn)]
     public class OsuUserCover
     {
+        [CanBeNull]
         [JsonProperty("custom_url")]
         public string CustomUrl { get; set; }
 

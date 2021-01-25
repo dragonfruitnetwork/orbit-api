@@ -18,9 +18,10 @@ namespace DragonFruit.Orbit.Api.User.Entities
         private string _defaultModeName;
         private IEnumerable<string> _playstyleNames;
 
-        [NotNull]
-        [JsonProperty("cover_uurl")]
-        public string CoverUrl { get; set; }
+        // removed for now as everything can be retrieved from the cover object
+        // [NotNull]
+        // [JsonProperty("cover_url")]
+        // public string CoverUrl { get; set; }
 
         [JsonProperty("has_supported")]
         public bool HasSupported { get; set; }
@@ -69,12 +70,6 @@ namespace DragonFruit.Orbit.Api.User.Entities
 
         [JsonProperty("kudosu")]
         public OsuUserKudosuSummary Kudosu { get; set; }
-
-        [JsonProperty("cover")]
-        public OsuUserCover Cover { get; set; }
-
-        [JsonProperty("country")]
-        public OsuUserCountry Country { get; set; }
 
         [JsonProperty("rank_history")]
         public OsuUserRankHistory RankHistory { get; set; }
@@ -170,7 +165,7 @@ namespace DragonFruit.Orbit.Api.User.Entities
             {
                 _playstyleNames = value;
 
-                var values = value.Select(x => (UserPlaystyle?)EnumUtils.GetInternalValue<UserPlaystyle>(x)).Where(x => x != null).ToArray();
+                var values = value.Select(EnumUtils.GetInternalValue<UserPlaystyle>).Where(x => x != null).ToArray();
                 Playstyle = values.Any() ? values.Aggregate((a, b) => a | b) : null;
             }
         }
@@ -181,10 +176,6 @@ namespace DragonFruit.Orbit.Api.User.Entities
         [CanBeNull]
         [JsonProperty("badges")]
         public IEnumerable<OsuUserBadge> Badges { get; set; }
-
-        [CanBeNull]
-        [JsonProperty("groups")]
-        public IEnumerable<OsuUserGroup> Groups { get; set; }
 
         [JsonProperty("user_achievements")]
         public IEnumerable<OsuUserAchievement> Achievements { get; set; }
