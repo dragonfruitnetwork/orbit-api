@@ -20,14 +20,14 @@ namespace DragonFruit.Orbit.Api.User.Entities
         [JsonProperty("level")]
         public OsuUserLevelProgress Level { get; set; }
 
-        [JsonProperty("rank")]
-        public OsuUserRankPosition Rank { get; set; }
-
         [JsonProperty("pp")]
         public double? Performance { get; set; }
 
-        [JsonProperty("pp_rank")]
+        [JsonProperty("global_rank")]
         public int? GlobalRank { get; set; }
+
+        [JsonProperty("country_rank")]
+        public int? CountryRank { get; set; }
 
         [JsonProperty("hit_accuracy")]
         public double Accuracy { get; set; }
