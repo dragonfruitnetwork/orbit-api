@@ -8,8 +8,8 @@
     <PropertyGroup>
         <PackageId>DragonFruit.Orbit.Api</PackageId>
         <Authors>DragonFruit Network</Authors>
-        <Description>A osu! API v1 and v2 wrapper</Description>
-        <Copyright>Copyright 2019-2021 (C) DragonFruit Network</Copyright>
+        <Description>An osu! API v1 and v2 wrapper</Description>
+        <Copyright>Copyright 2019-2021 DragonFruit Network</Copyright>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageIcon>orbit.png</PackageIcon>
     </PropertyGroup>
