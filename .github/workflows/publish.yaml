@@ -11,7 +11,7 @@ jobs:
 
     env:
       name: "DragonFruit.Orbit.Api"
-      project: "src\\DragonFruit.Orbit.API.csproj.csproj"
+      project: "src\\DragonFruit.Orbit.API.csproj"
 
     steps:
       - name: Checkout
