@@ -1,0 +1,14 @@
+version: 2
+updates:
+- package-ecosystem: nuget
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: NUnit3TestAdapter
+    versions:
+    - 3.17.0
+  - dependency-name: Microsoft.NET.Test.Sdk
+    versions:
+    - 16.9.4
