@@ -2,7 +2,6 @@
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
 using System;
-using System.Collections.Generic;
 using DragonFruit.Orbit.Api.Utils;
 using Newtonsoft.Json;
 
@@ -28,6 +27,6 @@ namespace DragonFruit.Orbit.Api.User.Entities
         public GameMode? Mode { get; set; }
 
         [JsonProperty("data")]
-        public IEnumerable<int> Positions { get; set; }
+        public int[] Positions { get; set; }
     }
 }
