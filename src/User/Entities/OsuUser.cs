@@ -99,7 +99,10 @@ namespace DragonFruit.Orbit.Api.User.Entities
         [JsonProperty("loved_beatmapset_count")]
         public uint LovedMapsetCount { get; set; }
 
-        [JsonProperty("ranked_and_approved_beatmapset_count")]
+        [JsonProperty("pending_beatmapset_count")]
+        public uint PendingMapsetCount { get; set; }
+
+        [JsonProperty("ranked_beatmapset_count")]
         public uint RankedMapsetCount { get; set; }
 
         [JsonProperty("follower_count")]
@@ -179,24 +182,24 @@ namespace DragonFruit.Orbit.Api.User.Entities
         }
 
         [JsonProperty("profile_order")]
-        public IEnumerable<string> ProfileOrder { get; set; }
+        public string[] ProfileOrder { get; set; }
 
         [CanBeNull]
         [JsonProperty("badges")]
-        public IEnumerable<OsuUserBadge> Badges { get; set; }
+        public OsuUserBadge[] Badges { get; set; }
 
         [JsonProperty("user_achievements")]
-        public IEnumerable<OsuUserAchievement> Achievements { get; set; }
+        public OsuUserAchievement[] Achievements { get; set; }
 
         [CanBeNull]
         [JsonProperty("previous_usernames")]
-        public IEnumerable<string> PreviousNames { get; set; }
+        public string[] PreviousNames { get; set; }
 
         [CanBeNull]
         [JsonProperty("replays_watched_counts")]
-        public IEnumerable<OsuStatisticsPeriod<uint>> ReplayWatchCounts { get; set; }
+        public OsuStatisticsPeriod<uint>[] ReplayWatchCounts { get; set; }
 
         [JsonProperty("monthly_playcounts")]
-        public IEnumerable<OsuStatisticsPeriod<uint>> PlayCounts { get; set; }
+        public OsuStatisticsPeriod<uint>[] PlayCounts { get; set; }
     }
 }
