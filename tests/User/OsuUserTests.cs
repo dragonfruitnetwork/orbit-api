@@ -22,7 +22,7 @@ namespace DragonFruit.Orbit.Api.Tests.User
         }
 
         [TestCase("PaPaCurry", 13723332u)]
-        public void TestUserRedirectLookup(string username, uint id)
+        public void TestUsernameLookup(string username, uint id)
         {
             var user = Client.GetUser(username);
             Assert.AreEqual(id, user.Id);
