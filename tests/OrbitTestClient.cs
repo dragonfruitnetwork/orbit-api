@@ -51,7 +51,7 @@ namespace DragonFruit.Orbit.Api.Tests
 
         private string GetEnvironmentVariable(string name)
         {
-            var data = _envCache.TryGetValue(name, out var value) switch
+            return _envCache[name] = _envCache.TryGetValue(name, out var value) switch
             {
                 true => value,
                 false when RuntimeInformation.IsOSPlatform(OSPlatform.Linux) => Environment.GetEnvironmentVariable(name),
@@ -59,9 +59,6 @@ namespace DragonFruit.Orbit.Api.Tests
 
                 _ => throw new PlatformNotSupportedException()
             };
-
-            _envCache[name] = data;
-            return data;
         }
     }
 }
