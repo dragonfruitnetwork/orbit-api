@@ -2,6 +2,7 @@
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
 using System;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 
 namespace DragonFruit.Orbit.Api.Ecosystem.Entities
@@ -16,6 +17,7 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Entities
         [JsonProperty("title")]
         public string Title { get; set; }
 
+        [CanBeNull]
         [JsonProperty("preview")]
         public string Preview { get; set; }
 

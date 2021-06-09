@@ -11,8 +11,8 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Requests
     public class OsuNewsRequest : OrbitRequest, IPaginatedByCursor, IHasLimit
     {
         protected override string Stub => "news";
-
         protected override bool RequireAuth => false;
+
         protected override IEnumerable<KeyValuePair<string, string>> AdditionalQueries => CursorUtils.ToQueries(Cursor);
 
         [QueryParameter("limit")]
