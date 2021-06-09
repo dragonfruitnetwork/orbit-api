@@ -18,11 +18,7 @@ namespace DragonFruit.Orbit.Api.User.Entities
         public uint Id { get; set; }
 
         [JsonProperty("avatar_url")]
-        public string AvatarUrl
-        {
-            get => _avatarUrl;
-            set => _avatarUrl = value.StartsWith("/") ? OrbitClient.BaseEndpoint + value : value;
-        }
+        public string AvatarUrl { get; set; }
 
         [JsonProperty("username")]
         public string Username { get; set; }
