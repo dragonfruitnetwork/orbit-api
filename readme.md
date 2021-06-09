@@ -49,4 +49,9 @@ Want to give this a try? Check out the [getting started guide](https://github.co
 
 ## Testing
 
-See the test project and its structure for how tests are performed
+Because the osu!api requires keys, these are likely to be run locally by reviewers. You can refer to the test project and its structure for how tests are performed.
+Basic rules are:
+1. Tests are filed under the major category (the first folder in the main project)
+2. Access to the client can be gained through inheriting `OrbitApiTest`
+3. The test allows for multiple cases to be defined, and tests all possibilities
+4. Just because there are lots of tests, doesn't mean they all need to be run. Exercise proper judgement as to not unnecessarily overload the osu! infrastructure.
