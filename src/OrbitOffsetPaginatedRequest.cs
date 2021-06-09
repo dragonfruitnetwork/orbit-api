@@ -15,7 +15,7 @@ namespace DragonFruit.Orbit.Api
 
         /// <summary>
         /// Internal default limit for when a <see cref="Limit"/> is not set.
-        /// Internally customisable at a per-request level
+        /// Customisable at a per-request level
         /// </summary>
         internal virtual uint DefaultLimit => 15;
 

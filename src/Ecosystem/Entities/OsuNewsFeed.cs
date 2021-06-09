@@ -13,7 +13,10 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Entities
     public class OsuNewsFeed : IPaginatedByCursor
     {
         [JsonProperty("news_posts")]
-        public IEnumerable<OsuNewsEntry> Entries { get; set; }
+        public OsuNewsEntry[] Entries { get; set; }
+
+        [JsonProperty("news_sidebar")]
+        public OsuNewsFeedSidebar Sidebar { get; set; }
 
         [JsonProperty("cursor")]
         public IReadOnlyDictionary<string, string> Cursor { get; set; }
