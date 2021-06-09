@@ -9,7 +9,6 @@ using System.Security.Authentication;
 using System.Threading;
 using DragonFruit.Common.Data;
 using DragonFruit.Common.Data.Extensions;
-using DragonFruit.Common.Data.Handlers;
 using DragonFruit.Orbit.Api.Auth;
 using DragonFruit.Orbit.Api.Auth.Requests;
 using DragonFruit.Orbit.Api.Legacy.Requests;
@@ -108,19 +107,6 @@ namespace DragonFruit.Orbit.Api
         }
 
         #endregion
-
-        protected sealed override HttpMessageHandler CreateHandler()
-        {
-            var handler = base.CreateHandler();
-
-            if (handler == null)
-            {
-                return new HeaderPreservingRedirectHandler();
-            }
-
-            // we need to wrap the handler in a header preservation handler because of user lookup redirs
-            return handler is HeaderPreservingRedirectHandler ? handler : new HeaderPreservingRedirectHandler(handler);
-        }
 
         protected override T ValidateAndProcess<T>(HttpResponseMessage response, HttpRequestMessage request)
         {

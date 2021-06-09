@@ -17,7 +17,7 @@ namespace DragonFruit.Orbit.Api.User.Extensions
         /// <param name="mode">Optional mode to return stats for</param>
         public static OsuUser GetUser<T>(this T client, uint id, GameMode? mode = null) where T : OrbitClient
         {
-            return GetUser(client, id.ToString(), mode);
+            return GetUser(client, id.ToString(), mode, false);
         }
 
         /// <summary>
@@ -28,18 +28,23 @@ namespace DragonFruit.Orbit.Api.User.Extensions
         /// <param name="mode">Optional mode name to return stats for</param>
         public static OsuUser GetUser<T>(this T client, uint userId, string mode) where T : OrbitClient
         {
-            return GetUser(client, userId.ToString(), mode);
+            return GetUser(client, userId.ToString(), mode, false);
         }
 
         /// <summary>
         /// Lookup a user by their username
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
-        /// <param name="username">The username</param>
+        /// <param name="identifier">The username</param>
         /// <param name="mode">Optional mode to return stats for</param>
-        public static OsuUser GetUser<T>(this T client, string username, GameMode? mode = null) where T : OrbitClient
+        /// <param name="isUsername">Whether the <see cref="identifier"/> represents a username. If unset, the server will guess</param>
+        public static OsuUser GetUser<T>(this T client, string identifier, GameMode? mode = null, bool? isUsername = null) where T : OrbitClient
         {
-            var request = new OsuUserRequest(username, mode);
+            var request = new OsuUserRequest(identifier, mode)
+            {
+                IsUsername = isUsername
+            };
+
             return client.Perform<OsuUser>(request);
         }
 
@@ -47,11 +52,16 @@ namespace DragonFruit.Orbit.Api.User.Extensions
         /// Lookup a user by their username
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
-        /// <param name="username">The username</param>
+        /// <param name="identifier">The username</param>
         /// <param name="mode">Optional mode name to return stats for</param>
-        public static OsuUser GetUser<T>(this T client, string username, string mode) where T : OrbitClient
+        /// <param name="isUsername">Whether the <see cref="identifier"/> represents a username. If unset, the server will guess</param>
+        public static OsuUser GetUser<T>(this T client, string identifier, string mode, bool? isUsername = null) where T : OrbitClient
         {
-            var request = new OsuUserRequest(username, mode);
+            var request = new OsuUserRequest(identifier, mode)
+            {
+                IsUsername = isUsername
+            };
+
             return client.Perform<OsuUser>(request);
         }
 
