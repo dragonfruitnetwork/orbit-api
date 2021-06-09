@@ -51,18 +51,17 @@ namespace DragonFruit.Orbit.Api.Tests
 
         private string GetEnvironmentVariable(string name)
         {
-            if (_envCache.TryGetValue(name, out var value))
-                return value;
+            var data = _envCache.TryGetValue(name, out var value) switch
+            {
+                true => value,
+                false when RuntimeInformation.IsOSPlatform(OSPlatform.Linux) => Environment.GetEnvironmentVariable(name),
+                false when RuntimeInformation.IsOSPlatform(OSPlatform.Windows) => Environment.GetEnvironmentVariable(name, EnvironmentVariableTarget.User),
 
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                value = Environment.GetEnvironmentVariable(name, EnvironmentVariableTarget.User);
-            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
-                value = Environment.GetEnvironmentVariable(name);
-            else
-                throw new PlatformNotSupportedException();
+                _ => throw new PlatformNotSupportedException()
+            };
 
-            _envCache[name] = value;
-            return value;
+            _envCache[name] = data;
+            return data;
         }
     }
 }
