@@ -9,6 +9,7 @@ namespace DragonFruit.Orbit.Api.User.Enums
 {
     public enum UserBeatmapType
     {
+        Loved,
         Ranked,
         Pending,
         Favourite,
