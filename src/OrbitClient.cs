@@ -9,13 +9,14 @@ using System.Security.Authentication;
 using System.Threading;
 using DragonFruit.Common.Data;
 using DragonFruit.Common.Data.Extensions;
+using DragonFruit.Common.Data.Serializers;
 using DragonFruit.Orbit.Api.Auth;
 using DragonFruit.Orbit.Api.Auth.Requests;
 using DragonFruit.Orbit.Api.Legacy.Requests;
 
 namespace DragonFruit.Orbit.Api
 {
-    public abstract class OrbitClient : ApiClient
+    public abstract class OrbitClient : ApiClient<ApiJsonSerializer>
     {
         private OsuAuthToken _token;
 
