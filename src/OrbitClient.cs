@@ -21,9 +21,13 @@ namespace DragonFruit.Orbit.Api
         private OsuAuthToken _token;
 
         /// <summary>
-        /// Base endpoint all <see cref="OrbitRequest"/>s are sent to
+        /// Base endpoint all <see cref="OrbitRequest"/>s are sent to.
+        /// This property is static and is used regardless of the client instance
         /// </summary>
-        internal const string BaseEndpoint = "https://osu.ppy.sh";
+        /// <remarks>
+        /// Can be changed to use another server but is not recommended
+        /// </remarks>
+        protected internal static string BaseEndpoint { get; protected set; } = "https://osu.ppy.sh";
 
         /// <summary>
         /// Optional flag to allow <see cref="HttpStatusCode.NotFound"/> to return null instead of an exception
