@@ -27,7 +27,7 @@ namespace DragonFruit.Orbit.Api.Legacy.Extensions
                 Limit = limit
             };
 
-            return client.Perform<OsuLegacyScore>(request);
+            return client.Perform<IEnumerable<OsuLegacyScore>>(request);
         }
 
         /// <summary>

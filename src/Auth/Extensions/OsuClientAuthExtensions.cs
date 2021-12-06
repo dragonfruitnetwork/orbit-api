@@ -16,7 +16,7 @@ namespace DragonFruit.Orbit.Api.Auth.Extensions
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         public static OsuAuthToken GetSessionToken<T>(this T client) where T : OrbitClient
         {
-            return client.Perform(new OsuClientAuthRequest());
+            return client.Perform<OsuAuthToken>(new OsuClientAuthRequest());
         }
     }
 }

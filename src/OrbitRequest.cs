@@ -14,5 +14,14 @@ namespace DragonFruit.Orbit.Api
 
         // RequireAuth is protected/internal so the client can't see it (so we create a redirect)
         internal bool IncludeToken => RequireAuth;
+
+        protected override void OnRequestExecuting(ApiClient client)
+        {
+            // inject bearer token if we have access otherwise this will fail at the validate stage
+            if (client is OrbitClient orbit)
+            {
+                orbit.PrepareRequest(this);
+            }
+        }
     }
 }

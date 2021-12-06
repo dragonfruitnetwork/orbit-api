@@ -1,6 +1,7 @@
 ﻿// Orbit API Copyright (C) 2019-2021 DragonFruit Network
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using DragonFruit.Orbit.Api.Legacy.Entities;
@@ -29,7 +30,7 @@ namespace DragonFruit.Orbit.Api.Legacy.Extensions
             };
 
             // the array should only return a single item.
-            return client.Perform<OsuLegacyUser>(request, token).SingleOrDefault();
+            return client.Perform<IEnumerable<OsuLegacyUser>>(request, token).SingleOrDefault();
         }
     }
 }

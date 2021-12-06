@@ -17,7 +17,7 @@ namespace DragonFruit.Orbit.Api.Auth.Extensions
         public static OsuAuthToken GetSessionToken<T>(this T client, string code, string redirectUri) where T : OrbitClient
         {
             var request = new OsuUserAuthRequest(code, redirectUri);
-            return client.Perform(request);
+            return client.Perform<OsuAuthToken>(request);
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace DragonFruit.Orbit.Api.Auth.Extensions
         public static OsuAuthToken RefreshSession<T>(this T client, string refreshCode) where T : OrbitClient
         {
             var request = new OsuUserRefreshRequest(refreshCode);
-            return client.Perform(request);
+            return client.Perform<OsuAuthToken>(request);
         }
 
         /// <summary>

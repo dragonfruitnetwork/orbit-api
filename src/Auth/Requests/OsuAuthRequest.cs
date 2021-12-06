@@ -1,6 +1,7 @@
 ﻿// Orbit API Copyright (C) 2019-2021 DragonFruit Network
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
+using System;
 using DragonFruit.Common.Data;
 using DragonFruit.Common.Data.Parameters;
 
@@ -21,5 +22,14 @@ namespace DragonFruit.Orbit.Api.Auth.Requests
 
         [FormParameter("grant_type")]
         public abstract string GrantType { get; }
+
+        protected override void OnRequestExecuting(ApiClient client)
+        {
+            if (client is OrbitClient orbit)
+            {
+                ClientId ??= orbit.ClientId ?? throw new NullReferenceException($"{nameof(ClientId)} is not set.");
+                ClientSecret ??= orbit.ClientSecret ?? throw new NullReferenceException($"{nameof(ClientSecret)} is not set.");
+            }
+        }
     }
 }
