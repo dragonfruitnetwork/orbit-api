@@ -40,7 +40,7 @@ namespace DragonFruit.Orbit.Api.Legacy.Extensions
                 IsIdentifierUsername = isIdentifierUsername
             };
 
-            return client.Perform<OsuLegacyScore>(request);
+            return client.Perform<IEnumerable<OsuLegacyScore>>(request);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace DragonFruit.Orbit.Api.Legacy.Extensions
                 IsIdentifierUsername = isIdentifierUsername
             };
 
-            return client.Perform<OsuLegacyScore>(request);
+            return client.Perform<IEnumerable<OsuLegacyScore>>(request);
         }
     }
 }

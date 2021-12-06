@@ -17,7 +17,7 @@ namespace DragonFruit.Orbit.Api.Auth.Extensions
         public static OsuAuthToken GetSessionToken<T>(this T client, string code, string redirectUri) where T : OrbitClient
         {
             var request = new OsuUserAuthRequest(code, redirectUri);
-            return client.Perform(request);
+            return client.Perform<OsuAuthToken>(request);
         }
 
         /// <summary>
@@ -27,8 +27,13 @@ namespace DragonFruit.Orbit.Api.Auth.Extensions
         /// <param name="refreshCode">The code to exchange for the new pair</param>
         public static OsuAuthToken RefreshSession<T>(this T client, string refreshCode) where T : OrbitClient
         {
+            if (string.IsNullOrEmpty(refreshCode))
+            {
+                throw new ArgumentNullException(nameof(refreshCode));
+            }
+
             var request = new OsuUserRefreshRequest(refreshCode);
-            return client.Perform(request);
+            return client.Perform<OsuAuthToken>(request);
         }
 
         /// <summary>
@@ -38,11 +43,6 @@ namespace DragonFruit.Orbit.Api.Auth.Extensions
         /// <param name="currentToken">The current token being used</param>
         public static OsuAuthToken RefreshSession<T>(this T client, OsuAuthToken currentToken) where T : OrbitClient
         {
-            if (string.IsNullOrEmpty(currentToken.RefreshToken))
-            {
-                throw new ArgumentNullException(nameof(currentToken.RefreshToken));
-            }
-
             return RefreshSession(client, currentToken.RefreshToken);
         }
     }
