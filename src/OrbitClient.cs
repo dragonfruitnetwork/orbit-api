@@ -14,6 +14,7 @@ namespace DragonFruit.Orbit.Api
     public abstract class OrbitClient : ApiClient<ApiJsonSerializer>
     {
         private OsuAuthToken _token;
+        private readonly AsyncLock _tokenLock = new();
 
         /// <summary>
         /// Base endpoint all <see cref="OrbitRequest"/>s are sent to.
@@ -23,11 +24,6 @@ namespace DragonFruit.Orbit.Api
         /// Can be changed to use another server but is not recommended
         /// </remarks>
         public static string BaseEndpoint { get; set; } = "https://osu.ppy.sh";
-
-        /// <summary>
-        /// Synchronisation object for ensuring authenticated requests perform in an orderly fashion
-        /// </summary>
-        internal AsyncLock TokenLock { get; } = new AsyncLock();
 
         /// <summary>
         /// Optional flag to allow <see cref="HttpStatusCode.NotFound"/> to return null instead of an exception
@@ -70,7 +66,7 @@ namespace DragonFruit.Orbit.Api
             }
 
             // block multiple requests
-            using (TokenLock.Lock())
+            using (_tokenLock.Lock())
             {
                 // any requests made while the first check failed will miss this
                 if (_token == null || _token.Expired)
