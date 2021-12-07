@@ -5,7 +5,6 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using DragonFruit.Common.Data;
-using DragonFruit.Common.Data.Extensions;
 using DragonFruit.Common.Data.Serializers;
 using DragonFruit.Orbit.Api.Auth;
 using Nito.AsyncEx;
@@ -61,22 +60,26 @@ namespace DragonFruit.Orbit.Api
         /// <summary>
         /// Injects the current bearer token into the <see cref="OrbitRequest"/> provided, allowing for a refresh to occur if expired
         /// </summary>
-        protected internal void PrepareRequest(OrbitRequest request)
+        protected internal OsuAuthToken RequestAccessToken()
         {
-            if (!request.IncludeToken)
+            // use the cached token if not-null and non-expired
+            // because this is nullable, we want Expired to be false
+            if (_token?.Expired is false)
             {
-                return;
+                return _token;
             }
 
+            // block multiple requests
             using (TokenLock.Lock())
             {
+                // any requests made while the first check failed will miss this
                 if (_token == null || _token.Expired)
                 {
                     _token = GetToken();
                 }
-            }
 
-            request.WithAuthHeader($"Bearer {_token.AccessToken}");
+                return _token;
+            }
         }
 
         protected override Task<T> ValidateAndProcess<T>(HttpResponseMessage response)
