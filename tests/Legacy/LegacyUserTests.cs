@@ -2,6 +2,7 @@
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
 using System.Linq;
+using System.Threading.Tasks;
 using DragonFruit.Orbit.Api.Legacy.Extensions;
 using NUnit.Framework;
 
@@ -12,16 +13,16 @@ namespace DragonFruit.Orbit.Api.Tests.Legacy
     {
         [TestCase("PaPaCurry", GameMode.Standard, 2990d)]
         [TestCase("4539503", GameMode.Taiko, 0d)]
-        public void TestUserLookup(string id, GameMode? mode, double? minPP)
+        public async Task TestUserLookup(string id, GameMode? mode, double? minPP)
         {
-            var user = Client.GetLegacyUser(id, mode);
+            var user = await Client.GetLegacyUser(id, mode);
             Assert.GreaterOrEqual(user.PP, minPP);
         }
 
         [TestCase("PaPaCurry", GameMode.Standard, 160f)]
-        public void TestUserScoreRetrieval(string identifier, GameMode mode, double minPP)
+        public async Task TestUserScoreRetrieval(string identifier, GameMode mode, double minPP)
         {
-            var bestScores = Client.GetLegacyBestScores(identifier, mode);
+            var bestScores = await Client.GetLegacyBestScores(identifier, mode);
 
             Assert.IsNotNull(bestScores);
             Assert.GreaterOrEqual(bestScores.Max(x => x.PP ?? 0), minPP);

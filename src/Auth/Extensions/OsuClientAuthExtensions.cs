@@ -15,7 +15,19 @@ namespace DragonFruit.Orbit.Api.Auth.Extensions
         /// Client credentials don't issue refresh tokens
         /// </remarks>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
-        public static Task<OsuAuthToken> GetSessionToken(this OrbitClient client)
+        public static OsuAuthToken GetSessionToken(this OrbitClient client)
+        {
+            return client.Perform<OsuAuthToken>(new OsuClientAuthRequest());
+        }
+
+        /// <summary>
+        /// Use the <see cref="OrbitClient"/> credentials to create a guest user access token
+        /// </summary>
+        /// <remarks>
+        /// Client credentials don't issue refresh tokens
+        /// </remarks>
+        /// <param name="client">The <see cref="OrbitClient"/> to use</param>
+        public static Task<OsuAuthToken> GetSessionTokenAsync(this OrbitClient client)
         {
             return client.PerformAsync<OsuAuthToken>(new OsuClientAuthRequest());
         }

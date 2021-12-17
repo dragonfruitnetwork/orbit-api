@@ -2,6 +2,7 @@
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
 using System.Linq;
+using System.Threading.Tasks;
 using DragonFruit.Orbit.Api.Ecosystem.Enums;
 using DragonFruit.Orbit.Api.Ecosystem.Extensions;
 using NUnit.Framework;
@@ -12,10 +13,10 @@ namespace DragonFruit.Orbit.Api.Tests.Ecosystem
     public class OsuCommentsTests : OrbitApiTest
     {
         [Test]
-        public void TestAllComments()
+        public async Task TestAllComments()
         {
-            var comments = Client.GetComments();
-            var commentsPageTwo = Client.GetComments(comments);
+            var comments = await Client.GetComments();
+            var commentsPageTwo = await Client.GetComments(comments);
 
             var commentsFirstDate = comments.Comments.OrderBy(x => x.CreatedAt).First().CreatedAt;
             var commentsPageTwoLastDate = commentsPageTwo.Comments.OrderBy(x => x.CreatedAt).Last().CreatedAt;
@@ -25,18 +26,18 @@ namespace DragonFruit.Orbit.Api.Tests.Ecosystem
 
         [TestCase(1373758u, 5538u)]
         [TestCase(1377520u, 996208u)]
-        public void TestSingleComment(uint id, uint targetId)
+        public async Task TestSingleComment(uint id, uint targetId)
         {
-            var comment = Client.GetComment(id);
+            var comment = await Client.GetComment(id);
 
             Assert.IsTrue(comment.Comments.Any(x => x.CommentableId == targetId));
         }
 
         [TestCase(CommentableType.NewsPost, 884u, 1377532u)]
         [TestCase(CommentableType.ChangelogRelease, 5522u, 1375660u)]
-        public void TestCommentableLookup(CommentableType type, uint typeId, uint expectedCommentId)
+        public async Task TestCommentableLookup(CommentableType type, uint typeId, uint expectedCommentId)
         {
-            var comments = Client.GetComments(type, typeId);
+            var comments = await Client.GetComments(type, typeId);
             Assert.IsTrue(comments.Comments.Select(x => x.Id).Contains(expectedCommentId));
         }
     }

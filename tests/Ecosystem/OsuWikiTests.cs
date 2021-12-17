@@ -2,6 +2,7 @@
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
 using System.Linq;
+using System.Threading.Tasks;
 using DragonFruit.Orbit.Api.Ecosystem.Extensions;
 using NUnit.Framework;
 
@@ -11,9 +12,9 @@ namespace DragonFruit.Orbit.Api.Tests.Ecosystem
     public class OsuWikiTests : OrbitApiTest
     {
         [TestCase("Grade", new[] { "rank" })]
-        public void TestWiki(string path, params string[] expectedTags)
+        public async Task TestWiki(string path, params string[] expectedTags)
         {
-            var wikiPage = Client.GetWikiPage(path);
+            var wikiPage = await Client.GetWikiPage(path);
             Assert.IsTrue(expectedTags.All(x => wikiPage.Tags.Contains(x)));
         }
     }

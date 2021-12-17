@@ -2,6 +2,7 @@
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
 using System.Linq;
+using System.Threading.Tasks;
 using DragonFruit.Orbit.Api.Ecosystem.Enums;
 using DragonFruit.Orbit.Api.Ecosystem.Extensions;
 using NUnit.Framework;
@@ -12,9 +13,9 @@ namespace DragonFruit.Orbit.Api.Tests.Ecosystem
     public class OsuSearchTests : OrbitApiTest
     {
         [TestCase("papacurry", 13723332u)]
-        public void TestUserSearch(string query, uint expectedId)
+        public async Task TestUserSearch(string query, uint expectedId)
         {
-            var results = Client.Search(query, SearchTarget.User);
+            var results = await Client.Search(query, SearchTarget.User);
 
             Assert.IsNotNull(results.Users);
             Assert.IsTrue(results.Users.Items.Select(x => x.Id).Contains(expectedId));
