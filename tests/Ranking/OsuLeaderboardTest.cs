@@ -3,6 +3,7 @@
 
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using DragonFruit.Orbit.Api.Ranking.Entities;
 using DragonFruit.Orbit.Api.Ranking.Enums;
 using DragonFruit.Orbit.Api.Ranking.Extensions;
@@ -16,25 +17,25 @@ namespace DragonFruit.Orbit.Api.Tests.Ranking
         [Test]
         public void TestInvalidLeaderboard()
         {
-            Assert.Throws<NotSupportedException>(() => Client.GetLeaderboard(GameMode.Standard, LeaderboardType.Country));
+            Assert.ThrowsAsync<NotSupportedException>(() => Client.GetLeaderboard(GameMode.Standard, LeaderboardType.Country));
         }
 
         [Test]
-        public void TestCountryLeaderboard()
+        public async Task TestCountryLeaderboard()
         {
-            var countries = Client.GetCountryLeaderboard(GameMode.Standard);
+            var countries = await Client.GetCountryLeaderboard(GameMode.Standard);
             Assert.IsTrue(countries.Ranking.First().Code == "US");
         }
 
         [TestCase(GameMode.Standard, LeaderboardType.Performance, 4504101u)]
         [TestCase(GameMode.Taiko, LeaderboardType.Score, 3802922u, 2u)]
-        public void TestLeaderboard(GameMode mode, LeaderboardType type, uint expectedUser, uint pages = 1)
+        public async Task TestLeaderboard(GameMode mode, LeaderboardType type, uint expectedUser, uint pages = 1)
         {
             OsuUserLeaderboard leaderboard = null;
 
             do
             {
-                leaderboard = Client.GetLeaderboard(mode, type, last: leaderboard);
+                leaderboard = await Client.GetLeaderboard(mode, type, last: leaderboard);
                 pages--;
             } while (pages > 0);
 

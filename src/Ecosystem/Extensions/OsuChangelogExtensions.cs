@@ -1,6 +1,7 @@
 ﻿// Orbit API Copyright (C) 2019-2021 DragonFruit Network
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
+using System.Threading.Tasks;
 using DragonFruit.Orbit.Api.Ecosystem.Entities;
 using DragonFruit.Orbit.Api.Ecosystem.Enums;
 using DragonFruit.Orbit.Api.Ecosystem.Requests;
@@ -14,9 +15,9 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Extensions
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <returns>Summary of targets and recent releases</returns>
-        public static OsuChangelogDetails GetChangelogs<T>(this T client) where T : OrbitClient
+        public static Task<OsuChangelogDetails> GetChangelogs(this OrbitClient client)
         {
-            return client.Perform<OsuChangelogDetails>(new OsuChangelogsRequest());
+            return client.PerformAsync<OsuChangelogDetails>(new OsuChangelogsRequest());
         }
 
         /// <summary>
@@ -26,10 +27,9 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Extensions
         /// <param name="target">The <see cref="ChangelogTarget"/></param>
         /// <param name="version">The version of the <see cref="target"/> to get entries for</param>
         /// <returns>The changelog and the associated changes</returns>
-        public static OsuChangelogRelease GetChangelogEntry<T>(this T client, ChangelogTarget target, string version) where T : OrbitClient
+        public static Task<OsuChangelogRelease> GetChangelogEntry(this OrbitClient client, ChangelogTarget target, string version)
         {
-            var request = new OsuChangelogRequest(target, version);
-            return client.Perform<OsuChangelogRelease>(request);
+            return client.PerformAsync<OsuChangelogRelease>(new OsuChangelogRequest(target, version));
         }
     }
 }
