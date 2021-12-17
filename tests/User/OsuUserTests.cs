@@ -1,6 +1,7 @@
 ﻿// Orbit API Copyright (C) 2019-2021 DragonFruit Network
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
+using System.Threading.Tasks;
 using DragonFruit.Orbit.Api.User.Extensions;
 using NUnit.Framework;
 
@@ -22,9 +23,9 @@ namespace DragonFruit.Orbit.Api.Tests.User
         }
 
         [TestCase("PaPaCurry", 13723332u)]
-        public void TestUsernameLookup(string username, uint id)
+        public async Task TestUsernameLookup(string username, uint id)
         {
-            var user = Client.GetUser(username);
+            var user = await Client.GetUser(username);
             Assert.AreEqual(id, user.Id);
         }
     }
