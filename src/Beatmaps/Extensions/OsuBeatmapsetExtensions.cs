@@ -1,6 +1,7 @@
 ﻿// Orbit API Copyright (C) 2019-2021 DragonFruit Network
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
+using System.Threading.Tasks;
 using DragonFruit.Orbit.Api.Beatmaps.Entities;
 using DragonFruit.Orbit.Api.Beatmaps.Enums;
 using DragonFruit.Orbit.Api.Beatmaps.Requests;
@@ -15,14 +16,14 @@ namespace DragonFruit.Orbit.Api.Beatmaps.Extensions
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="setId">The id of the set</param>
-        public static OsuBeatmapset GetBeatmapset<T>(this T client, uint setId) where T : OrbitClient
+        public static Task<OsuBeatmapset> GetBeatmapset(this OrbitClient client, uint setId)
         {
             var request = new OsuBeatmapsetRequest
             {
                 Id = setId
             };
 
-            return client.Perform<OsuBeatmapset>(request);
+            return client.PerformAsync<OsuBeatmapset>(request);
         }
 
         /// <summary>
@@ -30,14 +31,14 @@ namespace DragonFruit.Orbit.Api.Beatmaps.Extensions
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="childMapId">The id of a map in the set</param>
-        public static OsuBeatmapset GetBeatmapsetFromMap<T>(this T client, uint childMapId) where T : OrbitClient
+        public static Task<OsuBeatmapset> GetBeatmapsetFromMap(this OrbitClient client, uint childMapId)
         {
             var request = new OsuBeatmapsetRequest
             {
                 ChildMapId = childMapId
             };
 
-            return client.Perform<OsuBeatmapset>(request);
+            return client.PerformAsync<OsuBeatmapset>(request);
         }
 
         /// <summary>
@@ -55,10 +56,11 @@ namespace DragonFruit.Orbit.Api.Beatmaps.Extensions
         /// <param name="rankFilter">Collection of ranks to filter by</param>
         /// <param name="descending">Whether to return in ascending or descending order</param>
         /// <param name="last">The last set of responses. Used to get the next "page"</param>
-        public static OsuBeatmapsetSearch PerformBeatmapsetSearch<T>(this T client, string query, GameMode? mode = null, BeatmapsetPlayStatus? status = null, BeatmapsetCategory? category = null,
-                                                                     BeatmapsetSearchCriteria? criteria = null, BeatmapSearchFlags? extraFlags = null, BeatmapsetGenre? genre = null,
-                                                                     BeatmapsetLanguage? language = null, ScoreGrade? rankFilter = null, bool descending = true, OsuBeatmapsetSearch last = null)
-            where T : OrbitClient
+        public static Task<OsuBeatmapsetSearch> PerformBeatmapsetSearch(this OrbitClient client, string query, GameMode? mode = null, BeatmapsetPlayStatus? status = null,
+                                                                                BeatmapsetCategory? category = null,
+                                                                                BeatmapsetSearchCriteria? criteria = null, BeatmapSearchFlags? extraFlags = null, BeatmapsetGenre? genre = null,
+                                                                                BeatmapsetLanguage? language = null, ScoreGrade? rankFilter = null, bool descending = true,
+                                                                                OsuBeatmapsetSearch last = null)
         {
             var request = new OsuBeatmapsetSearchRequest
             {
@@ -75,7 +77,7 @@ namespace DragonFruit.Orbit.Api.Beatmaps.Extensions
                 Cursor = last?.Cursor
             };
 
-            return client.Perform<OsuBeatmapsetSearch>(request);
+            return client.PerformAsync<OsuBeatmapsetSearch>(request);
         }
     }
 }

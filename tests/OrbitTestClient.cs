@@ -14,14 +14,14 @@ using NUnit.Framework;
 
 namespace DragonFruit.Orbit.Api.Tests
 {
-    public class OrbitTestClient : OrbitClient
+    public class OrbitTestClient : OrbitClient, ILegacyOrbitClient
     {
         private static string TokenCacheFile => Path.Combine(Path.GetTempPath(), "orbit-token.json");
         private readonly Dictionary<string, string> _envCache = new Dictionary<string, string>(3);
 
         protected override bool ThrowNotFound => true;
 
-        protected override string LegacyKey => GetEnvironmentVariable("orbit_legacy_key");
+        public string LegacyKey => GetEnvironmentVariable("orbit_legacy_key");
 
         protected override string ClientId => GetEnvironmentVariable("orbit_client_id");
         protected override string ClientSecret => GetEnvironmentVariable("orbit_client_secret");

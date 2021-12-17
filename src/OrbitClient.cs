@@ -5,7 +5,6 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using DragonFruit.Common.Data;
-using DragonFruit.Common.Data.Extensions;
 using DragonFruit.Common.Data.Serializers;
 using DragonFruit.Orbit.Api.Auth;
 using Nito.AsyncEx;
@@ -15,6 +14,7 @@ namespace DragonFruit.Orbit.Api
     public abstract class OrbitClient : ApiClient<ApiJsonSerializer>
     {
         private OsuAuthToken _token;
+        private readonly AsyncLock _tokenLock = new();
 
         /// <summary>
         /// Base endpoint all <see cref="OrbitRequest"/>s are sent to.
@@ -26,19 +26,9 @@ namespace DragonFruit.Orbit.Api
         public static string BaseEndpoint { get; set; } = "https://osu.ppy.sh";
 
         /// <summary>
-        /// Synchronisation object for ensuring authenticated requests perform in an orderly fashion
-        /// </summary>
-        internal AsyncLock TokenLock { get; } = new AsyncLock();
-
-        /// <summary>
         /// Optional flag to allow <see cref="HttpStatusCode.NotFound"/> to return null instead of an exception
         /// </summary>
         protected virtual bool ThrowNotFound => false;
-
-        /// <summary>
-        /// Legacy api key to use with v1 requests
-        /// </summary>
-        protected internal virtual string LegacyKey => null;
 
         /// <summary>
         /// Client id from the osu! site, for use when requesting tokens for api access
@@ -61,22 +51,26 @@ namespace DragonFruit.Orbit.Api
         /// <summary>
         /// Injects the current bearer token into the <see cref="OrbitRequest"/> provided, allowing for a refresh to occur if expired
         /// </summary>
-        protected internal void PrepareRequest(OrbitRequest request)
+        protected internal OsuAuthToken RequestAccessToken()
         {
-            if (!request.IncludeToken)
+            // use the cached token if not-null and non-expired
+            // because this is nullable, we want Expired to be false
+            if (_token?.Expired is false)
             {
-                return;
+                return _token;
             }
 
-            using (TokenLock.Lock())
+            // block multiple requests
+            using (_tokenLock.Lock())
             {
+                // any requests made while the first check failed will miss this
                 if (_token == null || _token.Expired)
                 {
                     _token = GetToken();
                 }
-            }
 
-            request.WithAuthHeader($"Bearer {_token.AccessToken}");
+                return _token;
+            }
         }
 
         protected override Task<T> ValidateAndProcess<T>(HttpResponseMessage response)

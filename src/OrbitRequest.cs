@@ -2,6 +2,7 @@
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
 using DragonFruit.Common.Data;
+using DragonFruit.Common.Data.Extensions;
 
 namespace DragonFruit.Orbit.Api
 {
@@ -17,10 +18,10 @@ namespace DragonFruit.Orbit.Api
 
         protected override void OnRequestExecuting(ApiClient client)
         {
-            // inject bearer token if we have access otherwise this will fail at the validate stage
             if (client is OrbitClient orbit)
             {
-                orbit.PrepareRequest(this);
+                // inject bearer token if we have access otherwise this will fail at the validate stage
+                this.WithAuthHeader($"Bearer {orbit.RequestAccessToken().AccessToken}");
             }
         }
     }

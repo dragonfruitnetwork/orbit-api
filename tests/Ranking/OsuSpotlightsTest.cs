@@ -3,6 +3,7 @@
 
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using DragonFruit.Orbit.Api.Ranking.Extensions;
 using NUnit.Framework;
 
@@ -12,12 +13,13 @@ namespace DragonFruit.Orbit.Api.Tests.Ranking
     public class OsuSpotlightsTest : OrbitApiTest
     {
         [Test]
-        public void TestSpotlights()
+        public async Task TestSpotlights()
         {
-            var spotlights = Client.GetSpotlights().Events.ToArray();
+            var spotlights = await Client.GetSpotlights();
+            var events = spotlights.Events.ToArray();
 
-            Assert.IsTrue(spotlights.Single(x => x.Id == 82).EndDate == new DateTimeOffset(2013, 12, 15, 0, 0, 0, TimeSpan.Zero));
-            Assert.IsTrue(spotlights.Single(x => x.Id == 271).ModeSpecific);
+            Assert.IsTrue(events.Single(x => x.Id == 82).EndDate == new DateTimeOffset(2013, 12, 15, 0, 0, 0, TimeSpan.Zero));
+            Assert.IsTrue(events.Single(x => x.Id == 271).ModeSpecific);
         }
     }
 }
