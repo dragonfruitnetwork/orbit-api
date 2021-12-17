@@ -31,11 +31,6 @@ namespace DragonFruit.Orbit.Api
         protected virtual bool ThrowNotFound => false;
 
         /// <summary>
-        /// Legacy api key to use with v1 requests
-        /// </summary>
-        protected internal virtual string LegacyKey => null;
-
-        /// <summary>
         /// Client id from the osu! site, for use when requesting tokens for api access
         /// </summary>
         protected internal virtual string ClientId => null;

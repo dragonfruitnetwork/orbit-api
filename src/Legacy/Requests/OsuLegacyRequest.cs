@@ -18,7 +18,7 @@ namespace DragonFruit.Orbit.Api.Legacy.Requests
 
         protected override void OnRequestExecuting(ApiClient client)
         {
-            if (client is OrbitClient orbit)
+            if (client is ILegacyOrbitClient orbit)
             {
                 // inject api key if we have a client
                 ApiKey = orbit.LegacyKey ?? throw new AuthenticationException($"{nameof(orbit.LegacyKey)} has no value");
