@@ -17,7 +17,7 @@ namespace DragonFruit.Orbit.Api.User.Extensions
         /// <param name="user">The user to get the history for</param>
         /// <param name="page">Optional page number to return entries for</param>
         /// <param name="limit">Optional limit to cap responses. Make sure this is equal to the max or lower otherwise pagination will fail</param>
-        public static Task<IEnumerable<OsuKudosuHistory>> GetKudosuHistory<T>(this T client, OsuUserCard user, uint page = 0, uint? limit = null) where T : OrbitClient
+        public static Task<IEnumerable<OsuKudosuHistory>> GetKudosuHistory(this OrbitClient client, OsuUserCard user, uint page = 0, uint? limit = null)
         {
             return client.GetKudosuHistory(user.Id, page, limit);
         }
@@ -29,7 +29,7 @@ namespace DragonFruit.Orbit.Api.User.Extensions
         /// <param name="id">The user id to get the history for</param>
         /// <param name="page">Optional page number to return entries for</param>
         /// <param name="limit">Optional limit to cap responses. Make sure this is equal to the max or lower otherwise pagination will fail</param>
-        public static Task<IEnumerable<OsuKudosuHistory>> GetKudosuHistory<T>(this T client, uint id, uint page = 0, uint? limit = null) where T : OrbitClient
+        public static Task<IEnumerable<OsuKudosuHistory>> GetKudosuHistory(this OrbitClient client, uint id, uint page = 0, uint? limit = null)
         {
             var request = new OsuUserKudosuRequest(id)
             {

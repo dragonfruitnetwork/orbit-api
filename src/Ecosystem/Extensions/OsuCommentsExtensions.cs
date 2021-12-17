@@ -21,7 +21,7 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Extensions
         /// Comments summary, including all metadata (users/maps/posts) the comments relate to.
         /// Returns null if there are no more comments (based on the cursor)
         /// </returns>
-        public static Task<OsuCommentsSummary> GetComments<T>(this T client, OsuCommentsSummary last = null, uint? limit = null) where T : OrbitClient
+        public static Task<OsuCommentsSummary> GetComments(this OrbitClient client, OsuCommentsSummary last = null, uint? limit = null)
         {
             var request = GetRequest(last, limit, () => new OsuCommentsRequest());
             return request is null ? null : client.PerformAsync<OsuCommentsSummary>(request);
@@ -38,7 +38,7 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Extensions
         /// Comments summary, including all metadata (users/maps/posts) the comments relate to.
         /// Returns null if there are no more comments (based on the cursor)
         /// </returns>
-        public static Task<OsuCommentsSummary> GetComments<T>(this T client, uint commentId, OsuCommentsSummary last = null, uint? limit = null) where T : OrbitClient
+        public static Task<OsuCommentsSummary> GetComments(this OrbitClient client, uint commentId, OsuCommentsSummary last = null, uint? limit = null)
         {
             var request = GetRequest(last, limit, () => new OsuCommentsRequest(commentId, true));
             return request is null ? null : client.PerformAsync<OsuCommentsSummary>(request);
@@ -56,7 +56,7 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Extensions
         /// Comments summary, including all metadata (users/maps/posts) the comments relate to.
         /// Returns null if there are no more comments (based on the cursor)
         /// </returns>
-        public static Task<OsuCommentsSummary> GetComments<T>(this T client, CommentableType type, uint typeId, OsuCommentsSummary last = null, uint? limit = null) where T : OrbitClient
+        public static Task<OsuCommentsSummary> GetComments(this OrbitClient client, CommentableType type, uint typeId, OsuCommentsSummary last = null, uint? limit = null)
         {
             var request = GetRequest(last, limit, () => new OsuCommentsRequest(type, typeId));
             return request is null ? null : client.PerformAsync<OsuCommentsSummary>(request);
@@ -73,7 +73,7 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Extensions
         /// Comments summary, including all metadata (users/maps/posts) the comment(s) relate to.
         /// Returns null if there are no more comments (based on the cursor)
         /// </returns>
-        public static Task<OsuCommentsSummary> GetComment<T>(this T client, uint commentId, OsuCommentsSummary last = null, uint? limit = null) where T : OrbitClient
+        public static Task<OsuCommentsSummary> GetComment(this OrbitClient client, uint commentId, OsuCommentsSummary last = null, uint? limit = null)
         {
             var request = GetRequest(last, limit, () => new OsuCommentsRequest(commentId, false));
             return request is null ? null : client.PerformAsync<OsuCommentsSummary>(request);

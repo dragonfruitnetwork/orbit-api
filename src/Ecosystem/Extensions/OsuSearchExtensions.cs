@@ -20,7 +20,7 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Extensions
         /// <returns>
         /// The search results. Note only the first 100 users from a search can be accessed.
         /// </returns>
-        public static Task<OsuSearchResponse> Search<T>(this T client, string query, SearchTarget? target = null, int? page = null) where T : OrbitClient
+        public static Task<OsuSearchResponse> Search(this OrbitClient client, string query, SearchTarget? target = null, int? page = null)
         {
             var request = new OsuSearchRequest(query)
             {

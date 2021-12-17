@@ -16,7 +16,7 @@ namespace DragonFruit.Orbit.Api.User.Extensions
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="id">The id of the user</param>
         /// <param name="mode">Optional mode to return stats for</param>
-        public static Task<OsuUser> GetUser<T>(this T client, uint id, GameMode? mode = null) where T : OrbitClient
+        public static Task<OsuUser> GetUser(this OrbitClient client, uint id, GameMode? mode = null)
         {
             return GetUser(client, id.ToString(), mode, false);
         }
@@ -27,7 +27,7 @@ namespace DragonFruit.Orbit.Api.User.Extensions
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="userId">The user id</param>
         /// <param name="mode">Optional mode name to return stats for</param>
-        public static Task<OsuUser> GetUser<T>(this T client, uint userId, string mode) where T : OrbitClient
+        public static Task<OsuUser> GetUser(this OrbitClient client, uint userId, string mode)
         {
             return GetUser(client, userId.ToString(), mode, false);
         }
@@ -39,7 +39,7 @@ namespace DragonFruit.Orbit.Api.User.Extensions
         /// <param name="identifier">The username</param>
         /// <param name="mode">Optional mode to return stats for</param>
         /// <param name="isUsername">Whether the <see cref="identifier"/> represents a username. If unset, the server will guess</param>
-        public static Task<OsuUser> GetUser<T>(this T client, string identifier, GameMode? mode = null, bool? isUsername = null) where T : OrbitClient
+        public static Task<OsuUser> GetUser(this OrbitClient client, string identifier, GameMode? mode = null, bool? isUsername = null)
         {
             var request = new OsuUserRequest(identifier, mode)
             {
@@ -56,7 +56,7 @@ namespace DragonFruit.Orbit.Api.User.Extensions
         /// <param name="identifier">The username</param>
         /// <param name="mode">Optional mode name to return stats for</param>
         /// <param name="isUsername">Whether the <see cref="identifier"/> represents a username. If unset, the server will guess</param>
-        public static Task<OsuUser> GetUser<T>(this T client, string identifier, string mode, bool? isUsername = null) where T : OrbitClient
+        public static Task<OsuUser> GetUser(this OrbitClient client, string identifier, string mode, bool? isUsername = null)
         {
             var request = new OsuUserRequest(identifier, mode)
             {
@@ -73,7 +73,7 @@ namespace DragonFruit.Orbit.Api.User.Extensions
         /// This fails if client_credentials are used to perform the request.
         /// </remarks>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
-        public static Task<IEnumerable<OsuUserCard>> GetFriends<T>(this T client) where T : OrbitClient
+        public static Task<IEnumerable<OsuUserCard>> GetFriends(this OrbitClient client)
         {
             var request = new OsuUserFriendsRequest();
             return client.PerformAsync<IEnumerable<OsuUserCard>>(request);

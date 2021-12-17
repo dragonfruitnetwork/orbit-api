@@ -15,7 +15,7 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Extensions
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="last">Optional last <see cref="OsuNewsFeed"/> received. Used to get the previous values</param>
         /// <param name="limit">Optional limit that can be set</param>
-        public static Task<OsuNewsFeed> GetNews<T>(this T client, OsuNewsFeed last = null, uint? limit = null) where T : OrbitClient
+        public static Task<OsuNewsFeed> GetNews(this OrbitClient client, OsuNewsFeed last = null, uint? limit = null)
         {
             if (last is not null && last.Cursor is null)
             {

@@ -20,7 +20,7 @@ namespace DragonFruit.Orbit.Api.User.Extensions
         /// <param name="type">The <see cref="UserBeatmapType"/> to filter responses by</param>
         /// <param name="limit">Optional limit to cap responses</param>
         /// <param name="page">Optional page number to fetch reliant on the <see cref="limit"/></param>
-        public static Task<IEnumerable<OsuBeatmapset>> GetUserMaps<T>(this T client, OsuUserCard user, UserBeatmapType type, uint? limit = null, uint page = 0) where T : OrbitClient
+        public static Task<IEnumerable<OsuBeatmapset>> GetUserMaps(this OrbitClient client, OsuUserCard user, UserBeatmapType type, uint? limit = null, uint page = 0)
         {
             return client.GetUserMaps(user.Id, type, limit, page);
         }
@@ -33,7 +33,7 @@ namespace DragonFruit.Orbit.Api.User.Extensions
         /// <param name="type">The <see cref="UserBeatmapType"/> to filter responses by</param>
         /// <param name="limit">Optional limit to cap responses</param>
         /// <param name="page">Optional page number to fetch reliant on the <see cref="limit"/></param>
-        public static Task<IEnumerable<OsuBeatmapset>> GetUserMaps<T>(this T client, uint id, UserBeatmapType type, uint? limit = null, uint page = 0) where T : OrbitClient
+        public static Task<IEnumerable<OsuBeatmapset>> GetUserMaps(this OrbitClient client, uint id, UserBeatmapType type, uint? limit = null, uint page = 0)
         {
             var request = new OsuUserBeatmapsRequest(id, type)
             {

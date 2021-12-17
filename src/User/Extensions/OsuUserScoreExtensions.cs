@@ -22,8 +22,8 @@ namespace DragonFruit.Orbit.Api.User.Extensions
         /// <param name="page">Optional page to get (based on limit)</param>
         /// <param name="limit">Optional maximum entries to return </param>
         /// <param name="includeFails">Whether to include fails when requesting recent scores</param>
-        public static Task<IEnumerable<OsuScore>> GetUserScores<T>(this T client, OsuUserCard user, UserScoreType type, GameMode? mode = null, uint page = 0, uint? limit = null, bool includeFails = false)
-            where T : OrbitClient
+        public static Task<IEnumerable<OsuScore>> GetUserScores(this OrbitClient client, OsuUserCard user, UserScoreType type, GameMode? mode = null, uint page = 0, uint? limit = null, bool includeFails = false)
+           
         {
             return client.GetUserScores(user.Id, type, mode, page, limit, includeFails);
         }
@@ -38,8 +38,8 @@ namespace DragonFruit.Orbit.Api.User.Extensions
         /// <param name="page">Optional page to get (based on limit)</param>
         /// <param name="limit">Optional maximum entries to return </param>
         /// <param name="includeFails">Whether to include fails when requesting recent scores</param>
-        public static Task<IEnumerable<OsuScore>> GetUserScores<T>(this T client, uint id, UserScoreType type, GameMode? mode = null, uint page = 0, uint? limit = null, bool includeFails = false)
-            where T : OrbitClient
+        public static Task<IEnumerable<OsuScore>> GetUserScores(this OrbitClient client, uint id, UserScoreType type, GameMode? mode = null, uint page = 0, uint? limit = null, bool includeFails = false)
+           
         {
             var request = new OsuUserScoresRequest(id, type)
             {
@@ -62,8 +62,8 @@ namespace DragonFruit.Orbit.Api.User.Extensions
         /// <param name="page">Optional page to get (based on limit)</param>
         /// <param name="limit">Optional maximum entries to return </param>
         /// <param name="includeFails">Whether to include fails when requesting recent scores</param>
-        public static Task<IEnumerable<OsuScore>> GetUserScores<T>(this T client, OsuUserCard user, UserScoreType type, string mode, uint page = 0, uint? limit = null, bool includeFails = false)
-            where T : OrbitClient
+        public static Task<IEnumerable<OsuScore>> GetUserScores(this OrbitClient client, OsuUserCard user, UserScoreType type, string mode, uint page = 0, uint? limit = null, bool includeFails = false)
+           
         {
             return client.GetUserScores(user.Id, type, mode, page, limit, includeFails);
         }
@@ -78,8 +78,8 @@ namespace DragonFruit.Orbit.Api.User.Extensions
         /// <param name="page">Optional page to get (based on limit)</param>
         /// <param name="limit">Optional maximum entries to return </param>
         /// <param name="includeFails">Whether to include fails when requesting recent scores</param>
-        public static Task<IEnumerable<OsuScore>> GetUserScores<T>(this T client, uint id, UserScoreType type, string mode, uint page = 0, uint? limit = null, bool includeFails = false)
-            where T : OrbitClient
+        public static Task<IEnumerable<OsuScore>> GetUserScores(this OrbitClient client, uint id, UserScoreType type, string mode, uint page = 0, uint? limit = null, bool includeFails = false)
+           
         {
             var request = new OsuUserScoresRequest(id, type)
             {
