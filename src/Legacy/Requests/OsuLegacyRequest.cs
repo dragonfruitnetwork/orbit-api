@@ -2,8 +2,8 @@
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
 using System.Security.Authentication;
-using DragonFruit.Common.Data;
-using DragonFruit.Common.Data.Parameters;
+using DragonFruit.Data;
+using DragonFruit.Data.Parameters;
 
 namespace DragonFruit.Orbit.Api.Legacy.Requests
 {

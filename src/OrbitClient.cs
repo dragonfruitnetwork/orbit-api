@@ -4,8 +4,8 @@
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using DragonFruit.Common.Data;
-using DragonFruit.Common.Data.Serializers;
+using DragonFruit.Data;
+using DragonFruit.Data.Serializers.Newtonsoft;
 using DragonFruit.Orbit.Api.Auth;
 using Nito.AsyncEx;
 

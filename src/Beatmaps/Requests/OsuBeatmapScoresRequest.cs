@@ -2,8 +2,8 @@
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
 using System.Collections.Generic;
-using DragonFruit.Common.Data;
-using DragonFruit.Common.Data.Parameters;
+using DragonFruit.Data;
+using DragonFruit.Data.Parameters;
 using DragonFruit.Orbit.Api.Beatmaps.Enums;
 using DragonFruit.Orbit.Api.Utils;
 

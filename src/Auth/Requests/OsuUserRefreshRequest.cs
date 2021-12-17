@@ -2,7 +2,7 @@
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
 using System;
-using DragonFruit.Common.Data.Parameters;
+using DragonFruit.Data.Parameters;
 
 namespace DragonFruit.Orbit.Api.Auth.Requests
 {

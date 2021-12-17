@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using DragonFruit.Common.Data;
+using DragonFruit.Data;
 using DragonFruit.Orbit.Api.Legacy.Entities;
 using DragonFruit.Orbit.Api.Legacy.Requests;
 

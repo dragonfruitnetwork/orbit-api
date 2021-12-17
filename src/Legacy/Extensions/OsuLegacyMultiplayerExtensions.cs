@@ -2,7 +2,7 @@
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
 using System.Threading.Tasks;
-using DragonFruit.Common.Data;
+using DragonFruit.Data;
 using DragonFruit.Orbit.Api.Legacy.Entities;
 using DragonFruit.Orbit.Api.Legacy.Requests;
 

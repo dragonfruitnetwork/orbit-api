@@ -7,7 +7,7 @@ using System.IO;
 using System.Net.Http;
 using System.Runtime.InteropServices;
 using System.Threading;
-using DragonFruit.Common.Data.Services;
+using DragonFruit.Data.Serializers.Newtonsoft;
 using DragonFruit.Orbit.Api.Auth;
 using DragonFruit.Orbit.Api.Auth.Extensions;
 using NUnit.Framework;

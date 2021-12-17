@@ -3,7 +3,7 @@
 
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using DragonFruit.Common.Data;
+using DragonFruit.Data;
 using DragonFruit.Orbit.Api.Legacy.Entities;
 using DragonFruit.Orbit.Api.Legacy.Enums;
 using DragonFruit.Orbit.Api.Legacy.Requests;
