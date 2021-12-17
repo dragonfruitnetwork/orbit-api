@@ -14,17 +14,6 @@ namespace DragonFruit.Orbit.Api.Auth.Extensions
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="code">The code from the user's redirect</param>
         /// <param name="redirectUri">The url the client was redirected to</param>
-        public static OsuAuthToken GetSessionToken<T>(this T client, string code, string redirectUri) where T : OrbitClient
-        {
-            return client.Perform<OsuAuthToken>(new OsuUserAuthRequest(code, redirectUri));
-        }
-
-        /// <summary>
-        /// Exchanges a user authorization code for a session-refresh token pair
-        /// </summary>
-        /// <param name="client">The <see cref="OrbitClient"/> to use</param>
-        /// <param name="code">The code from the user's redirect</param>
-        /// <param name="redirectUri">The url the client was redirected to</param>
         public static Task<OsuAuthToken> GetSessionTokenAsync<T>(this T client, string code, string redirectUri) where T : OrbitClient
         {
             return client.PerformAsync<OsuAuthToken>(new OsuUserAuthRequest(code, redirectUri));
@@ -35,29 +24,9 @@ namespace DragonFruit.Orbit.Api.Auth.Extensions
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="refreshCode">The code to exchange for the new pair</param>
-        public static OsuAuthToken RefreshSession<T>(this T client, string refreshCode) where T : OrbitClient
-        {
-            return client.Perform<OsuAuthToken>(new OsuUserRefreshRequest(refreshCode));
-        }
-
-        /// <summary>
-        /// Exchanges a refresh code for a new session-refresh token pair
-        /// </summary>
-        /// <param name="client">The <see cref="OrbitClient"/> to use</param>
-        /// <param name="refreshCode">The code to exchange for the new pair</param>
         public static Task<OsuAuthToken> RefreshSessionAsync<T>(this T client, string refreshCode) where T : OrbitClient
         {
             return client.PerformAsync<OsuAuthToken>(new OsuUserRefreshRequest(refreshCode));
-        }
-
-        /// <summary>
-        /// Exchanges a refresh code for a new session-refresh token pair
-        /// </summary>
-        /// <param name="client">The <see cref="OrbitClient"/> to use</param>
-        /// <param name="currentToken">The current token being used</param>
-        public static OsuAuthToken RefreshSession<T>(this T client, OsuAuthToken currentToken) where T : OrbitClient
-        {
-            return RefreshSession(client, currentToken.RefreshToken);
         }
 
         /// <summary>

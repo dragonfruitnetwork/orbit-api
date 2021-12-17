@@ -15,36 +15,20 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Extensions
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="last">Optional last <see cref="OsuNewsFeed"/> received. Used to get the previous values</param>
         /// <param name="limit">Optional limit that can be set</param>
-        public static OsuNewsFeed GetNews<T>(this T client, OsuNewsFeed last = null, uint? limit = null) where T : OrbitClient
-        {
-            var request = GetRequest(limit, last);
-            return client.Perform<OsuNewsFeed>(request);
-        }
-
-        /// <summary>
-        /// Gets news posts that were published before the ones published in the <see cref="OsuNewsFeed"/> provided
-        /// </summary>
-        /// <param name="client">The <see cref="OrbitClient"/> to use</param>
-        /// <param name="last">Optional last <see cref="OsuNewsFeed"/> received. Used to get the previous values</param>
-        /// <param name="limit">Optional limit that can be set</param>
         public static Task<OsuNewsFeed> GetNewsAsync<T>(this T client, OsuNewsFeed last = null, uint? limit = null) where T : OrbitClient
-        {
-            var request = GetRequest(limit, last);
-            return client.PerformAsync<OsuNewsFeed>(request);
-        }
-
-        private static OsuNewsRequest GetRequest(uint? limit, OsuNewsFeed last)
         {
             if (last is not null && last.Cursor is null)
             {
                 return null;
             }
 
-            return new OsuNewsRequest
+            var request = new OsuNewsRequest
             {
                 Limit = limit,
                 Cursor = last?.Cursor
             };
+
+            return client.PerformAsync<OsuNewsFeed>(request);
         }
     }
 }

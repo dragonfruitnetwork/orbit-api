@@ -2,6 +2,7 @@
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
 using System;
+using System.Threading.Tasks;
 using DragonFruit.Orbit.Api.Ranking.Entities;
 using DragonFruit.Orbit.Api.Ranking.Enums;
 using DragonFruit.Orbit.Api.Ranking.Requests;
@@ -21,12 +22,12 @@ namespace DragonFruit.Orbit.Api.Ranking.Extensions
         /// <param name="spotlight">Optional spotlight id to return entries for</param>
         /// <param name="variant"><see cref="LeaderboardVariant"/> for osu!mania 4/7 keys</param>
         /// <param name="last">Optional previous response that is used to get the next set</param>
-        public static OsuUserLeaderboard GetLeaderboard<T>(this T client, GameMode mode, LeaderboardType type, LeaderboardFilterMode? filter = null, string country = null, int? spotlight = null,
-                                                           LeaderboardVariant? variant = null, OsuUserLeaderboard last = null)
+        public static Task<OsuUserLeaderboard> GetLeaderboardAsync<T>(this T client, GameMode mode, LeaderboardType type, LeaderboardFilterMode? filter = null, string country = null, int? spotlight = null,
+                                                                      LeaderboardVariant? variant = null, OsuUserLeaderboard last = null)
             where T : OrbitClient
         {
             if (type == LeaderboardType.Country)
-                throw new NotSupportedException($"use {nameof(GetCountryLeaderboard)} instead");
+                throw new NotSupportedException($"use {nameof(GetCountryLeaderboardAsync)} instead");
 
             var request = new OsuLeaderboardRequest(mode, type)
             {
@@ -38,7 +39,7 @@ namespace DragonFruit.Orbit.Api.Ranking.Extensions
                 Cursor = last?.Cursor
             };
 
-            return client.Perform<OsuUserLeaderboard>(request);
+            return client.PerformAsync<OsuUserLeaderboard>(request);
         }
 
         /// <summary>
@@ -49,7 +50,7 @@ namespace DragonFruit.Orbit.Api.Ranking.Extensions
         /// <param name="filter">Optional <see cref="LeaderboardFilterMode"/></param>
         /// <param name="variant"><see cref="LeaderboardVariant"/> for osu!mania 4/7 keys</param>
         /// <param name="last">Optional previous response that is used to get the next set</param>
-        public static OsuCountryLeaderboard GetCountryLeaderboard<T>(this T client, GameMode mode, LeaderboardFilterMode? filter = null, LeaderboardVariant? variant = null, OsuCountryLeaderboard last = null)
+        public static Task<OsuCountryLeaderboard> GetCountryLeaderboardAsync<T>(this T client, GameMode mode, LeaderboardFilterMode? filter = null, LeaderboardVariant? variant = null, OsuCountryLeaderboard last = null)
             where T : OrbitClient
         {
             var request = new OsuLeaderboardRequest(mode, LeaderboardType.Country)
@@ -60,7 +61,7 @@ namespace DragonFruit.Orbit.Api.Ranking.Extensions
                 Cursor = last?.Cursor
             };
 
-            return client.Perform<OsuCountryLeaderboard>(request);
+            return client.PerformAsync<OsuCountryLeaderboard>(request);
         }
     }
 }

@@ -9,27 +9,13 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Extensions
 {
     public static class OsuWikiExtensions
     {
-        private const string DefaultLocale = "en";
-
         /// <summary>
         /// Gets a specified wiki page with choice of language
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="locale">The language to return the content in</param>
         /// <param name="path">The relative path to the entry</param>
-        public static OsuWikiPage GetWikiPage<T>(this T client, string path, string locale = DefaultLocale) where T : OrbitClient
-        {
-            var request = new OsuWikiPageRequest(locale, path);
-            return client.Perform<OsuWikiPage>(request);
-        }
-
-        /// <summary>
-        /// Gets a specified wiki page with choice of language
-        /// </summary>
-        /// <param name="client">The <see cref="OrbitClient"/> to use</param>
-        /// <param name="locale">The language to return the content in</param>
-        /// <param name="path">The relative path to the entry</param>
-        public static Task<OsuWikiPage> GetWikiPageAsync<T>(this T client, string path, string locale = DefaultLocale) where T : OrbitClient
+        public static Task<OsuWikiPage> GetWikiPageAsync<T>(this T client, string path, string locale = "en") where T : OrbitClient
         {
             var request = new OsuWikiPageRequest(locale, path);
             return client.PerformAsync<OsuWikiPage>(request);
