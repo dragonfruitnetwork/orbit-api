@@ -16,7 +16,7 @@ namespace DragonFruit.Orbit.Api.Beatmaps.Extensions
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="setId">The id of the set</param>
-        public static Task<OsuBeatmapset> GetBeatmapsetAsync<T>(this T client, uint setId) where T : OrbitClient
+        public static Task<OsuBeatmapset> GetBeatmapset<T>(this T client, uint setId) where T : OrbitClient
         {
             var request = new OsuBeatmapsetRequest
             {
@@ -31,7 +31,7 @@ namespace DragonFruit.Orbit.Api.Beatmaps.Extensions
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="childMapId">The id of a map in the set</param>
-        public static Task<OsuBeatmapset> GetBeatmapsetFromMapAsync<T>(this T client, uint childMapId) where T : OrbitClient
+        public static Task<OsuBeatmapset> GetBeatmapsetFromMap<T>(this T client, uint childMapId) where T : OrbitClient
         {
             var request = new OsuBeatmapsetRequest
             {
@@ -56,7 +56,7 @@ namespace DragonFruit.Orbit.Api.Beatmaps.Extensions
         /// <param name="rankFilter">Collection of ranks to filter by</param>
         /// <param name="descending">Whether to return in ascending or descending order</param>
         /// <param name="last">The last set of responses. Used to get the next "page"</param>
-        public static Task<OsuBeatmapsetSearch> PerformBeatmapsetSearchAsync<T>(this T client, string query, GameMode? mode = null, BeatmapsetPlayStatus? status = null,
+        public static Task<OsuBeatmapsetSearch> PerformBeatmapsetSearch<T>(this T client, string query, GameMode? mode = null, BeatmapsetPlayStatus? status = null,
                                                                                 BeatmapsetCategory? category = null,
                                                                                 BeatmapsetSearchCriteria? criteria = null, BeatmapSearchFlags? extraFlags = null, BeatmapsetGenre? genre = null,
                                                                                 BeatmapsetLanguage? language = null, ScoreGrade? rankFilter = null, bool descending = true,

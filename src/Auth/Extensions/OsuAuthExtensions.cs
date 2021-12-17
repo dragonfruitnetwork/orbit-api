@@ -13,7 +13,7 @@ namespace DragonFruit.Orbit.Api.Auth.Extensions
         /// This will throw if the request failed
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
-        public static async Task RevokeCurrentSessionAsync<T>(this T client) where T : OrbitClient
+        public static async Task RevokeCurrentSession<T>(this T client) where T : OrbitClient
         {
             using (var response = await client.PerformAsync(new OsuSessionInvalidationRequest()).ConfigureAwait(false))
             {

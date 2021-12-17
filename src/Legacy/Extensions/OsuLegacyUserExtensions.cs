@@ -22,7 +22,7 @@ namespace DragonFruit.Orbit.Api.Legacy.Extensions
         /// <param name="isUsername">Whether the <see cref="identifier"/> was a username</param>
         /// <param name="token">A <see cref="CancellationToken"/> that can be used to stop the request</param>
         /// <returns>A <see cref="OsuLegacyUser"/> if there was one, otherwise a null response</returns>
-        public static Task<OsuLegacyUser> GetLegacyUserAsync<T>(this T client, string identifier, GameMode? mode = null, bool? isUsername = null, CancellationToken token = default)
+        public static Task<OsuLegacyUser> GetLegacyUser<T>(this T client, string identifier, GameMode? mode = null, bool? isUsername = null, CancellationToken token = default)
             where T : ApiClient, ILegacyOrbitClient
         {
             var request = new OsuLegacyUserRequest(identifier)

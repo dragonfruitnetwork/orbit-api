@@ -18,10 +18,10 @@ namespace DragonFruit.Orbit.Api.Legacy.Extensions
         /// <param name="user">The <see cref="OsuLegacyUser"/> to get results for</param>
         /// <param name="mode">Optional mode to return scores for. Defaults to osu!standard</param>
         /// <param name="limit">Optional limit for the number of results. Max 50, Default 10.</param>
-        public static Task<IEnumerable<OsuLegacyScore>> GetLegacyRecentScoresAsync<T>(this T client, OsuLegacyUser user, GameMode? mode = null, uint? limit = null)
+        public static Task<IEnumerable<OsuLegacyScore>> GetLegacyRecentScores<T>(this T client, OsuLegacyUser user, GameMode? mode = null, uint? limit = null)
             where T : ApiClient, ILegacyOrbitClient
         {
-            return client.GetLegacyRecentScoresAsync(user.UserId.ToString(), mode, true, limit);
+            return client.GetLegacyRecentScores(user.UserId.ToString(), mode, true, limit);
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace DragonFruit.Orbit.Api.Legacy.Extensions
         /// <param name="mode">Optional mode to return scores for. Defaults to osu!standard</param>
         /// <param name="isIdentifierUsername">Optional flag to help the server lookup a user. Set to true if the <see cref="id"/> is a username, false if not. null will allow the server to make it's own decision</param>
         /// <param name="limit">Optional limit for the number of results. Max 50, Default 10.</param>
-        public static Task<IEnumerable<OsuLegacyScore>> GetLegacyRecentScoresAsync<T>(this T client, string id, GameMode? mode = null, bool? isIdentifierUsername = null, uint? limit = null)
+        public static Task<IEnumerable<OsuLegacyScore>> GetLegacyRecentScores<T>(this T client, string id, GameMode? mode = null, bool? isIdentifierUsername = null, uint? limit = null)
             where T : ApiClient, ILegacyOrbitClient
         {
             var request = new OsuLegacyRecentScoresRequest(id)
@@ -52,10 +52,10 @@ namespace DragonFruit.Orbit.Api.Legacy.Extensions
         /// <param name="user">The <see cref="OsuLegacyUser"/> to get results for</param>
         /// <param name="mode">Optional mode to return scores for. Defaults to osu!standard</param>
         /// <param name="limit">Optional limit for the number of results. Max 50, Default 10.</param>
-        public static Task<IEnumerable<OsuLegacyScore>> GetLegacyBestScoresAsync<T>(this T client, OsuLegacyUser user, GameMode? mode = null, bool? isIdentifierUsername = null, uint? limit = null)
+        public static Task<IEnumerable<OsuLegacyScore>> GetLegacyBestScores<T>(this T client, OsuLegacyUser user, GameMode? mode = null, bool? isIdentifierUsername = null, uint? limit = null)
             where T : ApiClient, ILegacyOrbitClient
         {
-            return client.GetLegacyBestScoresAsync(user.UserId.ToString(), mode, true, limit);
+            return client.GetLegacyBestScores(user.UserId.ToString(), mode, true, limit);
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace DragonFruit.Orbit.Api.Legacy.Extensions
         /// <param name="mode">Optional mode to return scores for. Defaults to osu!standard</param>
         /// <param name="isIdentifierUsername">Optional flag to help the server lookup a user. Set to true if the <see cref="id"/> is a username, false if not. null will allow the server to make it's own decision</param>
         /// <param name="limit">Optional limit for the number of results. Max 50, Default 10.</param>
-        public static Task<IEnumerable<OsuLegacyScore>> GetLegacyBestScoresAsync<T>(this T client, string id, GameMode? mode = null, bool? isIdentifierUsername = null, uint? limit = null)
+        public static Task<IEnumerable<OsuLegacyScore>> GetLegacyBestScores<T>(this T client, string id, GameMode? mode = null, bool? isIdentifierUsername = null, uint? limit = null)
             where T : ApiClient, ILegacyOrbitClient
         {
             var request = new OsuLegacyBestScoresRequest(id)

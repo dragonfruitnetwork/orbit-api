@@ -17,7 +17,7 @@ namespace DragonFruit.Orbit.Api.Legacy.Extensions
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="matchId">The id of the match (ongoing or completed)</param>
         /// <returns>An <see cref="OsuLegacyMatch"/> container with information about the match</returns>
-        public static Task<OsuLegacyMatch> GetLegacyMatchInfoAsync<T>(this T client, uint matchId) where T :  ApiClient, ILegacyOrbitClient
+        public static Task<OsuLegacyMatch> GetLegacyMatchInfo<T>(this T client, uint matchId) where T :  ApiClient, ILegacyOrbitClient
         {
             var request = new OsuLegacyMatchRequest(matchId);
             return client.PerformAsync<OsuLegacyMatch>(request);

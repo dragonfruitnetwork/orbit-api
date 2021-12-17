@@ -15,7 +15,7 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Extensions
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="locale">The language to return the content in</param>
         /// <param name="path">The relative path to the entry</param>
-        public static Task<OsuWikiPage> GetWikiPageAsync<T>(this T client, string path, string locale = "en") where T : OrbitClient
+        public static Task<OsuWikiPage> GetWikiPage<T>(this T client, string path, string locale = "en") where T : OrbitClient
         {
             var request = new OsuWikiPageRequest(locale, path);
             return client.PerformAsync<OsuWikiPage>(request);

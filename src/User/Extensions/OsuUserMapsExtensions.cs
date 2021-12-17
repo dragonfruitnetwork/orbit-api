@@ -2,6 +2,7 @@
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using DragonFruit.Orbit.Api.Beatmaps.Entities;
 using DragonFruit.Orbit.Api.User.Entities;
 using DragonFruit.Orbit.Api.User.Enums;
@@ -19,7 +20,7 @@ namespace DragonFruit.Orbit.Api.User.Extensions
         /// <param name="type">The <see cref="UserBeatmapType"/> to filter responses by</param>
         /// <param name="limit">Optional limit to cap responses</param>
         /// <param name="page">Optional page number to fetch reliant on the <see cref="limit"/></param>
-        public static IEnumerable<OsuBeatmapset> GetUserMaps<T>(this T client, OsuUserCard user, UserBeatmapType type, uint? limit = null, uint page = 0) where T : OrbitClient
+        public static Task<IEnumerable<OsuBeatmapset>> GetUserMaps<T>(this T client, OsuUserCard user, UserBeatmapType type, uint? limit = null, uint page = 0) where T : OrbitClient
         {
             return client.GetUserMaps(user.Id, type, limit, page);
         }
@@ -32,7 +33,7 @@ namespace DragonFruit.Orbit.Api.User.Extensions
         /// <param name="type">The <see cref="UserBeatmapType"/> to filter responses by</param>
         /// <param name="limit">Optional limit to cap responses</param>
         /// <param name="page">Optional page number to fetch reliant on the <see cref="limit"/></param>
-        public static IEnumerable<OsuBeatmapset> GetUserMaps<T>(this T client, uint id, UserBeatmapType type, uint? limit = null, uint page = 0) where T : OrbitClient
+        public static Task<IEnumerable<OsuBeatmapset>> GetUserMaps<T>(this T client, uint id, UserBeatmapType type, uint? limit = null, uint page = 0) where T : OrbitClient
         {
             var request = new OsuUserBeatmapsRequest(id, type)
             {
@@ -40,7 +41,7 @@ namespace DragonFruit.Orbit.Api.User.Extensions
                 Page = page
             };
 
-            return client.Perform<IEnumerable<OsuBeatmapset>>(request);
+            return client.PerformAsync<IEnumerable<OsuBeatmapset>>(request);
         }
     }
 }

@@ -20,7 +20,7 @@ namespace DragonFruit.Orbit.Api.Legacy.Extensions
         /// <param name="mode">The <see cref="GameMode"/> to retrieve scores for</param>
         /// <param name="limit">Optional limit for number of scores to return</param>
         /// <returns>Collection of scores</returns>
-        public static Task<IEnumerable<OsuLegacyScore>> GetLegacyBeatmapScoresAsync<T>(this T client, uint mapId, GameMode? mode = null, uint? limit = null) where T : ApiClient, ILegacyOrbitClient
+        public static Task<IEnumerable<OsuLegacyScore>> GetLegacyBeatmapScores<T>(this T client, uint mapId, GameMode? mode = null, uint? limit = null) where T : ApiClient, ILegacyOrbitClient
         {
             var request = new OsuLegacyBeatmapScoresRequest
             {
@@ -42,7 +42,7 @@ namespace DragonFruit.Orbit.Api.Legacy.Extensions
         /// <param name="mode">The game mode the map was played in</param>
         /// <param name="mods">The mods the map was played with</param>
         /// <returns>Container for the Base64 encoded replay. This is not the .osr file, but just the input data (key/mouse)</returns>
-        public static Task<OsuLegacyReplayContent> GetBeatmapReplayAsync<T>(this T client, uint mapId, string identifier, GameMode mode, LegacyMods? mods = null, bool? isUsername = null)
+        public static Task<OsuLegacyReplayContent> GetBeatmapReplay<T>(this T client, uint mapId, string identifier, GameMode mode, LegacyMods? mods = null, bool? isUsername = null)
             where T : ApiClient, ILegacyOrbitClient
         {
             var request = new OsuLegacyReplayRequest
@@ -63,7 +63,7 @@ namespace DragonFruit.Orbit.Api.Legacy.Extensions
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="scoreId">The id of the score</param>
         /// <returns>Container for the Base64 encoded replay. This is not the .osr file, but just the input data (key/mouse)</returns>
-        public static Task<OsuLegacyReplayContent> GetBeatmapReplayAsync<T>(this T client, ulong scoreId) where T : ApiClient, ILegacyOrbitClient
+        public static Task<OsuLegacyReplayContent> GetBeatmapReplay<T>(this T client, ulong scoreId) where T : ApiClient, ILegacyOrbitClient
         {
             var request = new OsuLegacyReplayRequest
             {

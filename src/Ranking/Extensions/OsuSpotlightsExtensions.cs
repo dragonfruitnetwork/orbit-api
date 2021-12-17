@@ -13,7 +13,7 @@ namespace DragonFruit.Orbit.Api.Ranking.Extensions
         /// Get the list of all spotlight events
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
-        public static Task<OsuSpotlightsContainer> GetSpotlightsAsync<T>(this T client) where T : OrbitClient
+        public static Task<OsuSpotlightsContainer> GetSpotlights<T>(this T client) where T : OrbitClient
         {
             var request = new OsuSpotlightsRequest();
             return client.PerformAsync<OsuSpotlightsContainer>(request);
