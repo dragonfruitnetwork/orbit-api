@@ -1,6 +1,7 @@
 ﻿// Orbit API Copyright (C) 2019-2021 DragonFruit Network
 // Licensed under the MIT License - see the LICENSE file at the root of the project for more info
 
+using System.Threading.Tasks;
 using DragonFruit.Orbit.Api.Ecosystem.Entities;
 using DragonFruit.Orbit.Api.Ecosystem.Requests;
 
@@ -8,14 +9,18 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Extensions
 {
     public static class OsuWikiExtensions
     {
+        private const string DefaultLocale = "en";
+
         /// <summary>
-        /// Gets the English version of the specified wiki page
+        /// Gets a specified wiki page with choice of language
         /// </summary>
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
+        /// <param name="locale">The language to return the content in</param>
         /// <param name="path">The relative path to the entry</param>
-        public static OsuWikiPage GetWikiPage<T>(this T client, string path) where T : OrbitClient
+        public static OsuWikiPage GetWikiPage<T>(this T client, string path, string locale = DefaultLocale) where T : OrbitClient
         {
-            return client.GetWikiPage("en", path);
+            var request = new OsuWikiPageRequest(locale, path);
+            return client.Perform<OsuWikiPage>(request);
         }
 
         /// <summary>
@@ -24,10 +29,10 @@ namespace DragonFruit.Orbit.Api.Ecosystem.Extensions
         /// <param name="client">The <see cref="OrbitClient"/> to use</param>
         /// <param name="locale">The language to return the content in</param>
         /// <param name="path">The relative path to the entry</param>
-        public static OsuWikiPage GetWikiPage<T>(this T client, string locale, string path) where T : OrbitClient
+        public static Task<OsuWikiPage> GetWikiPageAsync<T>(this T client, string path, string locale = DefaultLocale) where T : OrbitClient
         {
             var request = new OsuWikiPageRequest(locale, path);
-            return client.Perform<OsuWikiPage>(request);
+            return client.PerformAsync<OsuWikiPage>(request);
         }
     }
 }
